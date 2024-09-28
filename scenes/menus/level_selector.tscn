@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://e0xxv3m42jw6"]
+
+[ext_resource type="Theme" uid="uid://qb6dgmsbm5um" path="res://assets/themes/menu_theme.tres" id="1_wdd8e"]
+[ext_resource type="Script" path="res://scenes/menus/level_selector.gd" id="2_veo85"]
+
+[node name="LevelSelector" type="PanelContainer"]
+custom_minimum_size = Vector2(36, 36)
+theme = ExtResource("1_wdd8e")
+script = ExtResource("2_veo85")
+
+[node name="LevelButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+icon_alignment = 1
