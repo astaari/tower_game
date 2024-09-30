@@ -17,10 +17,10 @@
 resource_local_to_scene = true
 shader = ExtResource("2_1ed17")
 shader_parameter/transparency = 1.0
-shader_parameter/color0 = Color(0.796078, 0.772549, 0.917647, 1)
-shader_parameter/color1 = Color(0.354972, 0.496359, 0.372862, 1)
-shader_parameter/color2 = Color(0.341176, 0.364706, 0.564706, 1)
-shader_parameter/color3 = Color(0.188235, 0.141176, 0.439216, 1)
+shader_parameter/color0 = Color(1, 1, 1, 1)
+shader_parameter/color1 = Color(0, 0, 0, 1)
+shader_parameter/color2 = Color(0, 0, 0, 1)
+shader_parameter/color3 = Color(0, 0, 0, 1)
 shader_parameter/Direction = Vector2(-2, -1)
 shader_parameter/Speed = 20.0
 shader_parameter/thresholds = PackedFloat32Array(0.5, 0.6, 0.7)
@@ -30,8 +30,8 @@ shader_parameter/dithering = 1.5
 
 [sub_resource type="Gradient" id="Gradient_gf477"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.272021)
-colors = PackedColorArray(1, 1, 1, 0, 0.132, 0.1408, 0.22, 1)
+offsets = PackedFloat32Array(0, 0.349593)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_wf4wx"]
 gradient = SubResource("Gradient_gf477")
@@ -94,7 +94,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.162, 0.1728, 0.27, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -236,6 +236,8 @@ columns = 2
 [node name="EffectsLabel" type="Label" parent="SettingsContainer/SettingsRows/AudioSettings"]
 layout_mode = 2
 theme = ExtResource("1_r1mvb")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 text = "Sound Effects"
 vertical_alignment = 1
 
@@ -252,6 +254,8 @@ value = 1.0
 [node name="MusicLabel" type="Label" parent="SettingsContainer/SettingsRows/AudioSettings"]
 layout_mode = 2
 theme = ExtResource("1_r1mvb")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 text = "Music"
 vertical_alignment = 1
 
@@ -268,6 +272,8 @@ value = 1.0
 [node name="MenuSoundsLabel" type="Label" parent="SettingsContainer/SettingsRows/AudioSettings"]
 layout_mode = 2
 theme = ExtResource("1_r1mvb")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 text = "Menu Sounds"
 vertical_alignment = 1
 
@@ -284,6 +290,8 @@ value = 1.0
 [node name="MasterLabel" type="Label" parent="SettingsContainer/SettingsRows/AudioSettings"]
 layout_mode = 2
 theme = ExtResource("1_r1mvb")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 text = "Master"
 vertical_alignment = 1
 

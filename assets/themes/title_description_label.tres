@@ -2,7 +2,5 @@
 
 [resource]
 font_size = 24
-font_color = Color(0.901961, 0.945098, 0.290196, 1)
-shadow_size = 4
-shadow_color = Color(0.156863, 0.117647, 0.313726, 0.784314)
-shadow_offset = Vector2(2, 2)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
