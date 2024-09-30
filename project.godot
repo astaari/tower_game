@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 GlobalAudio="*res://scenes/autoload/global_audio.tscn"
 
+[global_group]
+
+player=""
+
 [input]
 
 run_right={

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const MAX_SPEED = 80
-const ACCELERATION_SMOOTHING = 22
+const MAX_SPEED = 200
+const ACCELERATION_SMOOTHING = 50
 
 @onready var animation_tree = $AnimationTree
 @onready var animation_mode = animation_tree.get("parameters/playback")
@@ -12,7 +12,7 @@ var number_colliding_bodies = 0
 
 
 func _ready():
-	animation_tree.active
+	animation_tree.active = true
 	collision_area.body_entered.connect(on_body_entered)
 	collision_area.body_exited.connect(on_body_exited)
 
@@ -45,9 +45,9 @@ func set_animation(direction: Vector2):
 		animation_tree.set("parameters/idle/blend_position", last_movement_direction)
 
 
-func on_body_entered(other_body: Node2D):
+func on_body_entered(_other_body: Node2D):
 	number_colliding_bodies += 1
 
 
-func on_body_exited(other_body: Node2D):
+func on_body_exited(_other_body: Node2D):
 	number_colliding_bodies -= 1

@@ -23,6 +23,8 @@ extends CanvasLayer
 
 @onready var levels_back_button: Button = %LevelsBackButton
 
+@onready var first_level: PackedScene = preload("/Users/motes/Projects/tower_game/scenes/level/level.tscn")
+
 @onready var menu_containers: Dictionary = {
 	"title": %TitleContainer,
 	"levels": %LevelsContainer,
@@ -79,7 +81,7 @@ func _on_music_slider_changed(value: float) -> void:
 
 
 func _on_start_button_pressed() -> void:
-	print("Load first level")
+	get_tree().change_scene_to_packed(first_level)
 
 
 func _on_settings_button_pressed() -> void:
