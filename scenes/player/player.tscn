@@ -342,6 +342,7 @@ script = ExtResource("1_negh2")
 libraries = {
 "": SubResource("AnimationLibrary_6bu6l")
 }
+autoplay = "idle_down"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_0b1wr")
