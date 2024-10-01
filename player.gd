@@ -3,9 +3,9 @@ extends CharacterBody2D
 const MAX_SPEED = 200
 const ACCELERATION_SMOOTHING = 50
 
-@onready var animation_tree = $AnimationTree
+@onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animation_mode = animation_tree.get("parameters/playback")
-@onready var collision_area = $CollisionArea2D
+@onready var collision_area: Area2D = $CollisionArea2D
 
 var last_movement_direction = Vector2.ZERO
 var number_colliding_bodies = 0

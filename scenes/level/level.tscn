@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=4 uid="uid://dg3gfe4p2wtap"]
 
-[ext_resource type="PackedScene" uid="uid://cegmmbnx2nejg" path="res://scenes/game_camera.tscn" id="1_0pqkn"]
+[ext_resource type="PackedScene" uid="uid://cegmmbnx2nejg" path="res://scenes/game_camera/game_camera.tscn" id="1_0pqkn"]
 [ext_resource type="PackedScene" uid="uid://7o3yw1nov7qk" path="res://scenes/player/player.tscn" id="1_m0di4"]
-[ext_resource type="Texture2D" uid="uid://jf1ytlvrswsq" path="res://assets/bw-tileset-01.png" id="2_rp6if"]
-[ext_resource type="Texture2D" uid="uid://bdud0csyr38cc" path="res://assets/bw-tileset-02.png" id="4_r1svs"]
+[ext_resource type="Texture2D" uid="uid://jf1ytlvrswsq" path="res://assets/tilesets/bw-tileset-01.png" id="2_rp6if"]
+[ext_resource type="Texture2D" uid="uid://bdud0csyr38cc" path="res://assets/tilesets/bw-tileset-02.png" id="4_r1svs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qxfwc"]
 texture = ExtResource("2_rp6if")
@@ -143,21 +143,15 @@ texture = ExtResource("4_r1svs")
 7:3/0 = 0
 7:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 1, 8, 1, 8, 8, -8, 8)
 0:4/0 = 0
-0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:4/0 = 0
-1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:4/0 = 0
-2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:4/0 = 0
-3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:4/0 = 0
 4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 0, -8, 0, 8, -8, 8)
 5:4/0 = 0
 5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 0, -8, 0, 8, 8, 8)
 6:4/0 = 0
-6:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:4/0 = 0
-7:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:5/0 = 0
 1:5/0 = 0
 2:5/0 = 0

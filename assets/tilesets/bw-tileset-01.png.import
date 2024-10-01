@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpehjbij2dyts"
-path="res://.godot/imported/mr-hat-run-down.png-504dde5ee9f713dc415f6263f289439c.ctex"
+uid="uid://jf1ytlvrswsq"
+path="res://.godot/imported/bw-tileset-01.png-d068d282d72be945649482ac0e84ab4c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/player/mr-hat-run-down.png"
-dest_files=["res://.godot/imported/mr-hat-run-down.png-504dde5ee9f713dc415f6263f289439c.ctex"]
+source_file="res://assets/tilesets/bw-tileset-01.png"
+dest_files=["res://.godot/imported/bw-tileset-01.png-d068d282d72be945649482ac0e84ab4c.ctex"]
 
 [params]
 
