@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://g3j3w1yhq2tt"]
+[gd_scene load_steps=16 format=3 uid="uid://g3j3w1yhq2tt"]
 
 [ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="1_pop28"]
 [ext_resource type="Theme" uid="uid://qb6dgmsbm5um" path="res://assets/themes/menu_theme.tres" id="1_r1mvb"]
@@ -6,12 +6,7 @@
 [ext_resource type="LabelSettings" uid="uid://cat466i40g3su" path="res://assets/themes/title_label.tres" id="3_ddgus"]
 [ext_resource type="LabelSettings" uid="uid://b1p4n4pnlwjq3" path="res://assets/themes/menu_title_label.tres" id="4_7nyt0"]
 [ext_resource type="LabelSettings" uid="uid://6cmppknv3tn2" path="res://assets/themes/title_description_label.tres" id="4_kxp0y"]
-[ext_resource type="Texture2D" uid="uid://ijxsnpeoefeb" path="res://assets/icons/play_arrow.png" id="5_nav7b"]
-[ext_resource type="Texture2D" uid="uid://cojaowl452kbr" path="res://assets/icons/settings_cog.png" id="5_sgeyi"]
-[ext_resource type="Texture2D" uid="uid://ck5ucuggbj546" path="res://assets/icons/plus.png" id="7_gi6yi"]
-[ext_resource type="Texture2D" uid="uid://c78qr8nhxin0r" path="res://assets/icons/square.png" id="8_2iy7a"]
-[ext_resource type="Texture2D" uid="uid://c3oi76ag8fnhy" path="res://assets/icons/left_arrow.png" id="10_2okek"]
-[ext_resource type="PackedScene" uid="uid://e0xxv3m42jw6" path="res://scenes/menus/level_selector.tscn" id="11_cw04l"]
+[ext_resource type="PackedScene" uid="uid://do3pox5cyduq3" path="res://assets/shaders/color_swap_shader_scene.tscn" id="11_58y5p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_33lxc"]
 resource_local_to_scene = true
@@ -19,7 +14,7 @@ shader = ExtResource("2_1ed17")
 shader_parameter/transparency = 1.0
 shader_parameter/color0 = Color(1, 1, 1, 1)
 shader_parameter/color1 = Color(0, 0, 0, 1)
-shader_parameter/color2 = Color(0, 0, 0, 1)
+shader_parameter/color2 = Color(1, 1, 1, 1)
 shader_parameter/color3 = Color(0, 0, 0, 1)
 shader_parameter/Direction = Vector2(-2, -1)
 shader_parameter/Speed = 20.0
@@ -31,7 +26,7 @@ shader_parameter/dithering = 1.5
 [sub_resource type="Gradient" id="Gradient_gf477"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.349593)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_wf4wx"]
 gradient = SubResource("Gradient_gf477")
@@ -81,8 +76,6 @@ _data = {
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r2kr6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wqyln"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_avq6u"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_pop28")
@@ -167,15 +160,6 @@ layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("1_r1mvb")
 text = "Start"
-icon = ExtResource("5_nav7b")
-
-[node name="LevelsButton" type="Button" parent="TitleContainer/TitleRows/Buttons"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 6
-theme = ExtResource("1_r1mvb")
-text = "Levels"
-icon = ExtResource("7_gi6yi")
 
 [node name="SettingsButton" type="Button" parent="TitleContainer/TitleRows/Buttons"]
 unique_name_in_owner = true
@@ -183,7 +167,6 @@ layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("1_r1mvb")
 text = "Settings"
-icon = ExtResource("5_sgeyi")
 
 [node name="QuitButton" type="Button" parent="TitleContainer/TitleRows/Buttons"]
 unique_name_in_owner = true
@@ -191,7 +174,6 @@ layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("1_r1mvb")
 text = "Quit"
-icon = ExtResource("8_2iy7a")
 
 [node name="SettingsContainer" type="MarginContainer" parent="."]
 unique_name_in_owner = true
@@ -208,7 +190,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 32
 
-[node name="SettingsLabel" type="Label" parent="SettingsContainer/SettingsRows"]
+[node name="SettingsLabel" type="Label" parent="SettingsContainer/SettingsRows" groups=["recolor"]]
 layout_mode = 2
 text = "Settings"
 label_settings = ExtResource("4_7nyt0")
@@ -219,7 +201,7 @@ layout_mode = 2
 theme_override_constants/separation = 64
 theme_override_styles/separator = SubResource("StyleBoxEmpty_wqyln")
 
-[node name="AudioLabel" type="Label" parent="SettingsContainer/SettingsRows"]
+[node name="AudioLabel" type="Label" parent="SettingsContainer/SettingsRows" groups=["recolor"]]
 layout_mode = 2
 theme = ExtResource("1_r1mvb")
 text = "Audio"
@@ -233,7 +215,7 @@ theme_override_constants/h_separation = 32
 theme_override_constants/v_separation = 11
 columns = 2
 
-[node name="EffectsLabel" type="Label" parent="SettingsContainer/SettingsRows/AudioSettings"]
+[node name="EffectsLabel" type="Label" parent="SettingsContainer/SettingsRows/AudioSettings" groups=["recolor"]]
 layout_mode = 2
 theme = ExtResource("1_r1mvb")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -251,7 +233,7 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="MusicLabel" type="Label" parent="SettingsContainer/SettingsRows/AudioSettings"]
+[node name="MusicLabel" type="Label" parent="SettingsContainer/SettingsRows/AudioSettings" groups=["recolor"]]
 layout_mode = 2
 theme = ExtResource("1_r1mvb")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -269,7 +251,7 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="MenuSoundsLabel" type="Label" parent="SettingsContainer/SettingsRows/AudioSettings"]
+[node name="MenuSoundsLabel" type="Label" parent="SettingsContainer/SettingsRows/AudioSettings" groups=["recolor"]]
 layout_mode = 2
 theme = ExtResource("1_r1mvb")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -287,7 +269,7 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="MasterLabel" type="Label" parent="SettingsContainer/SettingsRows/AudioSettings"]
+[node name="MasterLabel" type="Label" parent="SettingsContainer/SettingsRows/AudioSettings" groups=["recolor"]]
 layout_mode = 2
 theme = ExtResource("1_r1mvb")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -305,97 +287,12 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="SettingsBackButton" type="Button" parent="SettingsContainer/SettingsRows"]
+[node name="SettingsBackButton" type="Button" parent="SettingsContainer/SettingsRows" groups=["recolor"]]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("1_r1mvb")
 text = "Back"
-icon = ExtResource("10_2okek")
 
-[node name="LevelsContainer" type="MarginContainer" parent="."]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="LevelsRows" type="VBoxContainer" parent="LevelsContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 32
-
-[node name="LevelLabel" type="Label" parent="LevelsContainer/LevelsRows"]
-layout_mode = 2
-text = "Levels"
-label_settings = ExtResource("4_7nyt0")
-horizontal_alignment = 1
-
-[node name="Levels" type="GridContainer" parent="LevelsContainer/LevelsRows"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/h_separation = 32
-theme_override_constants/v_separation = 11
-columns = 5
-
-[node name="Level1" parent="LevelsContainer/LevelsRows/Levels" instance=ExtResource("11_cw04l")]
-layout_mode = 2
-level_number = 1
-is_unlocked = true
-
-[node name="Level2" parent="LevelsContainer/LevelsRows/Levels" instance=ExtResource("11_cw04l")]
-layout_mode = 2
-level_number = 2
-is_unlocked = true
-
-[node name="Level3" parent="LevelsContainer/LevelsRows/Levels" instance=ExtResource("11_cw04l")]
-layout_mode = 2
-level_number = 3
-is_unlocked = true
-
-[node name="Level4" parent="LevelsContainer/LevelsRows/Levels" instance=ExtResource("11_cw04l")]
-layout_mode = 2
-level_number = 4
-
-[node name="Level5" parent="LevelsContainer/LevelsRows/Levels" instance=ExtResource("11_cw04l")]
-layout_mode = 2
-level_number = 5
-
-[node name="Level6" parent="LevelsContainer/LevelsRows/Levels" instance=ExtResource("11_cw04l")]
-layout_mode = 2
-level_number = 6
-
-[node name="Level7" parent="LevelsContainer/LevelsRows/Levels" instance=ExtResource("11_cw04l")]
-layout_mode = 2
-level_number = 7
-
-[node name="Level8" parent="LevelsContainer/LevelsRows/Levels" instance=ExtResource("11_cw04l")]
-layout_mode = 2
-level_number = 8
-
-[node name="Level9" parent="LevelsContainer/LevelsRows/Levels" instance=ExtResource("11_cw04l")]
-layout_mode = 2
-level_number = 9
-
-[node name="Level10" parent="LevelsContainer/LevelsRows/Levels" instance=ExtResource("11_cw04l")]
-layout_mode = 2
-level_number = 10
-
-[node name="HSeparator" type="HSeparator" parent="LevelsContainer/LevelsRows"]
-layout_mode = 2
-theme_override_constants/separation = 32
-theme_override_styles/separator = SubResource("StyleBoxEmpty_avq6u")
-
-[node name="LevelsBackButton" type="Button" parent="LevelsContainer/LevelsRows"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = ExtResource("1_r1mvb")
-text = "Back"
-icon = ExtResource("10_2okek")
+[node name="ColorSwapShader" parent="." instance=ExtResource("11_58y5p")]

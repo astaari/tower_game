@@ -13,16 +13,16 @@ var random_index_cache: Array[int] = []
 
 
 func _enter_tree() -> void:
-	var player = AudioStreamPlayer.new()
-	player.bus = "Menu"
-	player.volume_db = -5.0
-	add_child(player)
+	var audio_stream_player = AudioStreamPlayer.new()
+	audio_stream_player.bus = "Menu"
+	audio_stream_player.volume_db = -5.0
+	add_child(audio_stream_player)
 	
 	var stream = AudioStreamPolyphonic.new()
 	stream.polyphony = 32
-	player.stream = stream
-	player.play()
-	playback = player.get_stream_playback()
+	audio_stream_player.stream = stream
+	audio_stream_player.play()
+	playback = audio_stream_player.get_stream_playback()
 	
 	get_tree().node_added.connect(_on_node_added)
 

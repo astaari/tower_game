@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcpu3chyo4hkj"]
+
+[ext_resource type="Script" path="res://scenes/components/item_drop_component.gd" id="1_7ky07"]
+
+[node name="ItemDropComponent" type="Node"]
+script = ExtResource("1_7ky07")

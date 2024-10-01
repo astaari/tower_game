@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dpbv7kvhroqqp"]
+
+[ext_resource type="Shader" path="res://assets/shaders/color_swap.gdshader" id="1_2dvsa"]
+
+[resource]
+shader = ExtResource("1_2dvsa")
+shader_parameter/new_black = Color(0.054902, 0.188235, 0.223529, 1)
+shader_parameter/new_white = Color(0.705802, 0.512008, 0.506448, 1)

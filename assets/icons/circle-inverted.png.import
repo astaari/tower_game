@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bktk7dp2xcb63"
-path="res://.godot/imported/down_arrow.png-b891f289a2952059d69c78cf199579f2.ctex"
+uid="uid://1g3ipne3h4pn"
+path="res://.godot/imported/circle-inverted.png-f91acec5fbe1b832c596883a20e8ecd0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/down_arrow.png"
-dest_files=["res://.godot/imported/down_arrow.png-b891f289a2952059d69c78cf199579f2.ctex"]
+source_file="res://assets/icons/circle-inverted.png"
+dest_files=["res://.godot/imported/circle-inverted.png-f91acec5fbe1b832c596883a20e8ecd0.ctex"]
 
 [params]
 

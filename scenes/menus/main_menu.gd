@@ -6,7 +6,6 @@ extends CanvasLayer
 @onready var title_label: Label = %TitleLabel
 @onready var description_label: Label = %DescriptionLabel
 @onready var start_button: Button = %StartButton
-@onready var levels_button: Button = %LevelsButton
 @onready var settings_button: Button = %SettingsButton
 @onready var quit_button: Button = %QuitButton
 
@@ -21,20 +20,17 @@ extends CanvasLayer
 @onready var master_slider: HSlider = %MasterSlider
 @onready var settings_back_button: Button = %SettingsBackButton
 
-@onready var levels_back_button: Button = %LevelsBackButton
-
-@onready var first_level: PackedScene = preload("/Users/motes/Projects/tower_game/scenes/level/level.tscn")
+@onready var first_level: PackedScene = preload("res://scenes/level/level.tscn")
+@onready var color_swap_shader_material: ShaderMaterial = preload("res://assets/shaders/color_swap_shader_material.tres")
 
 @onready var menu_containers: Dictionary = {
 	"title": %TitleContainer,
-	"levels": %LevelsContainer,
 	"settings": %SettingsContainer
 }
 
 
 func _ready() -> void:
 	start_button.pressed.connect(_on_start_button_pressed)
-	levels_button.pressed.connect(_on_levels_button_pressed)
 	settings_button.pressed.connect(_on_settings_button_pressed)
 	quit_button.pressed.connect(_on_quit_button_pressed)
 	
@@ -44,8 +40,7 @@ func _ready() -> void:
 	master_slider.value_changed.connect(_on_master_slider_changed)
 	
 	settings_back_button.pressed.connect(_on_back_button_pressed)
-	levels_back_button.pressed.connect(_on_back_button_pressed)
-	
+
 	title_label.text = title
 	description_label.text = description
 
@@ -62,10 +57,6 @@ func _on_back_button_pressed() -> void:
 
 func _on_effects_slider_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(effects_audio_bus_index, linear_to_db(value))
-
-
-func _on_levels_button_pressed() -> void:
-	_toggle_menu_containers("levels")
 
 
 func _on_master_slider_changed(value: float) -> void:

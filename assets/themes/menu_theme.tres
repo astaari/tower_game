@@ -1,27 +1,28 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://qb6dgmsbm5um"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://qb6dgmsbm5um"]
 
 [ext_resource type="FontFile" uid="uid://ejkyijunr1ll" path="res://assets/fonts/arcade_regular.ttf" id="1_4uyf7"]
 [ext_resource type="StyleBox" uid="uid://dl0arq6nq5ydq" path="res://assets/themes/button_disabled.tres" id="2_i2vr5"]
 [ext_resource type="StyleBox" uid="uid://c8bu0cndy83ik" path="res://assets/themes/button_hover.tres" id="3_mht15"]
 [ext_resource type="StyleBox" uid="uid://btni27v6yeqin" path="res://assets/themes/button_normal.tres" id="4_sssb7"]
 [ext_resource type="StyleBox" uid="uid://cr53kpcbnqvp2" path="res://assets/themes/button_pressed.tres" id="5_757n1"]
+[ext_resource type="Texture2D" uid="uid://bmybrf2nkmwuf" path="res://assets/icons/circle.png" id="6_8usky"]
+[ext_resource type="Texture2D" uid="uid://1g3ipne3h4pn" path="res://assets/icons/circle-inverted.png" id="7_kt4fj"]
+[ext_resource type="StyleBox" uid="uid://c8ddbxr2roqkw" path="res://assets/themes/slider_general_style_box.tres" id="8_hw0rn"]
+[ext_resource type="StyleBox" uid="uid://b2vegek7io78g" path="res://assets/themes/slider_highlight_style_box.tres" id="9_aterq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vw4xe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_md1ic"]
-bg_color = Color(0.341176, 0.364706, 0.564706, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.188235, 0.141176, 0.439216, 1)
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
-shadow_color = Color(0.156863, 0.117647, 0.313726, 0.784314)
-shadow_size = 4
-shadow_offset = Vector2(2, 2)
 
 [resource]
 default_font = ExtResource("1_4uyf7")
@@ -42,6 +43,7 @@ Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
 Button/constants/align_to_largest_stylebox = 1
 Button/constants/h_separation = 8
 Button/constants/icon_max_width = 16
+Button/constants/outline_size = 0
 Button/font_sizes/font_size = 16
 Button/fonts/font = ExtResource("1_4uyf7")
 Button/styles/disabled = ExtResource("2_i2vr5")
@@ -61,8 +63,22 @@ FlatButton/colors/icon_hover_color = Color(1, 1, 1, 1)
 FlatButton/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
 FlatButton/colors/icon_normal_color = Color(1, 1, 1, 1)
 FlatButton/colors/icon_pressed_color = Color(1, 1, 1, 1)
+HSlider/constants/center_grabber = 0
+HSlider/constants/grabber_offset = 0
+HSlider/icons/grabber = ExtResource("6_8usky")
+HSlider/icons/grabber_disabled = ExtResource("7_kt4fj")
+HSlider/icons/grabber_highlight = ExtResource("6_8usky")
+HSlider/styles/grabber_area = ExtResource("8_hw0rn")
+HSlider/styles/grabber_area_highlight = ExtResource("9_aterq")
+HSlider/styles/slider = ExtResource("8_hw0rn")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/fonts/font = ExtResource("1_4uyf7")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_md1ic")
 VBoxContainer/constants/separation = 8
+VSlider/icons/grabber = ExtResource("6_8usky")
+VSlider/icons/grabber_disabled = ExtResource("7_kt4fj")
+VSlider/icons/grabber_highlight = ExtResource("6_8usky")
+VSlider/styles/grabber_area = ExtResource("8_hw0rn")
+VSlider/styles/grabber_area_highlight = ExtResource("9_aterq")
+VSlider/styles/slider = ExtResource("8_hw0rn")
