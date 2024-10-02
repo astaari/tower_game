@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://7o3yw1nov7qk"]
+[gd_scene load_steps=20 format=3 uid="uid://7o3yw1nov7qk"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_negh2"]
 [ext_resource type="Texture2D" uid="uid://3vrwvy40pe0o" path="res://scenes/player/mr-hat-all.png" id="2_5neol"]
@@ -29,36 +29,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-3, -43)]
-}
-
-[sub_resource type="Animation" id="Animation_15c6o"]
-resource_name = "run_left"
-length = 1.1
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:offset")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(4, -33)]
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_c5qcv"]
@@ -87,15 +58,49 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-4, -33)]
+"values": [Vector2(-4, -30)]
+}
+
+[sub_resource type="Animation" id="Animation_mrneg"]
+resource_name = "idle"
+length = 1.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [44, 49]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:offset")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -33)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6bu6l"]
 _data = {
 "RESET": SubResource("Animation_p7qkm"),
-"run_left": SubResource("Animation_15c6o"),
+"idle": SubResource("Animation_mrneg"),
 "run_right": SubResource("Animation_c5qcv")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gcscu"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_6suh2"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1el6i"]
 animation = &"run_left"
@@ -122,12 +127,17 @@ blend_point_3/pos = Vector2(-1, -1)
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0b1wr"]
 states/End/position = Vector2(1057, 219)
 states/Start/position = Vector2(359, 219)
+states/idle/node = SubResource("AnimationNodeAnimation_gcscu")
+states/idle/position = Vector2(710, 134)
 states/run/node = SubResource("AnimationNodeBlendSpace2D_dh5h6")
-states/run/position = Vector2(466, 219)
+states/run/position = Vector2(580, 200)
+"states/run 2/node" = SubResource("AnimationNodeBlendTree_6suh2")
+"states/run 2/position" = Vector2(489.713, 120.889)
+graph_offset = Vector2(85.7134, 35.8885)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rst82"]
 radius = 20.0
-height = 65.0
+height = 96.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u7lm2"]
 radius = 30.0
@@ -154,7 +164,7 @@ autoplay = "RESET"
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_0b1wr")
 anim_player = NodePath("../AnimationPlayer")
-parameters/run/blend_position = Vector2(-0.992151, 0.974138)
+parameters/run/blend_position = Vector2(0.00665927, -0.0344827)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -39)
@@ -177,7 +187,6 @@ shape = SubResource("CircleShape2D_7nslh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_5neol")
-offset = Vector2(-3, -43)
 hframes = 11
 vframes = 6
 frame = 44

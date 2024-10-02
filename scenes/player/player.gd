@@ -64,6 +64,8 @@ func set_animation(direction: Vector2):
 		last_movement_direction = direction
 		animation_mode.travel("run")
 		animation_tree.set("parameters/run/blend_position", direction)
+	else:
+		animation_mode.travel("idle")
 
 
 # Enable the player to interact with game objects (i.e., item pick-up, doors, etc.)
