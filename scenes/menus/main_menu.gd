@@ -9,16 +9,16 @@ extends CanvasLayer
 @onready var settings_button: Button = %SettingsButton
 @onready var quit_button: Button = %QuitButton
 
-@onready var effects_audio_bus_index = AudioServer.get_bus_index("Effects")
-@onready var master_audio_bus_index = AudioServer.get_bus_index("Master")
-@onready var menu_audio_bus_index = AudioServer.get_bus_index("Menu")
-@onready var music_audio_bus_index = AudioServer.get_bus_index("Music")
-
 @onready var effects_slider: HSlider = %EffectsSlider
 @onready var music_slider: HSlider = %MusicSlider
 @onready var menu_sounds_slider: HSlider = %MenuSoundsSlider
 @onready var master_slider: HSlider = %MasterSlider
 @onready var settings_back_button: Button = %SettingsBackButton
+
+@onready var effects_audio_bus_name = "Effects"
+@onready var master_audio_bus_name = "Master"
+@onready var menu_audio_bus_name = "Menu"
+@onready var music_audio_bus_name = "Music"
 
 @onready var first_level: PackedScene = preload("res://scenes/level/level.tscn")
 @onready var color_swap_shader_material: ShaderMaterial = preload("res://assets/shaders/color_swap_shader_material.tres")
@@ -45,6 +45,16 @@ func _ready() -> void:
 	description_label.text = description
 
 
+func update_audio_bus(audio_bus_name: String, value: float) -> void:
+	var audio_bus_index = AudioServer.get_bus_index(audio_bus_name)
+	
+	if audio_bus_index == -1:
+		print("Audio Bus Not Found: " + audio_bus_name)
+		return
+	
+	AudioServer.set_bus_volume_db(audio_bus_index, linear_to_db(value))
+
+
 func _toggle_menu_containers(menu_name: String) -> void:
 	for key in menu_containers:
 		var menu_container = menu_containers[key]
@@ -56,19 +66,19 @@ func _on_back_button_pressed() -> void:
 
 
 func _on_effects_slider_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(effects_audio_bus_index, linear_to_db(value))
+	update_audio_bus(effects_audio_bus_name, value)
 
 
 func _on_master_slider_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(master_audio_bus_index, linear_to_db(value))
+	update_audio_bus(master_audio_bus_name, value)
 
 
 func _on_menu_sounds_slider_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(menu_audio_bus_index, linear_to_db(value))
+	update_audio_bus(menu_audio_bus_name, value)
 
 
 func _on_music_slider_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(music_audio_bus_index, linear_to_db(value))
+	update_audio_bus(music_audio_bus_name, value)
 
 
 func _on_start_button_pressed() -> void:
