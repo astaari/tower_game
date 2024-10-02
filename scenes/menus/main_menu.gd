@@ -46,7 +46,7 @@ func _ready() -> void:
 
 
 func update_audio_bus(audio_bus_name: String, value: float) -> void:
-	var audio_bus_index = AudioServer.get_bus_index(audio_bus_name)
+	var audio_bus_index: int = AudioServer.get_bus_index(audio_bus_name)
 	
 	if audio_bus_index == -1:
 		print("Audio Bus Not Found: " + audio_bus_name)

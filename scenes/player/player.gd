@@ -20,7 +20,7 @@ var jump_count: int = 0
 var last_movement_direction = Vector2.ZERO
 var max_jump_count = 2
 var number_colliding_bodies = 0
-var temporary_inventory_array: Array[Dictionary] = []
+var temporary_inventory_array: Array[Object] = []
 
 
 func _ready():
@@ -87,13 +87,13 @@ func interact():
 	)
 	
 	var item_closest_to_player = items[0] as Node2D
-	print("Closest Item: " + item_closest_to_player["name"])
+	print("Closest Item: ", item_closest_to_player["name"])
 	
 	if Input.is_action_just_pressed("interact"):
 		print("Interaction input just pressed")
 		temporary_inventory_array.append(item_closest_to_player)
 		item_closest_to_player.queue_free()
-		print("Player Inventory Array: " + str(temporary_inventory_array))
+		print("Player Inventory Array: ", temporary_inventory_array)
 
 
 func on_body_entered(_other_body: Node2D):
