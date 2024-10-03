@@ -1,17 +1,15 @@
 extends Node2D
 class_name RandomItem
 
-# TODO
-# 1. Create a custom resource for RandomItem
-# 2. Refactor this scene using that custom resource
+# TODO – Create a custom resource for RandomItem
+# TODO – Refactor this scene using that custom resource
 @onready var sprite: Sprite2D = $Visuals/Sprite2D
 @export var id: int
 @export var item_name: String
 @export_multiline var item_description: String
 
-# TODO
-# 1. Create weighted table for random items
-# 2. Create dedicated spritesheet for random items, allowing for simpler indexing into each frame
+# TODO – Create weighted table for random items
+# TODO – Create dedicated spritesheet for random items, allowing for simpler indexing into each frame
 const items: Array[Dictionary] = [
 	{"frame": 2, "name": "Bread Person", "description": "What is up with this mysterious, sentient bread?"}, 
 	{"frame": 3, "name": "Skullington", "description": "This skull is looking for his dad!"},

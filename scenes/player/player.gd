@@ -78,7 +78,7 @@ func set_animation(direction: Vector2):
 	
 	$Sprite2D.flip_h= (direction.x < 0)
 
-
+# TODO – Expand the interact() function
 # Enable the player to interact with game objects (i.e., item pick-up, doors, etc.)
 # This is currently only set up with items
 func interact():
@@ -88,7 +88,7 @@ func interact():
 	)
 	
 	if items.size() == 0:
-		#print("No item nodes retrieved from SceneTree")
+		print("No item nodes retrieved from SceneTree")
 		return
 	
 	items.sort_custom(func(a: Node2D, b: Node2D):
@@ -98,13 +98,10 @@ func interact():
 	)
 	
 	var item_closest_to_player = items[0] as Node2D
-	#print("Closest Item: ", item_closest_to_player["name"])
 	
 	if Input.is_action_just_pressed("interact"):
-		#print("Interaction input just pressed")
 		temporary_inventory_array.append(item_closest_to_player)
 		item_closest_to_player.queue_free()
-		#print("Player Inventory Array: ", temporary_inventory_array)
 
 
 func on_body_entered(_other_body: Node2D):
@@ -121,11 +118,9 @@ func on_coyote_timer_timeout():
 
 
 func on_item_picked_up(item_name: String):
-	# Do a thing with this item
+	# TODO – Do something upon item pick up
 	print(item_name)
 
-
-		
 
 
 func _on_hurt_box_component_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
