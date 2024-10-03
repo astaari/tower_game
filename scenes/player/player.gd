@@ -62,10 +62,12 @@ func set_animation(direction: Vector2):
 	
 	if not direction.is_zero_approx():
 		last_movement_direction = direction
-		animation_mode.travel("run")
-		animation_tree.set("parameters/run/blend_position", direction)
+		animation_mode.travel("run_right")
+		#animation_tree.set("parameters/run/blend_position", direction)
 	else:
 		animation_mode.travel("idle")
+	
+	$Sprite2D.flip_h= (direction.x < 0)
 
 
 # Enable the player to interact with game objects (i.e., item pick-up, doors, etc.)
@@ -77,7 +79,7 @@ func interact():
 	)
 	
 	if items.size() == 0:
-		print("No item nodes retrieved from SceneTree")
+		#print("No item nodes retrieved from SceneTree")
 		return
 	
 	items.sort_custom(func(a: Node2D, b: Node2D):
@@ -87,17 +89,18 @@ func interact():
 	)
 	
 	var item_closest_to_player = items[0] as Node2D
-	print("Closest Item: ", item_closest_to_player["name"])
+	#print("Closest Item: ", item_closest_to_player["name"])
 	
 	if Input.is_action_just_pressed("interact"):
-		print("Interaction input just pressed")
+		#print("Interaction input just pressed")
 		temporary_inventory_array.append(item_closest_to_player)
 		item_closest_to_player.queue_free()
-		print("Player Inventory Array: ", temporary_inventory_array)
+		#print("Player Inventory Array: ", temporary_inventory_array)
 
 
 func on_body_entered(_other_body: Node2D):
 	number_colliding_bodies += 1
+	print(_other_body)
 
 
 func on_body_exited(_other_body: Node2D):
@@ -111,3 +114,21 @@ func on_coyote_timer_timeout():
 func on_item_picked_up(item_name: String):
 	# Do a thing with this item
 	print(item_name)
+
+
+		
+
+
+func _on_hurt_box_component_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	if is_instance_of(body,TileMapLayer):
+		var tilemap : TileMapLayer = body as TileMapLayer
+		var coords : Vector2i = tilemap.get_coords_for_body_rid(body_rid)
+		var data = tilemap.get_cell_tile_data(coords).get_custom_data("effects")
+		print(data)
+		if "damage" in data:
+			print("Damaged for ", data['damage'])
+		if "knockback" in data:
+			print("Knockback ")
+			velocity.x -= data["knockback"]*10
+			velocity.y -= data["knockback"]*5
+			

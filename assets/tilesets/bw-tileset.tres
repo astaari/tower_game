@@ -181,9 +181,11 @@ texture = ExtResource("2_05mnq")
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qg3qd"]
 texture = ExtResource("3_2jbhp")
 0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -0.25, -8, 8, 8)
+0:0/0/custom_data_0 = {
+"damage": 25.0,
+"knockback": 100.0
+}
 0:1/animation_columns = 3
 0:1/animation_frame_0/duration = 1.0
 0:1/animation_frame_1/duration = 1.0
@@ -191,10 +193,16 @@ texture = ExtResource("3_2jbhp")
 0:1/0 = 0
 0:3/size_in_atlas = Vector2i(1, 2)
 0:3/0 = 0
+0:2/animation_columns = 2
+0:2/animation_frame_0/duration = 1.0
+0:2/animation_frame_1/duration = 1.0
+0:2/0 = 0
 
 [resource]
 occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "effects"
+custom_data_layer_0/type = 27
 sources/0 = SubResource("TileSetAtlasSource_an8o7")
 sources/1 = SubResource("TileSetAtlasSource_t3687")
 sources/2 = SubResource("TileSetAtlasSource_qg3qd")
