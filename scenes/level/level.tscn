@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://dg3gfe4p2wtap"]
+[gd_scene load_steps=8 format=4 uid="uid://dg3gfe4p2wtap"]
 
 [ext_resource type="PackedScene" uid="uid://cegmmbnx2nejg" path="res://scenes/game_camera/game_camera.tscn" id="1_0pqkn"]
 [ext_resource type="PackedScene" uid="uid://7o3yw1nov7qk" path="res://scenes/player/player.tscn" id="1_m0di4"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scenes/level/level_tile_set.gd" id="3_2n5dd"]
 [ext_resource type="PackedScene" uid="uid://do3pox5cyduq3" path="res://assets/shaders/color_swap_shader_scene.tscn" id="5_iurvx"]
 [ext_resource type="PackedScene" uid="uid://cwl3encoi54s6" path="res://scenes/items/random_item.tscn" id="6_n3j5f"]
+[ext_resource type="PackedScene" uid="uid://b76psagt11xrt" path="res://scenes/ui/game_ui.tscn" id="7_pgpdu"]
 
 [node name="Level" type="Node"]
 
@@ -48,3 +49,5 @@ position = Vector2(-1104, 66)
 floor_max_angle = 0.610865
 
 [node name="ColorSwapCanvasLayer" parent="." instance=ExtResource("5_iurvx")]
+
+[node name="GameUi" parent="." instance=ExtResource("7_pgpdu")]

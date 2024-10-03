@@ -13,6 +13,7 @@ const INTERACTION_RANGE = 150
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var hurt_box_component: HurtBoxComponent = $HurtBoxComponent
 @onready var hurt_box_collision_shape: CollisionShape2D = $HurtBoxComponent/CollisionShape2D
+@onready var health_component : HealthComponent = $HealthComponent
 
 var can_jump: bool = true
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -21,6 +22,9 @@ var last_movement_direction = Vector2.ZERO
 var max_jump_count = 2
 var number_colliding_bodies = 0
 var temporary_inventory_array: Array[Object] = []
+
+var _current_direction = 0
+var movement_disabled : bool = false
 
 
 func _ready():
@@ -39,7 +43,10 @@ func _physics_process(delta: float) -> void:
 	else:
 		coyote_timer.start()
 		velocity.y += gravity * delta
-	
+	if movement_disabled:
+		interact()
+		move_and_slide()
+		return
 	# Jump and double jump
 	if Input.is_action_just_pressed("jump") and can_jump:
 		velocity.y = JUMP_VELOCITY
@@ -49,9 +56,11 @@ func _physics_process(delta: float) -> void:
 	# Left, right movement
 	var direction = Vector2(Input.get_action_strength("run_right") - Input.get_action_strength("run_left"), 0.0)
 	set_animation(direction)
-	if abs(velocity.x) <= MAX_SPEED:
-		velocity.x = direction.x * MAX_SPEED
 	
+	velocity.x = direction.x * MAX_SPEED
+	velocity.x = clampf(velocity.x,-MAX_SPEED,MAX_SPEED)
+	
+	_current_direction = 1.0 if velocity.x > 0.0 else -1.0 if velocity.x > 0.0 else 0.0
 	interact()
 	move_and_slide()
 
@@ -127,8 +136,14 @@ func _on_hurt_box_component_body_shape_entered(body_rid: RID, body: Node2D, body
 		print(data)
 		if "damage" in data:
 			print("Damaged for ", data['damage'])
+			health_component.damage(10)
 		if "knockback" in data:
 			print("Knockback ")
-			velocity.x -= data["knockback"]*10
-			velocity.y -= data["knockback"]*5
+			velocity.x += -_current_direction*data["knockback"]*10
+			velocity.y -= data["knockback"]*3
+			movement_disabled=true
+			get_tree().create_timer(0.5).timeout.connect(
+			func():
+				movement_disabled=false
+				)
 			
