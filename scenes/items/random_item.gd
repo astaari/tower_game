@@ -7,6 +7,8 @@ class_name RandomItem
 @export var id: int
 @export var item_name: String
 @export_multiline var item_description: String
+#TODO remove, testing purposes
+var modifier : ModifierData 
 
 # TODO – Create weighted table for random items
 # TODO – Create dedicated spritesheet for random items, allowing for simpler indexing into each frame
@@ -37,6 +39,11 @@ func _ready():
 
 func set_item():
 	var item = items.pick_random()
+	#if item["name"] == "feather":
+	modifier = ModifierData.new()
+	modifier.name="speed"
+	modifier.duration = 2.0
+	modifier.value = 2.0
 	sprite.frame = item["frame"]
 	%ItemLabel.text = item["name"]
 	%PickUpLabel.text = item["description"]
