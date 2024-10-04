@@ -3,6 +3,7 @@ signal effect_expired(effect)
 
 var _active : Dictionary = {}
 var _timers : Dictionary = {}
+
 func remove_modifier(name : String):
 	effect_expired.emit(_active.get(name))
 	_active.erase(name)
@@ -14,6 +15,15 @@ func get_modifier(name : String) -> ModifierData:
 func _refresh_duration(modifier_name : String):
 	(_timers[modifier_name] as SceneTreeTimer).time_left = _active[modifier_name].duration
 
+func extend_modifier(name : String, duration : float):
+	var timer : SceneTreeTimer = _timers.get(name)
+	if timer:
+		timer.time_left+=duration
+	
+func shorten_modifier(name : String, decrease : float):
+	var timer : SceneTreeTimer = _timers.get(name)
+	if timer:
+		timer.time_left -= decrease
 
 func apply_modifier(modifier : ModifierData) -> bool:
 	if modifier.name not in _active:
