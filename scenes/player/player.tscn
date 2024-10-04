@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://7o3yw1nov7qk"]
+[gd_scene load_steps=16 format=3 uid="uid://7o3yw1nov7qk"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_negh2"]
 [ext_resource type="Texture2D" uid="uid://3vrwvy40pe0o" path="res://scenes/player/mr-hat-all.png" id="2_5neol"]
 [ext_resource type="PackedScene" uid="uid://dce1qyted5om5" path="res://scenes/components/health_component.tscn" id="2_m25mh"]
+[ext_resource type="Script" path="res://data/modifiers/modifiers.gd" id="3_gpny6"]
 [ext_resource type="PackedScene" uid="uid://jx1xla68i4hy" path="res://scenes/components/hurt_box_component.tscn" id="5_jq43u"]
 
 [sub_resource type="Animation" id="Animation_p7qkm"]
@@ -126,6 +127,9 @@ radius = 37.0
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_negh2")
 
+[node name="Modifiers" type="Node" parent="."]
+script = ExtResource("3_gpny6")
+
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
@@ -148,7 +152,7 @@ shape = SubResource("CapsuleShape2D_rst82")
 
 [node name="CollisionArea2D" type="Area2D" parent="."]
 collision_layer = 16
-collision_mask = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea2D"]
 position = Vector2(0, -39)
@@ -167,4 +171,6 @@ hframes = 11
 vframes = 6
 frame = 44
 
+[connection signal="body_shape_entered" from="CollisionArea2D" to="." method="_on_collision_area_2d_body_shape_entered"]
+[connection signal="body_shape_exited" from="CollisionArea2D" to="." method="_on_collision_area_2d_body_shape_exited"]
 [connection signal="body_shape_entered" from="HurtBoxComponent" to="." method="_on_hurt_box_component_body_shape_entered"]
