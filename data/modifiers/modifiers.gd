@@ -4,12 +4,14 @@ signal effect_expired(effect)
 var _active : Dictionary = {}
 var _timers : Dictionary = {}
 
-func remove_modifier(name : String):
-	effect_expired.emit(_active.get(name))
-	_active.erase(name)
 
-func get_modifier(name : String) -> ModifierData:
-	return _active.get(name)
+func remove_modifier(modifier_name : String):
+	effect_expired.emit(_active.get(modifier_name))
+	_active.erase(modifier_name)
+
+
+func get_modifier(modifier_name : String) -> ModifierData:
+	return _active.get(modifier_name)
 
 
 func _refresh_duration(modifier_name : String):
