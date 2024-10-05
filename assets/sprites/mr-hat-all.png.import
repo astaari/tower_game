@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nofisbjirhs"
-path="res://.godot/imported/level-gate-right.png-85c9f312ce8b440874f173c1110a6390.ctex"
+uid="uid://3vrwvy40pe0o"
+path="res://.godot/imported/mr-hat-all.png-2eaaa003ddcdce9ad318608ffd448823.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/level/level-gate-right.png"
-dest_files=["res://.godot/imported/level-gate-right.png-85c9f312ce8b440874f173c1110a6390.ctex"]
+source_file="res://assets/sprites/mr-hat-all.png"
+dest_files=["res://.godot/imported/mr-hat-all.png-2eaaa003ddcdce9ad318608ffd448823.ctex"]
 
 [params]
 

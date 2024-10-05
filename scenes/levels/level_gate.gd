@@ -11,4 +11,9 @@ func on_area_entered(other_body: Node2D):
 	if not parent.is_in_group("player"):
 		return
 	
-	print("Level completed!")
+	var current_level = get_parent() as Level
+	
+	if current_level.level < EventManager.current_level:
+		print("EventManager level_changed() signal has already been emitted for this level.")
+	
+	EventManager.emit_level_changed()

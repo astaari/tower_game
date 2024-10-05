@@ -20,7 +20,7 @@ extends CanvasLayer
 @onready var menu_audio_bus_name = "Menu"
 @onready var music_audio_bus_name = "Music"
 
-@onready var first_level: PackedScene = preload("res://scenes/level/level.tscn")
+@onready var first_level: PackedScene = preload("res://scenes/levels/level-0.tscn")
 @onready var color_swap_shader_material: ShaderMaterial = preload("res://assets/shaders/color_swap_shader_material.tres")
 
 @onready var menu_containers: Dictionary = {

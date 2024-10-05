@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://g3j3w1yhq2tt"]
+[gd_scene load_steps=15 format=3 uid="uid://g3j3w1yhq2tt"]
 
 [ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="1_pop28"]
 [ext_resource type="Theme" uid="uid://qb6dgmsbm5um" path="res://assets/themes/menu_theme.tres" id="1_r1mvb"]
@@ -6,7 +6,6 @@
 [ext_resource type="LabelSettings" uid="uid://cat466i40g3su" path="res://assets/themes/title_label.tres" id="3_ddgus"]
 [ext_resource type="LabelSettings" uid="uid://b1p4n4pnlwjq3" path="res://assets/themes/menu_title_label.tres" id="4_7nyt0"]
 [ext_resource type="LabelSettings" uid="uid://6cmppknv3tn2" path="res://assets/themes/title_description_label.tres" id="4_kxp0y"]
-[ext_resource type="PackedScene" uid="uid://do3pox5cyduq3" path="res://assets/shaders/color_swap_shader_scene.tscn" id="11_58y5p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_33lxc"]
 resource_local_to_scene = true
@@ -294,5 +293,3 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("1_r1mvb")
 text = "Back"
-
-[node name="ColorSwapShader" parent="." instance=ExtResource("11_58y5p")]

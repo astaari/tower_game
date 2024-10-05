@@ -4,5 +4,5 @@
 
 [resource]
 shader = ExtResource("1_2dvsa")
-shader_parameter/new_black = Color(0.054902, 0.188235, 0.223529, 1)
-shader_parameter/new_white = Color(0.705802, 0.512008, 0.506448, 1)
+shader_parameter/new_black = Color(0, 0, 0, 1)
+shader_parameter/new_white = Color(1, 1, 1, 1)

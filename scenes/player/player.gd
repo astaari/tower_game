@@ -22,7 +22,7 @@ var jump_count: int = 0
 var last_movement_direction = Vector2.ZERO
 var max_jump_count = 2
 var number_colliding_bodies = 0
-var temporary_inventory_array: Array[Object] = []
+var temporary_inventory_array: Array[int] = []
 
 var _current_direction = 0
 var movement_disabled : bool = false
@@ -107,8 +107,8 @@ func interact():
 	var item_closest_to_player = items[0] as RandomItem
 	
 	if Input.is_action_just_pressed("interact"):
-		# FIXME – The RandomItem can't be stored in the inventory since it is being freed upon being picked up
-		temporary_inventory_array.append(item_closest_to_player)
+		# HACK – Storing item_ids in an inventory array for now (may not even need this for the game jam)
+		temporary_inventory_array.append(item_closest_to_player["item_id"])
 		item_closest_to_player.queue_free()
 		#TODO move to appropriate location
 		modifiers.apply_modifier(item_closest_to_player.modifier)
@@ -141,7 +141,8 @@ func _on_hurt_box_component_body_shape_entered(body_rid: RID, body: Node2D, body
 		#print(data, "eeg")
 		if "damage" in data:
 			#print("Damaged for ", data['damage'])
-			health_component.damage(10)
+			# HACK – Added an arbitrary "knockback" value here since the damage() method now requires it
+			health_component.damage(10, 5)
 		if "knockback" in data:
 			#print("Knockback ")
 			velocity.x += -_current_direction * data["knockback"]

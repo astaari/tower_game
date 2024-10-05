@@ -8,7 +8,8 @@ class_name RandomItem
 @export var random_items: RandomItems
 
 #TODO remove, testing purposes
-var modifier : ModifierData 
+var modifier : ModifierData
+var item_id : int = -1
 
 
 func _ready():
@@ -21,6 +22,7 @@ func set_item():
 	
 	var random_index = randi_range(0, (sprite.hframes * sprite.vframes) - 1)
 	var item = random_items["items"][random_index]
+	item_id = random_index
 	%ItemLabel.text = item["name"]
 	sprite.frame = random_index
 	

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/items/random_item.gd" id="1_7bpu7"]
 [ext_resource type="Resource" uid="uid://bo055b3dw3r6y" path="res://scenes/items/random_items.tres" id="2_b2opi"]
-[ext_resource type="Texture2D" uid="uid://bv8cqnothaxqn" path="res://scenes/items/random-items.png" id="2_wu8o5"]
+[ext_resource type="Texture2D" uid="uid://bv8cqnothaxqn" path="res://assets/sprites/random-items.png" id="2_wu8o5"]
 [ext_resource type="LabelSettings" uid="uid://bup1e1joct8xf" path="res://assets/themes/in_game_label.tres" id="3_2c04t"]
 
 [sub_resource type="Animation" id="Animation_vl1hd"]

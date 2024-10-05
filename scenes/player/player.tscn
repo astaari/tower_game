@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://7o3yw1nov7qk"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_negh2"]
-[ext_resource type="Texture2D" uid="uid://3vrwvy40pe0o" path="res://scenes/player/mr-hat-all.png" id="2_5neol"]
+[ext_resource type="Texture2D" uid="uid://3vrwvy40pe0o" path="res://assets/sprites/mr-hat-all.png" id="2_5neol"]
 [ext_resource type="PackedScene" uid="uid://dce1qyted5om5" path="res://scenes/components/health_component.tscn" id="2_m25mh"]
 [ext_resource type="Script" path="res://data/modifiers/modifiers.gd" id="3_gpny6"]
 [ext_resource type="PackedScene" uid="uid://jx1xla68i4hy" path="res://scenes/components/hurt_box_component.tscn" id="5_jq43u"]
@@ -115,7 +115,7 @@ graph_offset = Vector2(85.7134, 35.8885)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rst82"]
 radius = 20.0
-height = 70.0
+height = 64.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u7lm2"]
 radius = 30.0
@@ -126,6 +126,7 @@ radius = 37.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 8
+floor_max_angle = 1.22173
 script = ExtResource("1_negh2")
 
 [node name="Modifiers" type="Node" parent="."]
