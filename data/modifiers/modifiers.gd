@@ -17,13 +17,15 @@ func get_modifier(modifier_name : String) -> ModifierData:
 func _refresh_duration(modifier_name : String):
 	(_timers[modifier_name] as SceneTreeTimer).time_left = _active[modifier_name].duration
 
-func extend_modifier(name : String, duration : float):
-	var timer : SceneTreeTimer = _timers.get(name)
+
+func extend_modifier(modifier_name : String, duration : float):
+	var timer : SceneTreeTimer = _timers.get(modifier_name)
 	if timer:
 		timer.time_left+=duration
-	
-func shorten_modifier(name : String, decrease : float):
-	var timer : SceneTreeTimer = _timers.get(name)
+
+
+func shorten_modifier(modifier_name : String, decrease : float):
+	var timer : SceneTreeTimer = _timers.get(modifier_name)
 	if timer:
 		timer.time_left -= decrease
 

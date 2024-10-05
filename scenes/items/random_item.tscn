@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwl3encoi54s6"]
+[gd_scene load_steps=9 format=3 uid="uid://cwl3encoi54s6"]
 
 [ext_resource type="Script" path="res://scenes/items/random_item.gd" id="1_7bpu7"]
-[ext_resource type="Texture2D" uid="uid://bdud0csyr38cc" path="res://assets/tilesets/bw-tileset-02.png" id="1_q8crw"]
+[ext_resource type="Resource" uid="uid://bo055b3dw3r6y" path="res://scenes/items/random_items.tres" id="2_b2opi"]
+[ext_resource type="Texture2D" uid="uid://bv8cqnothaxqn" path="res://scenes/items/random-items.png" id="2_wu8o5"]
 [ext_resource type="LabelSettings" uid="uid://bup1e1joct8xf" path="res://assets/themes/in_game_label.tres" id="3_2c04t"]
 
 [sub_resource type="Animation" id="Animation_vl1hd"]
@@ -46,8 +47,7 @@ _data = {
 
 [node name="RandomItem" type="Node2D" groups=["item"]]
 script = ExtResource("1_7bpu7")
-item_name = "Key"
-item_description = "A key that opens something locked."
+random_items = ExtResource("2_b2opi")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -65,10 +65,9 @@ shape = SubResource("CircleShape2D_7vv8n")
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
-texture = ExtResource("1_q8crw")
+texture = ExtResource("2_wu8o5")
 hframes = 8
 vframes = 8
-frame = 11
 
 [node name="ItemLabel" type="Label" parent="Visuals"]
 unique_name_in_owner = true
@@ -85,25 +84,6 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 0
 text = "Test Text"
-label_settings = ExtResource("3_2c04t")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PickUpLabel" type="Label" parent="Visuals"]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -125.5
-offset_top = -31.0
-offset_right = 125.5
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Test Description"
 label_settings = ExtResource("3_2c04t")
 horizontal_alignment = 1
 vertical_alignment = 1

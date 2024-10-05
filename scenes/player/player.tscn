@@ -115,7 +115,7 @@ graph_offset = Vector2(85.7134, 35.8885)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rst82"]
 radius = 20.0
-height = 96.0
+height = 70.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u7lm2"]
 radius = 30.0
@@ -148,7 +148,7 @@ tree_root = SubResource("AnimationNodeStateMachine_0b1wr")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -39)
+position = Vector2(0, -26)
 shape = SubResource("CapsuleShape2D_rst82")
 
 [node name="CollisionArea2D" type="Area2D" parent="."]
