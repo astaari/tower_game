@@ -115,7 +115,7 @@ graph_offset = Vector2(85.7134, 35.8885)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rst82"]
 radius = 20.0
-height = 96.0
+height = 70.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u7lm2"]
 radius = 30.0
@@ -125,6 +125,7 @@ height = 96.0
 radius = 37.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 48
 script = ExtResource("1_negh2")
 
 [node name="Modifiers" type="Node" parent="."]
@@ -147,10 +148,11 @@ tree_root = SubResource("AnimationNodeStateMachine_0b1wr")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -39)
+position = Vector2(0, -26)
 shape = SubResource("CapsuleShape2D_rst82")
 
 [node name="CollisionArea2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 48
 collision_mask = 4
 
@@ -159,6 +161,7 @@ position = Vector2(0, -39)
 shape = SubResource("CapsuleShape2D_u7lm2")
 
 [node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_jq43u")]
+visible = false
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]

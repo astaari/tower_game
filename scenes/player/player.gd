@@ -59,7 +59,7 @@ func _physics_process(delta: float) -> void:
 	set_animation(direction)
 	
 	velocity.x = direction.x * MAX_SPEED
-	velocity.x = clampf(velocity.x,-MAX_SPEED,MAX_SPEED)
+	velocity.x = clampf(velocity.x, -MAX_SPEED, MAX_SPEED)
 	var slow_mod = modifiers.get_modifier("slow") as ModifierData
 	var speed_mod = modifiers.get_modifier("speed") as ModifierData
 	#print(slow_mod)
@@ -96,7 +96,6 @@ func interact():
 	)
 	
 	if items.size() == 0:
-		#print("No item nodes retrieved from SceneTree")
 		return
 	
 	items.sort_custom(func(a: Node2D, b: Node2D):
@@ -105,9 +104,10 @@ func interact():
 		return a_distance < b_distance
 	)
 	
-	var item_closest_to_player = items[0] as Node2D
+	var item_closest_to_player = items[0] as RandomItem
 	
 	if Input.is_action_just_pressed("interact"):
+		# FIXME – The RandomItem can't be stored in the inventory since it is being freed upon being picked up
 		temporary_inventory_array.append(item_closest_to_player)
 		item_closest_to_player.queue_free()
 		#TODO move to appropriate location
@@ -116,7 +116,6 @@ func interact():
 
 func on_body_entered(_other_body: Node2D):
 	number_colliding_bodies += 1
-	print(_other_body)
 
 
 func on_body_exited(_other_body: Node2D):
@@ -129,23 +128,23 @@ func on_coyote_timer_timeout():
 
 func on_item_picked_up(item_name: String):
 	# TODO – Do something upon item pick up
-	print(item_name)
+	pass
 
 
 
 func _on_hurt_box_component_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	
+	# FIXME – What are local_shape_index and body_shape_index used for?
 	if is_instance_of(body,TileMapLayer):
 		var tilemap : TileMapLayer = body as TileMapLayer
 		var coords : Vector2i = tilemap.get_coords_for_body_rid(body_rid)
 		var data = tilemap.get_cell_tile_data(coords).get_custom_data("effects")
-		print(data, "eeg")
+		#print(data, "eeg")
 		if "damage" in data:
-			print("Damaged for ", data['damage'])
+			#print("Damaged for ", data['damage'])
 			health_component.damage(10)
 		if "knockback" in data:
-			print("Knockback ")
-			velocity.x += -_current_direction*data["knockback"]
+			#print("Knockback ")
+			velocity.x += -_current_direction * data["knockback"]
 			velocity.y -= data["knockback"]
 			movement_disabled=true
 			get_tree().create_timer(0.5).timeout.connect(
@@ -153,14 +152,13 @@ func _on_hurt_box_component_body_shape_entered(body_rid: RID, body: Node2D, body
 				movement_disabled=false
 				)
 		if "slow" in data:
-			print("apply slow")
+			#print("apply slow")
 			var mdat : ModifierData = data["slow"] as ModifierData
 			modifiers.apply_modifier(mdat)
 			
 
 
 func _on_collision_area_2d_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	print(body_rid)
 	if is_instance_of(body,TileMapLayer):
 		var tilemap : TileMapLayer = body as TileMapLayer
 		var coords : Vector2i = tilemap.get_coords_for_body_rid(body_rid)
@@ -170,11 +168,11 @@ func _on_collision_area_2d_body_shape_exited(body_rid: RID, body: Node2D, body_s
 
 
 func _on_collision_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	if is_instance_of(body,TileMapLayer):
+	if is_instance_of(body, TileMapLayer):
 		var tilemap : TileMapLayer = body as TileMapLayer
 		var coords : Vector2i = tilemap.get_coords_for_body_rid(body_rid)
 		var data = tilemap.get_cell_tile_data(coords).get_custom_data("effects") # Replace with function body.
 		if "slow" in data:
-			print("apply slow")
+			#print("apply slow")
 			var mdat : ModifierData = data["slow"] as ModifierData
 			modifiers.apply_modifier(mdat)
