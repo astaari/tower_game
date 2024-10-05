@@ -6,17 +6,35 @@ signal health_changed(current)
 
 @export var max_health: float = 100
 var current_health : float 
-
-
+var damage_immune : bool = false
+@export var immune_time : float = 0.75
+const tween_curve : Curve = preload("res://data/constant.tres")
 func _ready():
 	current_health = max_health
 
 
-func damage(damage_amount: float):
+func damage(damage_amount: float,knockback:float):
+	if damage_immune:
+		return
 	current_health = max(current_health - damage_amount, 0)
 	health_changed.emit(current_health)
+	get_tree().create_timer(immune_time).timeout.connect(
+		func():
+			damage_immune=false
+	)
+	damage_immune = true
+	var tween = get_tree().create_tween()
+	var sprite = get_parent().get_node("Sprite2D")
+	if sprite:
+		tween.tween_property(sprite,"self_modulate",Color.BLACK,immune_time/4).set_custom_interpolator(_interp_damage_tween)
+		tween.tween_property(sprite,"self_modulate",Color.WHITE,immune_time/4).set_custom_interpolator(_interp_damage_tween)
+		tween.tween_property(sprite,"self_modulate",Color.BLACK,immune_time/4).set_custom_interpolator(_interp_damage_tween)
+		tween.tween_property(sprite,"self_modulate",Color.WHITE,immune_time/4).set_custom_interpolator(_interp_damage_tween)
+		
 	Callable(check_death).call_deferred()
 
+func _interp_damage_tween(v):
+	return tween_curve.sample_baked(v)
 
 func heal(heal_amount : float) -> void:
 	current_health = min(current_health+heal_amount,max_health)

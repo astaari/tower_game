@@ -58,3 +58,6 @@ position = Vector2(3200, -15)
 
 [node name="Enemy" parent="enemies" instance=ExtResource("9_s43bi")]
 position = Vector2(-495, -17)
+max_move_duration = 4.0
+max_idle_duration = 2.0
+current_state = 0

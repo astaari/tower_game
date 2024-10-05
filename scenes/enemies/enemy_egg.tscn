@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://bq3fmclbwhilv"]
+
+[ext_resource type="PackedScene" uid="uid://bfqwv51eyfym2" path="res://scenes/enemies/enemy.tscn" id="1_tjgf4"]
+[ext_resource type="Texture2D" uid="uid://bdqje5fr6efm" path="res://assets/sprites/enemy-1.png" id="2_1sd24"]
+[ext_resource type="Script" path="res://scenes/enemies/enemy_egg.gd" id="2_knqhk"]
+[ext_resource type="AnimationLibrary" uid="uid://dab4n4i37lbca" path="res://scenes/enemies/enemy_egg_animations.tres" id="2_xygeq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ptayo"]
+radius = 29.0
+height = 94.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o0lj8"]
+radius = 27.0185
+
+[sub_resource type="Animation" id="Animation_r6y27"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_se6iu"]
+_data = {
+"RESET": SubResource("Animation_r6y27")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_akshf"]
+radius = 20.025
+
+[node name="Enemy" instance=ExtResource("1_tjgf4")]
+collision_mask = 8
+script = ExtResource("2_knqhk")
+max_move_duration = 4.0
+max_idle_duration = 2.0
+
+[node name="MovementCollider" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_ptayo")
+one_way_collision = true
+
+[node name="HurtBoxCollider" parent="HurtBoxComponent" index="0"]
+shape = SubResource("CircleShape2D_o0lj8")
+
+[node name="Sprite2D" parent="." index="3"]
+texture = ExtResource("2_1sd24")
+hframes = 8
+vframes = 3
+
+[node name="AnimationPlayer" parent="." index="4"]
+libraries = {
+"": SubResource("AnimationLibrary_se6iu"),
+"enemy_egg_animations": ExtResource("2_xygeq")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent" index="0"]
+shape = SubResource("CircleShape2D_akshf")
+
+[node name="PatrolTimer" type="Timer" parent="." index="6"]
+
+[node name="Camera2D" type="Camera2D" parent="." index="7"]
+
+[connection signal="body_entered" from="HurtBoxComponent" to="." method="_on_hurt_box_component_body_entered"]
+[connection signal="body_exited" from="HurtBoxComponent" to="." method="_on_hurt_box_component_body_exited"]

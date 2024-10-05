@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfqwv51eyfym2"]
+
+[ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_yy8fh"]
+[ext_resource type="Script" path="res://scenes/components/hurt_box_component.gd" id="2_tdb04"]
+[ext_resource type="Script" path="res://scenes/components/health_component.gd" id="3_5epwj"]
+[ext_resource type="Script" path="res://scenes/components/hit_box_component.gd" id="4_j7j6r"]
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_yy8fh")
+
+[node name="MovementCollider" type="CollisionShape2D" parent="."]
+
+[node name="HurtBoxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+collision_layer = 256
+collision_mask = 512
+script = ExtResource("2_tdb04")
+health_component = NodePath("../HealthComponent")
+
+[node name="HurtBoxCollider" type="CollisionShape2D" parent="HurtBoxComponent"]
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("3_5epwj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="HitBoxComponent" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 256
+script = ExtResource("4_j7j6r")

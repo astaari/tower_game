@@ -125,6 +125,7 @@ height = 96.0
 radius = 37.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_mask = 8
 script = ExtResource("1_negh2")
 
 [node name="Modifiers" type="Node" parent="."]
@@ -151,14 +152,16 @@ position = Vector2(0, -39)
 shape = SubResource("CapsuleShape2D_rst82")
 
 [node name="CollisionArea2D" type="Area2D" parent="."]
-collision_layer = 48
-collision_mask = 4
+collision_layer = 49
+collision_mask = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea2D"]
 position = Vector2(0, -39)
 shape = SubResource("CapsuleShape2D_u7lm2")
 
 [node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_jq43u")]
+collision_layer = 256
+collision_mask = 516
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]

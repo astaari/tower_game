@@ -9,12 +9,11 @@ func _ready():
 
 
 func on_area_entered(other_area: Area2D):
-	print(other_area)
-	if not other_area is HitBoxComponent:
+	print(other_area.name, "Here")
+	if not is_instance_of(other_area,HitBoxComponent):
 		return
 	
 	if health_component == null:
 		return
-	
 	var hit_box_component = other_area as HitBoxComponent
-	health_component.damage(hit_box_component.damage)
+	health_component.damage(hit_box_component.damage,10)

@@ -34,6 +34,7 @@ enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
 
 player=""
 item=""
+enemy=""
 
 [input]
 
@@ -68,8 +69,13 @@ interact={
 
 [layer_names]
 
-2d_physics/layer_5="PlayerPickup"
+2d_physics/layer_1="player"
+2d_physics/layer_2="enemy"
+2d_physics/layer_3="hazard_layer"
+2d_physics/layer_5="enemy_projectile"
 2d_physics/layer_6="AreaGate"
+2d_physics/layer_9="hurt_box"
+2d_physics/layer_10="hitbox"
 
 [rendering]
 

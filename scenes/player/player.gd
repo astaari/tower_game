@@ -142,7 +142,7 @@ func _on_hurt_box_component_body_shape_entered(body_rid: RID, body: Node2D, body
 		print(data, "eeg")
 		if "damage" in data:
 			print("Damaged for ", data['damage'])
-			health_component.damage(10)
+			health_component.damage(10,10)
 		if "knockback" in data:
 			print("Knockback ")
 			velocity.x += -_current_direction*data["knockback"]
