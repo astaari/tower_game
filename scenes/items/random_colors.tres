@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bctsdjoi1iibc"]
+
+[ext_resource type="Script" path="res://scenes/items/random_colors.gd" id="1_mxfa0"]
+
+[resource]
+script = ExtResource("1_mxfa0")

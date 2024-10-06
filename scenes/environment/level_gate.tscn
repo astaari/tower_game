@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://5g0snpn01gj1"]
 
-[ext_resource type="Script" path="res://scenes/levels/level_gate.gd" id="1_7v8t8"]
+[ext_resource type="Script" path="res://scenes/environment/level_gate.gd" id="1_7v8t8"]
 [ext_resource type="Texture2D" uid="uid://cfr6vkh3oxujd" path="res://assets/sprites/level-gate-left.png" id="2_dtvux"]
 [ext_resource type="Texture2D" uid="uid://nofisbjirhs" path="res://assets/sprites/level-gate-right.png" id="3_6noy1"]
 

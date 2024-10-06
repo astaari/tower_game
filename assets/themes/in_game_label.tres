@@ -4,7 +4,7 @@
 
 [resource]
 font = ExtResource("1_wankn")
-font_size = 12
+font_size = 11
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 4

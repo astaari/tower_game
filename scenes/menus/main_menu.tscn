@@ -1,75 +1,47 @@
-[gd_scene load_steps=15 format=3 uid="uid://g3j3w1yhq2tt"]
+[gd_scene load_steps=12 format=3 uid="uid://g3j3w1yhq2tt"]
 
 [ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="1_pop28"]
 [ext_resource type="Theme" uid="uid://qb6dgmsbm5um" path="res://assets/themes/menu_theme.tres" id="1_r1mvb"]
-[ext_resource type="Shader" path="res://assets/shaders/main_menu_background.gdshader" id="2_1ed17"]
 [ext_resource type="LabelSettings" uid="uid://cat466i40g3su" path="res://assets/themes/title_label.tres" id="3_ddgus"]
 [ext_resource type="LabelSettings" uid="uid://b1p4n4pnlwjq3" path="res://assets/themes/menu_title_label.tres" id="4_7nyt0"]
 [ext_resource type="LabelSettings" uid="uid://6cmppknv3tn2" path="res://assets/themes/title_description_label.tres" id="4_kxp0y"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_33lxc"]
-resource_local_to_scene = true
-shader = ExtResource("2_1ed17")
-shader_parameter/transparency = 1.0
-shader_parameter/color0 = Color(1, 1, 1, 1)
-shader_parameter/color1 = Color(0, 0, 0, 1)
-shader_parameter/color2 = Color(1, 1, 1, 1)
-shader_parameter/color3 = Color(0, 0, 0, 1)
-shader_parameter/Direction = Vector2(-2, -1)
-shader_parameter/Speed = 20.0
-shader_parameter/thresholds = PackedFloat32Array(0.5, 0.6, 0.7)
-shader_parameter/OCTAVE = 6
-shader_parameter/pixel_size = 128
-shader_parameter/dithering = 1.5
-
-[sub_resource type="Gradient" id="Gradient_gf477"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.349593)
-colors = PackedColorArray(1, 1, 1, 0, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_wf4wx"]
-gradient = SubResource("Gradient_gf477")
-width = 512
-height = 512
-fill = 1
-fill_from = Vector2(0.5, 0.5)
+[ext_resource type="Texture2D" uid="uid://s58n60oovs3d" path="res://assets/tilesets/background-3.png" id="6_ild5s"]
 
 [sub_resource type="Animation" id="Animation_7bgli"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:texture:fill_from")
+tracks/0/path = NodePath("MarginContainer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.5, 0.5)]
+"values": [Vector2(0, 130)]
 }
 
-[sub_resource type="Animation" id="Animation_4uepp"]
-resource_name = "menu_transition"
-length = 30.0
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_n6h3s"]
+resource_name = "start"
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:texture:fill_from")
+tracks/0/path = NodePath("MarginContainer:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(3.76667, 7.6, 10, 13.8667, 18.0333, 21.7333, 30),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.48, 0.53), Vector2(0.56, 0.4), Vector2(0.6, 0.38), Vector2(0.65, 0.45), Vector2(0.4, 0.6), Vector2(0.48, 0.53), Vector2(0.4, 0.48)]
+"values": [Vector2(0, 130), Vector2(0, -50)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_80jl6"]
 _data = {
 "RESET": SubResource("Animation_7bgli"),
-"menu_transition": SubResource("Animation_4uepp")
+"start": SubResource("Animation_n6h3s")
 }
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r2kr6"]
@@ -80,28 +52,30 @@ _data = {
 script = ExtResource("1_pop28")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_33lxc")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="TextureRect" type="TextureRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_wf4wx")
-stretch_mode = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_80jl6")
 }
-autoplay = "menu_transition"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 130.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer"]
+texture = ExtResource("6_ild5s")
+centered = false
+offset = Vector2(-80, 200)
 
 [node name="TitleContainer" type="MarginContainer" parent="."]
 unique_name_in_owner = true

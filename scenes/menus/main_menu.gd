@@ -3,6 +3,8 @@ extends CanvasLayer
 @export var title: String
 @export var description: String
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 @onready var title_label: Label = %TitleLabel
 @onready var description_label: Label = %DescriptionLabel
 @onready var start_button: Button = %StartButton
@@ -15,21 +17,9 @@ extends CanvasLayer
 @onready var master_slider: HSlider = %MasterSlider
 @onready var settings_back_button: Button = %SettingsBackButton
 
-@onready var effects_audio_bus_name = "Effects"
-@onready var master_audio_bus_name = "Master"
-@onready var menu_audio_bus_name = "Menu"
-@onready var music_audio_bus_name = "Music"
-
-@onready var first_level: PackedScene = preload("res://scenes/levels/level-0.tscn")
-@onready var color_swap_shader_material: ShaderMaterial = preload("res://assets/shaders/color_swap_shader_material.tres")
-
-@onready var menu_containers: Dictionary = {
-	"title": %TitleContainer,
-	"settings": %SettingsContainer
-}
-
 
 func _ready() -> void:
+	set_label_text()
 	start_button.pressed.connect(_on_start_button_pressed)
 	settings_button.pressed.connect(_on_settings_button_pressed)
 	quit_button.pressed.connect(_on_quit_button_pressed)
@@ -41,8 +31,6 @@ func _ready() -> void:
 	
 	settings_back_button.pressed.connect(_on_back_button_pressed)
 
-	title_label.text = title
-	description_label.text = description
 
 
 func update_audio_bus(audio_bus_name: String, value: float) -> void:
@@ -55,10 +43,21 @@ func update_audio_bus(audio_bus_name: String, value: float) -> void:
 	AudioServer.set_bus_volume_db(audio_bus_index, linear_to_db(value))
 
 
+func set_label_text() -> void:
+	title_label.text = title
+	description_label.text = description
+
+
 func _toggle_menu_containers(menu_name: String) -> void:
-	for key in menu_containers:
-		var menu_container = menu_containers[key]
-		menu_container.visible = key == menu_name
+	match menu_name:
+		"title":
+			%TitleContainer.visible = true
+			%SettingsContainer.visible = false
+		"settings":
+			%TitleContainer.visible = false
+			%SettingsContainer.visible = true
+		_:
+			return
 
 
 func _on_back_button_pressed() -> void:
@@ -66,23 +65,24 @@ func _on_back_button_pressed() -> void:
 
 
 func _on_effects_slider_changed(value: float) -> void:
-	update_audio_bus(effects_audio_bus_name, value)
+	update_audio_bus("Effects", value)
 
 
 func _on_master_slider_changed(value: float) -> void:
-	update_audio_bus(master_audio_bus_name, value)
+	update_audio_bus("Master", value)
 
 
 func _on_menu_sounds_slider_changed(value: float) -> void:
-	update_audio_bus(menu_audio_bus_name, value)
+	update_audio_bus("Menu", value)
 
 
 func _on_music_slider_changed(value: float) -> void:
-	update_audio_bus(music_audio_bus_name, value)
+	update_audio_bus("Music", value)
 
 
 func _on_start_button_pressed() -> void:
-	get_tree().change_scene_to_packed(first_level)
+	animation_player.play("start")
+	EventManager.emit_level_changed()
 
 
 func _on_settings_button_pressed() -> void:

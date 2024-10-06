@@ -1,28 +1,22 @@
-[gd_scene load_steps=10 format=4 uid="uid://cqcqon1dyk1c5"]
+[gd_scene load_steps=10 format=4 uid="uid://cvx2ja53pfdan"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_cle3x"]
 [ext_resource type="PackedScene" uid="uid://cegmmbnx2nejg" path="res://scenes/game_camera/game_camera.tscn" id="1_h7ak0"]
-[ext_resource type="PackedScene" uid="uid://bj65xcvqsyr7s" path="res://scenes/levels/parallax_background.tscn" id="2_x67xm"]
+[ext_resource type="PackedScene" uid="uid://bj65xcvqsyr7s" path="res://scenes/environment/parallax_background.tscn" id="2_x67xm"]
 [ext_resource type="TileSet" uid="uid://b0qs5ymyd8j48" path="res://assets/tilesets/bw-tileset.tres" id="3_i2vgx"]
 [ext_resource type="PackedScene" uid="uid://cwl3encoi54s6" path="res://scenes/items/random_item.tscn" id="4_ffh2u"]
 [ext_resource type="PackedScene" uid="uid://7o3yw1nov7qk" path="res://scenes/player/player.tscn" id="5_wsgdu"]
 [ext_resource type="PackedScene" uid="uid://b76psagt11xrt" path="res://scenes/ui/game_ui.tscn" id="6_uwh81"]
 [ext_resource type="PackedScene" uid="uid://do3pox5cyduq3" path="res://assets/shaders/color_swap_shader_scene.tscn" id="7_ol326"]
-[ext_resource type="PackedScene" uid="uid://5g0snpn01gj1" path="res://scenes/levels/level_gate.tscn" id="8_tg5kt"]
+[ext_resource type="PackedScene" uid="uid://5g0snpn01gj1" path="res://scenes/environment/level_gate.tscn" id="8_tg5kt"]
 
 [node name="Level" type="Node"]
 script = ExtResource("1_cle3x")
 level = 1
-new_black = Color(0.054902, 0.137255, 0.054902, 1)
-new_white = Color(0.698247, 1, 0.671603, 1)
+dark_color = Color(0.0425677, 0.126473, 0.306937, 1)
+light_color = Color(0.475568, 0.636832, 0.955897, 1)
 
 [node name="GameCamera" parent="." instance=ExtResource("1_h7ak0")]
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-position = Vector2(1490, -1171)
-rotation = 1.37532
-shadow_enabled = true
-shadow_color = Color(0, 0, 0, 1)
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_x67xm")]
 
