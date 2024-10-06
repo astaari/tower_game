@@ -3,7 +3,7 @@ extends Node
 signal level_changed()
 signal item_picked_up()
 
-var current_level: int = 0
+var current_level: int = -1
 
 
 func emit_level_changed():
