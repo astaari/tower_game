@@ -1,0 +1,13 @@
+{
+	"items": [
+		{
+			"name": "test",
+			"description": "a test",
+			"effect": {
+				"name": "speed",
+				"value": 2.0,
+				"duration" : 4.0,
+			},
+		}
+	],
+}
