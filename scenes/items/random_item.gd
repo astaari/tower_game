@@ -4,7 +4,6 @@ class_name RandomItem
 @onready var sprite: Sprite2D = $Visuals/Sprite2D
 
 # TODO – Create weighted table for random items
-# TODO – Create dedicated spritesheet for random items, allowing for simpler indexing into each frame
 @export var random_items: RandomItems
 
 #TODO remove, testing purposes
@@ -21,13 +20,15 @@ func set_item():
 		return
 	
 	var random_index = randi_range(0, (sprite.hframes * sprite.vframes) - 1)
-	var item = random_items["items"][random_index]
-	item_id = random_index
+	#var item = random_items["items"][random_index]
+	
+	var item = random_items.get_random_item()
+	item_id = item.sprite_index
 	%ItemLabel.text = item["name"]
-	sprite.frame = random_index
+	sprite.frame = item_id
 	
 	#if item["name"] == "feather":
-	modifier = Modifier.new()
-	modifier.name = "speed"
-	modifier.duration = 2.0
-	modifier.value = 2.5
+	#modifier = Modifier.new()
+	#modifier.name = "speed"
+	#modifier.duration = 2.0
+	#modifier.value = 2.5

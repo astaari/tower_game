@@ -1,6 +1,6 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
-const MAX_SPEED = 200
+const MAX_SPEED = 1000
 const ACCELERATION_SMOOTHING = 10
 const JUMP_VELOCITY = -350.0
 const DOUBLE_JUMP_VELOCITY = -700.0
@@ -14,7 +14,12 @@ const INTERACTION_RANGE = 150
 @onready var hurt_box_component: HurtBoxComponent = $HurtBoxComponent
 @onready var hurt_box_collision_shape: CollisionShape2D = $HurtBoxComponent/CollisionShape2D
 @onready var health_component : HealthComponent = $HealthComponent
-@onready var modifiers : Effects = $Modifiers
+@onready var effects : Effects = $Effects
+@onready var modifiers : Modifier
+
+
+@export var player_stats : PlayerStats = PlayerStats.new()
+
 
 var can_jump: bool = true
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -27,7 +32,7 @@ var temporary_inventory_array: Array[int] = []
 var _current_direction = 0
 var movement_disabled : bool = false
 
-
+@onready var initial_pos = global_position
 func _ready():
 	animation_tree.active = true
 	collision_area.body_entered.connect(on_body_entered)
@@ -43,25 +48,28 @@ func _physics_process(delta: float) -> void:
 		jump_count = 0
 	else:
 		coyote_timer.start()
-		velocity.y += gravity * delta
+		velocity.y += gravity*delta
 	if movement_disabled:
 		interact()
 		move_and_slide()
 		return
 	# Jump and double jump
 	if Input.is_action_just_pressed("jump") and can_jump:
-		velocity.y = JUMP_VELOCITY
+		var jump_velocity = player_stats.jump_height_to_speed()
+		velocity.y = jump_velocity
+		print(jump_velocity)
 		jump_count += 1
 		can_jump = !jump_count >= max_jump_count
-	
+	if Input.is_action_pressed("down") and not is_on_floor():
+		velocity.y += 25
 	# Left, right movement
 	var direction = Vector2(Input.get_action_strength("run_right") - Input.get_action_strength("run_left"), 0.0)
 	set_animation(direction)
 	
-	velocity.x = direction.x * MAX_SPEED
+	velocity.x = direction.x * player_stats.speed
 	velocity.x = clampf(velocity.x, -MAX_SPEED, MAX_SPEED)
-	var slow_mod = modifiers.get_modifier("slow") as Modifier
-	var speed_mod = modifiers.get_modifier("speed") as Modifier
+	var slow_mod = effects.get_effect("slow") as Effect
+	var speed_mod = effects.get_effect("speed") as Effect
 	#print(slow_mod)
 	if slow_mod:
 		velocity.x *= slow_mod.value
@@ -69,6 +77,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x *= speed_mod.value
 	
 	_current_direction = 1.0 if velocity.x > 0.0 else -1.0 if velocity.x > 0.0 else 0.0
+	print("initial vs now : " , initial_pos, "  " , global_position)
+	print("Y-diff ", initial_pos.y-global_position.y)
 	interact()
 	move_and_slide()
 
@@ -111,7 +121,7 @@ func interact():
 		temporary_inventory_array.append(item_closest_to_player["item_id"])
 		item_closest_to_player.queue_free()
 		#TODO move to appropriate location
-		modifiers.apply_modifier(item_closest_to_player.modifier)
+		#effects.apply_effect(item_closest_to_player.modifier)
 
 
 func on_body_entered(_other_body: Node2D):
@@ -154,26 +164,7 @@ func _on_hurt_box_component_body_shape_entered(body_rid: RID, body: Node2D, body
 				)
 		if "slow" in data:
 			#print("apply slow")
+			print(typeof(data["slow"]), " type")
 			var mdat : Effect = data["slow"] as Effect
-			modifiers.apply_modifier(mdat)
+			effects.apply_effect(mdat)
 			
-
-
-func _on_collision_area_2d_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	if is_instance_of(body,TileMapLayer):
-		var tilemap : TileMapLayer = body as TileMapLayer
-		var coords : Vector2i = tilemap.get_coords_for_body_rid(body_rid)
-		var data = tilemap.get_cell_tile_data(coords).get_custom_data("effects") # Replace with function body.
-		if "slow" in data:
-			modifiers.remove_modifier("slow")
-
-
-func _on_collision_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	if is_instance_of(body, TileMapLayer):
-		var tilemap : TileMapLayer = body as TileMapLayer
-		var coords : Vector2i = tilemap.get_coords_for_body_rid(body_rid)
-		var data = tilemap.get_cell_tile_data(coords).get_custom_data("effects") # Replace with function body.
-		if "slow" in data:
-			#print("apply slow")
-			var mdat : Effect = data["slow"] as Effect
-			modifiers.apply_modifier(mdat)

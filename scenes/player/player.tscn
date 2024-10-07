@@ -1,10 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://7o3yw1nov7qk"]
+[gd_scene load_steps=18 format=3 uid="uid://7o3yw1nov7qk"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_negh2"]
 [ext_resource type="Texture2D" uid="uid://3vrwvy40pe0o" path="res://assets/sprites/mr-hat-all.png" id="2_5neol"]
 [ext_resource type="PackedScene" uid="uid://dce1qyted5om5" path="res://scenes/components/health_component.tscn" id="2_m25mh"]
+[ext_resource type="Script" path="res://scenes/player/player_stats.gd" id="2_twhho"]
 [ext_resource type="Script" path="res://data/modifiers/effects.gd" id="3_gpny6"]
 [ext_resource type="PackedScene" uid="uid://jx1xla68i4hy" path="res://scenes/components/hurt_box_component.tscn" id="5_jq43u"]
+
+[sub_resource type="Resource" id="Resource_1kxy2"]
+script = ExtResource("2_twhho")
+speed = 300.0
+jump_height = 100.0
 
 [sub_resource type="Animation" id="Animation_p7qkm"]
 length = 0.001
@@ -128,8 +134,9 @@ radius = 37.0
 collision_mask = 8
 floor_max_angle = 1.22173
 script = ExtResource("1_negh2")
+player_stats = SubResource("Resource_1kxy2")
 
-[node name="Modifiers" type="Node" parent="."]
+[node name="Effects" type="Node" parent="."]
 script = ExtResource("3_gpny6")
 
 [node name="CoyoteTimer" type="Timer" parent="."]
@@ -175,6 +182,4 @@ hframes = 11
 vframes = 6
 frame = 44
 
-[connection signal="body_shape_entered" from="CollisionArea2D" to="." method="_on_collision_area_2d_body_shape_entered"]
-[connection signal="body_shape_exited" from="CollisionArea2D" to="." method="_on_collision_area_2d_body_shape_exited"]
 [connection signal="body_shape_entered" from="HurtBoxComponent" to="." method="_on_hurt_box_component_body_shape_entered"]

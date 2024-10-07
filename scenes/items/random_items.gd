@@ -2,20 +2,56 @@ extends Resource
 class_name RandomItems
 
 
+@export var normal_weight = 10000
+@export var rare_weight = 4000
+@export var epic_weight = 1500
+var normal_count = 0
+var rare_count = 0
+var epic_count = 0
 
-var normal_items : Array[Item] =[
+
+func get_random_item() -> Item:
+	var weight_sum = normal_weight+rare_weight+epic_weight
+	var rand = randf_range(0,weight_sum)
+	
+	var item : Item
+	if rand <=epic_weight:
+		#epic
+		epic_count+=1
+		#print("got epic")
+		var idx = randi_range(0,len(_epic_items)-1)
+		item = _epic_items[idx]
+	elif rand <= epic_weight+rare_weight:
+		#print("got rare")
+		rare_count+=1
+		var idx = randi_range(0,len(_rare_items)-1)
+		item = _rare_items[idx]
+	else:
+		#print("got normal")
+		normal_count+=1
+		var idx = randi_range(0,len(_normal_items)-1)
+		item = _normal_items[idx]
+	print("Normal count: ",normal_count)
+	print("Rare count: ",rare_count)
+	print("Epic count: ",epic_count)
+	
+	
+	return item
+		
+
+var _normal_items : Array[Item] =[
 	Item.new("Potato Chip", "Salty, crisp, goodness", [Effect.new("health",10,0)],0),
 	Item.new("Skullington","This skull is looking for his dad!", [Modifier.new("jump",-10),Modifier.new("speed",10)],3),
 	Item.new("Tooth or Horn or Something","You're not quite sure what it is, but it's sharp!",[Modifier.new("damage",1)],4),
 ]
 
-var rare_items : Array[Item] = [
+var _rare_items : Array[Item] = [
 	Item.new("Bobby","Won't someone be his friend?", [Modifier.new("speed",50),Modifier.new("damage",1.25)],1),
 	Item.new("Bread Person", "What is up with this mysterious, sentient bread?",[Modifier.new("max_health",25)],2),
 ]
 
-var epic_items : Array[Item] = [
-	
+var _epic_items : Array[Item] = [
+	Item.new("Coin","A coin saved is a coin earned!",[Modifier.new("speed",50),Modifier.new("dash_speed",50)],6)
 ]
 
 

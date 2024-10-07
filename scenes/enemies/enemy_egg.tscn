@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bq3fmclbwhilv"]
+[gd_scene load_steps=11 format=3 uid="uid://bq3fmclbwhilv"]
 
 [ext_resource type="PackedScene" uid="uid://bfqwv51eyfym2" path="res://scenes/enemies/enemy.tscn" id="1_tjgf4"]
 [ext_resource type="Texture2D" uid="uid://bdqje5fr6efm" path="res://assets/sprites/enemy-1.png" id="2_1sd24"]
@@ -35,6 +35,9 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_akshf"]
 radius = 20.025
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_teu8s"]
+radius = 211.287
+
 [node name="Enemy" instance=ExtResource("1_tjgf4")]
 collision_mask = 8
 script = ExtResource("2_knqhk")
@@ -47,6 +50,7 @@ one_way_collision = true
 
 [node name="HurtBoxCollider" parent="HurtBoxComponent" index="0"]
 shape = SubResource("CircleShape2D_o0lj8")
+debug_color = Color(0.752941, 0, 0.0901961, 0.670588)
 
 [node name="Sprite2D" parent="." index="3"]
 texture = ExtResource("2_1sd24")
@@ -61,10 +65,17 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent" index="0"]
 shape = SubResource("CircleShape2D_akshf")
+debug_color = Color(0, 0, 0, 0.42)
 
 [node name="PatrolTimer" type="Timer" parent="." index="6"]
 
 [node name="Camera2D" type="Camera2D" parent="." index="7"]
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox" index="0"]
+shape = SubResource("CircleShape2D_teu8s")
+debug_color = Color(0.565669, 0.392282, 1, 0.42)
+
 [connection signal="body_entered" from="HurtBoxComponent" to="." method="_on_hurt_box_component_body_entered"]
 [connection signal="body_exited" from="HurtBoxComponent" to="." method="_on_hurt_box_component_body_exited"]
+[connection signal="body_entered" from="DetectionBox" to="DetectionBox" method="_on_body_entered"]
+[connection signal="body_exited" from="DetectionBox" to="DetectionBox" method="_on_body_exited"]

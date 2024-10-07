@@ -1,19 +1,22 @@
 class_name Item extends Resource
+enum ModType{ADDITIVE,MULTIPLICATIVE}
 
 var name : String
 var description : String
 var modifiers : Array[Modifier]
+var mod_type : ModType
 var sprite_index : int = 0
 
 
 #static func create(name : String, description : String, effects : Array[Modifier],sprite_index : int) -> Item:
 	#return Item.new(name,description,effects,sprite_index)
 
-func _init(name : String, description : String, effects : Array[Modifier],sprite_index : int) -> void:
+func _init(name : String, description : String, modifiers : Array[Modifier],sprite_index : int, mod_type :ModType = ModType.ADDITIVE) -> void:
 	self.name = name
 	self.description=description
-	self.effects = effects
+	self.modifiers = modifiers
 	self.sprite_index = sprite_index
+	self.mod_type = mod_type
 
 
 

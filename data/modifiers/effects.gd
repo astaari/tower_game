@@ -30,14 +30,17 @@ func shorten_effect(effect_name : String, decrease : float):
 		timer.time_left -= decrease
 
 func apply_effect(effect : Effect) -> bool:
-	if effect.name not in _active:
-		_active[effect.name] = effect
+	print(effect, " nani?")
+	if not effect:
+		return false
+	if effect.property_name not in _active:
+		_active[effect.property_name] = effect
 		if effect.duration > 0:
 			var timer = get_tree().create_timer(effect.duration)
 			timer.timeout.connect(
 			func():
-				remove_effect(effect.name)
-				_timers.erase(effect.name)
+				remove_effect(effect.property_name)
+				_timers.erase(effect.property_name)
 				)
 		return true
 	return false

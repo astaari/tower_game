@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=2 format=3 uid="uid://enrry4bbaufc"]
+
+[ext_resource type="Script" path="res://data/modifiers/effect.gd" id="1_24doy"]
+
+[resource]
+script = ExtResource("1_24doy")
+duration = 1.0
+property_name = ""
+value = 0.5

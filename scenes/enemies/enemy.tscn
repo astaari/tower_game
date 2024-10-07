@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfqwv51eyfym2"]
+[gd_scene load_steps=6 format=3 uid="uid://bfqwv51eyfym2"]
 
 [ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_yy8fh"]
 [ext_resource type="Script" path="res://scenes/components/hurt_box_component.gd" id="2_tdb04"]
 [ext_resource type="Script" path="res://scenes/components/health_component.gd" id="3_5epwj"]
 [ext_resource type="Script" path="res://scenes/components/hit_box_component.gd" id="4_j7j6r"]
+[ext_resource type="Script" path="res://scenes/enemies/detection_box.gd" id="5_wkhex"]
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
@@ -31,3 +32,6 @@ script = ExtResource("3_5epwj")
 collision_layer = 512
 collision_mask = 256
 script = ExtResource("4_j7j6r")
+
+[node name="DetectionBox" type="Area2D" parent="."]
+script = ExtResource("5_wkhex")

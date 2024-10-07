@@ -1,9 +1,9 @@
-[gd_resource type="TileSet" load_steps=10 format=3 uid="uid://b0qs5ymyd8j48"]
+[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://b0qs5ymyd8j48"]
 
 [ext_resource type="Texture2D" uid="uid://jf1ytlvrswsq" path="res://assets/tilesets/bw-tileset-01.png" id="1_myeac"]
 [ext_resource type="Texture2D" uid="uid://bdud0csyr38cc" path="res://assets/tilesets/bw-tileset-02.png" id="2_05mnq"]
 [ext_resource type="Texture2D" uid="uid://cxrlsute78ylx" path="res://assets/tilesets/hazards.png" id="3_2jbhp"]
-[ext_resource type="Resource" uid="uid://cepxpdinx7uc5" path="res://data/modifiers/modifier.tres" id="3_tiskw"]
+[ext_resource type="Script" path="res://data/modifiers/effect.gd" id="3_gp0ty"]
 [ext_resource type="Texture2D" uid="uid://3jkl3jhq1fnu" path="res://assets/tilesets/bw-tileset-03.png" id="5_i67fi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_an8o7"]
@@ -187,6 +187,12 @@ texture = ExtResource("2_05mnq")
 6:7/0 = 0
 7:7/0 = 0
 
+[sub_resource type="Resource" id="Resource_5xn8d"]
+script = ExtResource("3_gp0ty")
+duration = 0.0
+property_name = "slow"
+value = 0.5
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qg3qd"]
 texture = ExtResource("3_2jbhp")
 0:0/0 = 0
@@ -203,7 +209,7 @@ texture = ExtResource("3_2jbhp")
 0:1/0 = 0
 0:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -0.875, 8, -1.25, 8, 8, -8, 8)
 0:1/0/custom_data_0 = {
-"slow": ExtResource("3_tiskw")
+"slow": SubResource("Resource_5xn8d")
 }
 0:2/animation_columns = 2
 0:2/animation_frame_0/duration = 1.0
@@ -211,7 +217,7 @@ texture = ExtResource("3_2jbhp")
 0:2/0 = 0
 0:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:2/0/custom_data_0 = {
-"slow": ExtResource("3_tiskw")
+"slow": SubResource("Resource_5xn8d")
 }
 0:3/size_in_atlas = Vector2i(1, 2)
 0:3/0 = 0

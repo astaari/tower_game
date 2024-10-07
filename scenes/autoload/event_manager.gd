@@ -13,3 +13,4 @@ func emit_level_changed():
 
 func emit_item_picked_up(item_name: String):
 	item_picked_up.emit(item_name)
+	

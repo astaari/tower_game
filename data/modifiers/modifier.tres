@@ -1,9 +1,8 @@
-[gd_resource type="Resource" script_class="ModifierData" load_steps=2 format=3 uid="uid://cepxpdinx7uc5"]
+[gd_resource type="Resource" script_class="Modifier" load_steps=2 format=3 uid="uid://cepxpdinx7uc5"]
 
 [ext_resource type="Script" path="res://data/modifiers/modifier.gd" id="1_63nbg"]
 
 [resource]
 script = ExtResource("1_63nbg")
-name = "slow"
+property_name = "slow"
 value = 0.5
-duration = inf
