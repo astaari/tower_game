@@ -15,5 +15,6 @@ func on_area_entered(other_body: Node2D):
 	
 	if parent.level < EventManager.current_level:
 		print("EventManager level_changed() signal has already been emitted for this level.")
+		return
 	
 	EventManager.emit_level_changed()

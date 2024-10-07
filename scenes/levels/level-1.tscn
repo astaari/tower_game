@@ -37,6 +37,6 @@ position = Vector2(-1104, 66)
 [node name="ColorSwapCanvasLayer" parent="." instance=ExtResource("7_ol326")]
 
 [node name="LevelGate" parent="." instance=ExtResource("8_tg5kt")]
-position = Vector2(1041, -159)
+position = Vector2(821, -118)
 
 [node name="Enemies" type="Node" parent="."]

@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://5g0snpn01gj1"]
 
 [ext_resource type="Script" path="res://scenes/environment/level_gate.gd" id="1_7v8t8"]
-[ext_resource type="Texture2D" uid="uid://cfr6vkh3oxujd" path="res://assets/sprites/level-gate-left.png" id="2_dtvux"]
-[ext_resource type="Texture2D" uid="uid://nofisbjirhs" path="res://assets/sprites/level-gate-right.png" id="3_6noy1"]
+[ext_resource type="Texture2D" uid="uid://besxk33c46ukk" path="res://assets/sprites/gate_left.png" id="2_85ckf"]
+[ext_resource type="Texture2D" uid="uid://bl002es6e5uxm" path="res://assets/sprites/gate_right .png" id="3_lwyls"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cefmx"]
-size = Vector2(150, 190)
+size = Vector2(64, 128)
 
 [node name="LevelGate" type="Node2D"]
 script = ExtResource("1_7v8t8")
@@ -15,13 +15,15 @@ collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 17)
 shape = SubResource("RectangleShape2D_cefmx")
 
 [node name="LevelGateLeft" type="Sprite2D" parent="."]
 z_index = -1
-z_as_relative = false
-texture = ExtResource("2_dtvux")
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("2_85ckf")
+vframes = 12
 
 [node name="LevelGateRight" type="Sprite2D" parent="."]
-texture = ExtResource("3_6noy1")
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("3_lwyls")
+vframes = 12
