@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://duj2p4jmsugnr"]
+[gd_scene load_steps=11 format=4 uid="uid://duj2p4jmsugnr"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_6cjcw"]
 [ext_resource type="PackedScene" uid="uid://cegmmbnx2nejg" path="res://scenes/game_camera/game_camera.tscn" id="2_u23lc"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b76psagt11xrt" path="res://scenes/ui/game_ui.tscn" id="7_qinis"]
 [ext_resource type="PackedScene" uid="uid://do3pox5cyduq3" path="res://assets/shaders/color_swap_shader_scene.tscn" id="8_n4jjj"]
 [ext_resource type="PackedScene" uid="uid://5g0snpn01gj1" path="res://scenes/environment/level_gate.tscn" id="9_g3jgw"]
+[ext_resource type="PackedScene" uid="uid://cvplnqtp0ws1m" path="res://scenes/enemies/big_boy_enemy.tscn" id="10_uvaf5"]
 
 [node name="Level" type="Node"]
 script = ExtResource("1_6cjcw")
@@ -72,7 +73,7 @@ position = Vector2(-1403, -2025)
 position = Vector2(-1777, -2030)
 
 [node name="RandomItem16" parent="Items" instance=ExtResource("5_c3jnb")]
-position = Vector2(-696, -2065)
+position = Vector2(-1032, -2064)
 
 [node name="RandomItem17" parent="Items" instance=ExtResource("5_c3jnb")]
 position = Vector2(-1689, -2730)
@@ -91,3 +92,5 @@ position = Vector2(-1104, 66)
 position = Vector2(-293, -2100)
 
 [node name="Enemies" type="Node" parent="."]
+
+[node name="BigBoyEnemy" parent="Enemies" instance=ExtResource("10_uvaf5")]
