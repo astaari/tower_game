@@ -2,39 +2,233 @@
 	"items":
 		[
 			{"name": "Potato Chip", "description": "Salty, crispy, goodness.",
-				"effect":{
-					"name":"heal",
-					"value":25,
-					"duration":0,	
-				}
+				"effects":[
+					{
+						"name": "",
+						"value": 0,
+						"duration": 0,	
+					},
+				]
 			},
-			{"name": "Bobby", "description": "Won't someone be his friend?"},
-			{"name": "Bread Person", "description": "What is up with this mysterious, sentient bread?"}, 
-			{"name": "Skullington", "description": "This skull is looking for his dad!"},
-			{"name": "Tooth or Horn or Something", "description": "You're not quite sure what it is, but it's sharp!"},
-			{"name": "Coin", "description": "A coin saved is a coin earned!"},
+			{"name": "Bobby", "description": "Won't someone be his friend?",
+				"effects":[
+					{
+						"name": "",
+						"value": 0,
+						"duration": 0,	
+					},
+				]
+			},
+			{"name": "Bread Person", "description": "What is up with this mysterious, sentient bread?",
+				"effects":[
+					{
+						"name": "",
+						"value": 0,
+						"duration": 0,	
+					},
+				]
+			}, 
+			{"name": "Skullington", "description": "This skull is looking for his dad!",
+				"effects":[
+					{
+						"name": "",
+						"value": 0,
+						"duration": 0,	
+					},
+				]
+			},
+			{"name": "Tooth or Horn or Something", "description": "You're not quite sure what it is, but it's sharp!",
+				"effects":[
+					{
+						"name": "",
+						"value": 0,
+						"duration": 0,	
+					},
+				]
+			},
+			{"name": "Coin", "description": "A coin saved is a coin earned!",
+				"effects":[
+					{
+						"name": "",
+						"value": 0,
+						"duration": 0,	
+					},
+				]
+			},
 			{"name": "Heart", "description": "Get this back inside your body!"},
-			{"name": "Sad Picture", "description": "Don't look at it too long, or you might start crying."},
+			{"name": "Sad Picture", "description": "Don't look at it too long, or you might start crying.",
+				"effects":[
+					{
+						"name": "",
+						"value": 0,
+						"duration": 0,	
+					},
+				]
+			},
 			{"name": "Drop of Blood", "description": "What happens when you drink it?"},
-			{"name": "Funshroom", "description": "Eating this mushroom will make you see the world differently!"},
-			{"name": "Spotshroom", "description": "They say a mean, old dog is looking for these!"},
-			{"name": "Key", "description": "This opens a locked something-or-other!"},
-			{"name": "Giant Coffee Bean", "description": "Did you know that coffee beans are fruits?"},
-			{"name": "Old Tin Can", "description": "Kick that thing!"},
-			{"name": "Grandma's Ring", "description": "She's been looking all over for that!"},
-			{"name": "Glass of Milk", "description": "Whether it's half empty or half full, this glass has milk in it."},
-			{"name": "Feather", "description": "At least, it's supposed to be a feather."},
-			{"name": "Leaf", "description": "Where did it come from?"},
-			{"name": "Jumpshroom", "description": "Jump on these bad boys for a good time!"},
-			{"name": "Approximately", "description": "Neither here nor there, as the kids are saying these days."},
+			{"name": "Funshroom", "description": "Eating this mushroom will make you see the world differently!",
+				"effects":[
+					{
+						"name": "",
+						"value": 0,
+						"duration": 0,	
+					},
+				]
+			},
+			{"name": "Spotshroom", "description": "They say a mean, old dog is looking for these!",
+				"effects":[
+					{
+						"name": "",
+						"value": 0,
+						"duration": 0,	
+					},
+				]
+			},
+			{"name": "Key", "description": "This opens a locked something-or-other!",
+				"effects":[
+					{
+						"name": "",
+						"value": 0,
+						"duration": 0,	
+					},
+				]
+			},
+			{"name": "Giant Coffee Bean", "description": "Did you know that coffee beans are fruits?",
+				"effects":[
+					{
+						"name": "",
+						"value": 0,
+						"duration": 0,	
+					},
+				]
+			},
+			{"name": "Old Tin Can", "description": "Kick that thing!",
+				"effects":[
+					{
+						"name": "",
+						"value": 0,
+						"duration": 0,	
+					},
+				]
+			},
+			{"name": "Grandma's Ring", "description": "She's been looking all over for that!",
+				"effects":[
+					{
+						"name": "",
+						"value": 0,
+						"duration": 0,	
+					},
+				]
+			},
+			{"name": "Glass of Milk", "description": "Whether it's half empty or half full, this glass has milk in it.",
+				"effects":[
+					{
+						"name": "",
+						"value": 0,
+						"duration": 0,	
+					},
+				]
+			},
+			{"name": "Feather", "description": "At least, it's supposed to be a feather.",
+				"effects":[
+					{
+						"name": "",
+						"value": 0,
+						"duration": 0,	
+					},
+				]
+			},
+			{"name": "Leaf", "description": "Where did it come from?",
+				"effects":[
+					{
+						"name": "",
+						"value": 0,
+						"duration": 0,	
+					},
+				]
+			},
+			{"name": "Jumpshroom", "description": "Jump on these bad boys for a good time!",
+				"effects":[
+					{
+						"name": "",
+						"value": 0,
+						"duration": 0,	
+					},
+				]
+			},
+			{"name": "Approximately", "description": "Neither here nor there, as the kids are saying these days.",
+				"effects":[
+					{
+						"name": "",
+						"value": 0,
+						"duration": 0,	
+					},
+				]
+			},
 			{"name": "Divide", "description": "...and conquer!"},
-			{"name": "Scary Right Hand", "description": "If this game weren't limited to two colors, you bet this hand would be red!"},
-			{"name": "Just a Flower", "description": "That's all there is to this."},
-			{"name": "Love Letter", "description": "Tell them how you really feel!"},
-			{"name": "One of Those Jelly Filled Cookies", "description": ""},
-			{"name": "Yin", "description": "Dark shit."},
-			{"name": "Yang", "description": "Light shit."},
-			{"name": "Maybe a Pecan", "description": "If you're allergic to nuts, then don't bother."},
+			{"name": "Scary Right Hand", "description": "If this game weren't limited to two colors, you bet this hand would be red!",
+				"effects":[
+					{
+						"name": "",
+						"value": 0,
+						"duration": 0,	
+					},
+				]
+			},
+			{"name": "Just a Flower", "description": "That's all there is to this.",
+				"effects":[
+					{
+						"name": "",
+						"value": 0,
+						"duration": 0,	
+					},
+				]
+			},
+			{"name": "Love Letter", "description": "Tell them how you really feel!",
+				"effects":[
+					{
+						"name": "",
+						"value": 0,
+						"duration": 0,	
+					},
+				]
+			},
+			{"name": "One of Those Jelly Filled Cookies", "description": "",
+				"effects":[
+					{
+						"name": "",
+						"value": 0,
+						"duration": 0,	
+					},
+				]
+			},
+			{"name": "Yin", "description": "Dark shit.",
+				"effects":[
+					{
+						"name": "",
+						"value": 0,
+						"duration": 0,	
+					},
+				]
+			},
+			{"name": "Yang", "description": "Light shit.",
+				"effects":[
+					{
+						"name": "",
+						"value": 0,
+						"duration": 0,	
+					},
+				]
+			},
+			{"name": "Maybe a Pecan", "description": "If you're allergic to nuts, then don't bother.",
+				"effects":[
+					{
+						"name": "",
+						"value": 0,
+						"duration": 0,	
+					},
+				]
+			},
 			{"name": "AA Battery", "description": "Only one."},
 			{"name": "Metal Sphere", "description": "Don't let Jerry choke on this."},
 			{"name": "Jerry", "description": "Just leave him alone, okay?"},

@@ -14,7 +14,7 @@ const INTERACTION_RANGE = 150
 @onready var hurt_box_component: HurtBoxComponent = $HurtBoxComponent
 @onready var hurt_box_collision_shape: CollisionShape2D = $HurtBoxComponent/CollisionShape2D
 @onready var health_component : HealthComponent = $HealthComponent
-@onready var modifiers : Modifiers = $Modifiers
+@onready var modifiers : Effects = $Modifiers
 
 var can_jump: bool = true
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -60,8 +60,8 @@ func _physics_process(delta: float) -> void:
 	
 	velocity.x = direction.x * MAX_SPEED
 	velocity.x = clampf(velocity.x, -MAX_SPEED, MAX_SPEED)
-	var slow_mod = modifiers.get_modifier("slow") as ModifierData
-	var speed_mod = modifiers.get_modifier("speed") as ModifierData
+	var slow_mod = modifiers.get_modifier("slow") as Modifier
+	var speed_mod = modifiers.get_modifier("speed") as Modifier
 	#print(slow_mod)
 	if slow_mod:
 		velocity.x *= slow_mod.value
@@ -154,7 +154,7 @@ func _on_hurt_box_component_body_shape_entered(body_rid: RID, body: Node2D, body
 				)
 		if "slow" in data:
 			#print("apply slow")
-			var mdat : ModifierData = data["slow"] as ModifierData
+			var mdat : Effect = data["slow"] as Effect
 			modifiers.apply_modifier(mdat)
 			
 
@@ -175,5 +175,5 @@ func _on_collision_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_
 		var data = tilemap.get_cell_tile_data(coords).get_custom_data("effects") # Replace with function body.
 		if "slow" in data:
 			#print("apply slow")
-			var mdat : ModifierData = data["slow"] as ModifierData
+			var mdat : Effect = data["slow"] as Effect
 			modifiers.apply_modifier(mdat)

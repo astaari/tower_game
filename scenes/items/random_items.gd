@@ -1,12 +1,32 @@
 extends Resource
 class_name RandomItems
 
+
+
+var normal_items : Array[Item] =[
+	Item.new("Potato Chip", "Salty, crisp, goodness", [Effect.new("health",10,0)],0),
+	Item.new("Skullington","This skull is looking for his dad!", [Modifier.new("jump",-10),Modifier.new("speed",10)],3),
+	Item.new("Tooth or Horn or Something","You're not quite sure what it is, but it's sharp!",[Modifier.new("damage",1)],4),
+]
+
+var rare_items : Array[Item] = [
+	Item.new("Bobby","Won't someone be his friend?", [Modifier.new("speed",50),Modifier.new("damage",1.25)],1),
+	Item.new("Bread Person", "What is up with this mysterious, sentient bread?",[Modifier.new("max_health",25)],2),
+]
+
+var epic_items : Array[Item] = [
+	
+]
+
+
 const items: Array[Dictionary] = [
-	{"name": "Potato Chip", "description": "Salty, crispy, goodness."},
-	{"name": "Bobby", "description": "Won't someone be his friend?"},
-	{"name": "Bread Person", "description": "What is up with this mysterious, sentient bread?"}, 
-	{"name": "Skullington", "description": "This skull is looking for his dad!"},
-	{"name": "Tooth or Horn or Something", "description": "You're not quite sure what it is, but it's sharp!"},
+	#{"name": "Potato Chip", "description": "Salty, crispy, goodness."},
+	
+	#{"name": "Bobby", "description": "Won't someone be his friend?"},
+	
+	#{"name": "Bread Person", "description": "What is up with this mysterious, sentient bread?"}, 
+	#{"name": "Skullington", "description": "This skull is looking for his dad!"},
+	#{"name": "Tooth or Horn or Something", "description": "You're not quite sure what it is, but it's sharp!"},
 	{"name": "Coin", "description": "A coin saved is a coin earned!"},
 	{"name": "Heart", "description": "Get this back inside your body!"},
 	{"name": "Sad Picture", "description": "Don't look at it too long, or you might start crying."},

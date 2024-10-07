@@ -8,7 +8,7 @@ class_name RandomItem
 @export var random_items: RandomItems
 
 #TODO remove, testing purposes
-var modifier : ModifierData
+var modifier : Modifier
 var item_id : int = -1
 
 
@@ -27,7 +27,7 @@ func set_item():
 	sprite.frame = random_index
 	
 	#if item["name"] == "feather":
-	modifier = ModifierData.new()
+	modifier = Modifier.new()
 	modifier.name = "speed"
 	modifier.duration = 2.0
 	modifier.value = 2.5

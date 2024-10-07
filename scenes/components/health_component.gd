@@ -28,8 +28,8 @@ func damage(damage_amount: float, knockback: float):
 	if sprite:
 		tween.tween_property(sprite,"self_modulate",Color.BLACK,immune_time/4).set_custom_interpolator(_interp_damage_tween)
 		tween.tween_property(sprite,"self_modulate",Color.WHITE,immune_time/4).set_custom_interpolator(_interp_damage_tween)
-		tween.tween_property(sprite,"self_modulate",Color.BLACK,immune_time/4).set_custom_interpolator(_interp_damage_tween)
-		tween.tween_property(sprite,"self_modulate",Color.WHITE,immune_time/4).set_custom_interpolator(_interp_damage_tween)
+		#tween.tween_property(sprite,"self_modulate",Color.BLACK,immune_time/4).set_custom_interpolator(_interp_damage_tween)
+		#tween.tween_property(sprite,"self_modulate",Color.WHITE,immune_time/4).set_custom_interpolator(_interp_damage_tween)
 		
 	Callable(check_death).call_deferred()
 

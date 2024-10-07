@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_negh2"]
 [ext_resource type="Texture2D" uid="uid://3vrwvy40pe0o" path="res://assets/sprites/mr-hat-all.png" id="2_5neol"]
 [ext_resource type="PackedScene" uid="uid://dce1qyted5om5" path="res://scenes/components/health_component.tscn" id="2_m25mh"]
-[ext_resource type="Script" path="res://data/modifiers/modifiers.gd" id="3_gpny6"]
+[ext_resource type="Script" path="res://data/modifiers/effects.gd" id="3_gpny6"]
 [ext_resource type="PackedScene" uid="uid://jx1xla68i4hy" path="res://scenes/components/hurt_box_component.tscn" id="5_jq43u"]
 
 [sub_resource type="Animation" id="Animation_p7qkm"]
