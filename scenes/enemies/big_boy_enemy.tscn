@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvplnqtp0ws1m"]
+
+[ext_resource type="PackedScene" uid="uid://bfqwv51eyfym2" path="res://scenes/enemies/enemy.tscn" id="1_0lpax"]
+[ext_resource type="Texture2D" uid="uid://m6ssipo4ilqg" path="res://assets/sprites/big_boy_enemy.png" id="2_etqhu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_etcnj"]
+radius = 128.0
+height = 258.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hm6g7"]
+radius = 90.0
+height = 200.0
+
+[node name="BigBoyEnemy" instance=ExtResource("1_0lpax")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_etqhu")
+offset = Vector2(0, -135)
+
+[node name="HurtBoxCollider" parent="HurtBoxComponent" index="0"]
+position = Vector2(0, -128)
+shape = SubResource("CapsuleShape2D_etcnj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent" index="0"]
+position = Vector2(0, -124)
+shape = SubResource("CapsuleShape2D_hm6g7")

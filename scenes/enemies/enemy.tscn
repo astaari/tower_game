@@ -1,16 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfqwv51eyfym2"]
+[gd_scene load_steps=6 format=3 uid="uid://bfqwv51eyfym2"]
 
 [ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_yy8fh"]
 [ext_resource type="Script" path="res://scenes/components/hurt_box_component.gd" id="2_tdb04"]
 [ext_resource type="Script" path="res://scenes/components/health_component.gd" id="3_5epwj"]
 [ext_resource type="Script" path="res://scenes/components/hit_box_component.gd" id="4_j7j6r"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vmvq7"]
+radius = 96.0
+height = 224.0
+
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_yy8fh")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
 [node name="MovementCollider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -121)
+shape = SubResource("CapsuleShape2D_vmvq7")
 
 [node name="HurtBoxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 collision_layer = 256
@@ -22,8 +30,6 @@ health_component = NodePath("../HealthComponent")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("3_5epwj")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
