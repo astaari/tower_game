@@ -27,7 +27,8 @@ var last_movement_direction = Vector2.ZERO
 var max_jump_count = 2
 var number_colliding_bodies = 0
 var projectile_scene : PackedScene = preload("res://scenes/player/player_projectile.tscn")
-var temporary_inventory_array: Array[int] = []
+var projectiles_active: int = 0
+var projectiles_max: int = 2
 var tooltip : Panel
 
 var _current_direction = 0
@@ -36,10 +37,7 @@ var movement_disabled : bool = false
 
 func _ready():
 	animation_tree.active = true
-	collision_area.body_entered.connect(on_body_entered)
-	collision_area.body_exited.connect(on_body_exited)
 	coyote_timer.timeout.connect(on_coyote_timer_timeout)
-	EventManager.item_picked_up.connect(on_item_picked_up)
 
 
 func _physics_process(delta: float) -> void:
@@ -68,8 +66,8 @@ func _physics_process(delta: float) -> void:
 	var direction = Vector2(Input.get_action_strength("run_right") - Input.get_action_strength("run_left"), 0.0)
 	set_animation(direction)
 	
-	if Input.is_action_just_pressed("attack") and $DiceNode.projectiles_active < $DiceNode.projectiles_max:
-		attack()
+	if Input.is_action_just_pressed("attack") and projectiles_active < projectiles_max:
+		attack(direction)
 	
 	velocity.x = direction.x * player_stats.speed
 	velocity.x = clampf(velocity.x, -MAX_SPEED, MAX_SPEED)
@@ -88,14 +86,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func attack():
-	var target_position = position
-	$DiceNode.scale.x = Vector2.RIGHT.x if target_position.x < 0 else Vector2.LEFT.x
-	var projectile = projectile_scene.instantiate()
-	projectile.direction = target_position
-	projectile.global_position = $DiceNode.global_position
-	$DiceNode.add_child(projectile)
-	$DiceNode.projectiles_active += 1
+func attack(direction: Vector2):
+	var projectile = projectile_scene.instantiate() as RigidBody2D
+	if direction.x == -1:
+		projectile.linear_velocity.x = projectile.linear_velocity.x * direction.x
+	projectile.global_position = global_position
+	projectiles_active = min(projectiles_active + 1, projectiles_max)
+	get_tree().root.add_child(projectile)
 
 
 func set_animation(direction: Vector2):
@@ -135,8 +132,6 @@ func interact():
 	
 	
 	if Input.is_action_just_pressed("interact"):
-		# HACK – Storing item_ids in an inventory array for now (may not even need this for the game jam)
-		temporary_inventory_array.append(item_closest_to_player["item_id"])
 		item_closest_to_player.queue_free()
 		for modifier in item_closest_to_player.modifiers:
 			player_stats.apply_modifier(modifier)
@@ -144,21 +139,8 @@ func interact():
 		#effects.apply_effect(item_closest_to_player.modifier)
 
 
-func on_body_entered(_other_body: Node2D):
-	number_colliding_bodies += 1
-
-
-func on_body_exited(_other_body: Node2D):
-	number_colliding_bodies -= 1
-
-
 func on_coyote_timer_timeout():
 	can_jump = false
-
-
-func on_item_picked_up(item_name: String):
-	# TODO – Do something upon item pick up
-	pass
 
 
 

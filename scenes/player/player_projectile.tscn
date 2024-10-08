@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cjuap0q4ph22y"]
 
-[ext_resource type="Script" path="res://scenes/enemies/projectile.gd" id="1_nur3m"]
+[ext_resource type="Script" path="res://scenes/player/player_projectile.gd" id="1_7svy6"]
 [ext_resource type="Texture2D" uid="uid://dgchu5p74wxc3" path="res://assets/sprites/die-projectile.png" id="2_6by7t"]
 [ext_resource type="Script" path="res://scenes/components/hit_box_component.gd" id="3_d3qk3"]
 
@@ -23,9 +23,8 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_roc03"]
-resource_name = "rotate"
-length = 0.3
-loop_mode = 1
+resource_name = "attack"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -33,7 +32,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1, 6]
@@ -42,22 +41,23 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6kcow"]
 _data = {
 "RESET": SubResource("Animation_7xbo1"),
-"rotate": SubResource("Animation_roc03")
+"attack": SubResource("Animation_roc03")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eq4qd"]
 size = Vector2(32, 32)
 
-[node name="DieProjectile" type="Node2D"]
+[node name="DieProjectile" type="RigidBody2D"]
 z_index = 100
-script = ExtResource("1_nur3m")
-speed = 100.0
+collision_layer = 2
+collision_mask = 0
+linear_velocity = Vector2(400, -500)
+angular_velocity = 6.28319
+script = ExtResource("1_7svy6")
 lifetime = 3.0
 damage = 2.0
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_157i5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -70,8 +70,8 @@ libraries = {
 }
 
 [node name="HitBoxComponent" type="Area2D" parent="."]
-collision_layer = 2048
-collision_mask = 256
+collision_layer = 512
+collision_mask = 1024
 script = ExtResource("3_d3qk3")
 damage = 2
 

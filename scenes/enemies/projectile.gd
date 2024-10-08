@@ -20,5 +20,5 @@ func _physics_process(delta : float) -> void:
 
 
 func _on_hit_box_component_body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemy"):
+	if body.is_in_group("player"):
 		queue_free() # Replace with function body.
