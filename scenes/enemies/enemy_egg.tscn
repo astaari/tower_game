@@ -36,7 +36,6 @@ _data = {
 radius = 20.025
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_teu8s"]
-radius = 211.287
 
 [node name="Enemy" instance=ExtResource("1_tjgf4")]
 collision_mask = 8
@@ -44,7 +43,15 @@ script = ExtResource("2_knqhk")
 max_move_duration = 4.0
 max_idle_duration = 2.0
 
-[node name="MovementCollider" parent="." index="0"]
+[node name="ProjSpawnPoint" type="Node2D" parent="." index="0"]
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_1sd24")
+hframes = 8
+vframes = 3
+
+[node name="MovementCollider" parent="." index="2"]
+position = Vector2(-1, -5)
 shape = SubResource("CapsuleShape2D_ptayo")
 one_way_collision = true
 
@@ -52,12 +59,7 @@ one_way_collision = true
 shape = SubResource("CircleShape2D_o0lj8")
 debug_color = Color(0.752941, 0, 0.0901961, 0.670588)
 
-[node name="Sprite2D" parent="." index="3"]
-texture = ExtResource("2_1sd24")
-hframes = 8
-vframes = 3
-
-[node name="AnimationPlayer" parent="." index="4"]
+[node name="AnimationPlayer" parent="." index="5"]
 libraries = {
 "": SubResource("AnimationLibrary_se6iu"),
 "enemy_egg_animations": ExtResource("2_xygeq")
@@ -67,9 +69,9 @@ libraries = {
 shape = SubResource("CircleShape2D_akshf")
 debug_color = Color(0, 0, 0, 0.42)
 
-[node name="PatrolTimer" type="Timer" parent="." index="6"]
+[node name="PatrolTimer" type="Timer" parent="." index="7"]
 
-[node name="Camera2D" type="Camera2D" parent="." index="7"]
+[node name="Camera2D" type="Camera2D" parent="." index="8"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox" index="0"]
 shape = SubResource("CircleShape2D_teu8s")

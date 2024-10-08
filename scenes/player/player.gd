@@ -57,7 +57,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and can_jump:
 		var jump_velocity = player_stats.jump_height_to_speed()
 		velocity.y = jump_velocity
-		print(jump_velocity)
+		#print(jump_velocity)
 		jump_count += 1
 		can_jump = !jump_count >= max_jump_count
 	if Input.is_action_pressed("down") and not is_on_floor():
@@ -77,8 +77,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x *= speed_mod.value
 	
 	_current_direction = 1.0 if velocity.x > 0.0 else -1.0 if velocity.x > 0.0 else 0.0
-	print("initial vs now : " , initial_pos, "  " , global_position)
-	print("Y-diff ", initial_pos.y-global_position.y)
+	#print("initial vs now : " , initial_pos, "  " , global_position)
+	#print("Y-diff ", initial_pos.y-global_position.y)
 	interact()
 	move_and_slide()
 
@@ -120,6 +120,8 @@ func interact():
 		# HACK – Storing item_ids in an inventory array for now (may not even need this for the game jam)
 		temporary_inventory_array.append(item_closest_to_player["item_id"])
 		item_closest_to_player.queue_free()
+		for modifier in item_closest_to_player.modifiers:
+			player_stats.apply_modifier(modifier)
 		#TODO move to appropriate location
 		#effects.apply_effect(item_closest_to_player.modifier)
 

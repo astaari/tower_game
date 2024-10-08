@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbxfeqychmiqp"]
+
+[ext_resource type="Theme" uid="uid://qb6dgmsbm5um" path="res://assets/themes/menu_theme.tres" id="1_mo71a"]
+[ext_resource type="Script" path="res://scenes/ui/tooltip.gd" id="2_rjtpu"]
+[ext_resource type="PackedScene" uid="uid://chrubemaw2guk" path="res://assets/ui/GameLabel.tscn" id="3_dpsgr"]
+
+[node name="Tooltip" type="Panel"]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 256.0
+offset_bottom = 256.0
+tooltip_text = "hello"
+theme = ExtResource("1_mo71a")
+script = ExtResource("2_rjtpu")
+
+[node name="MarginContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_mo71a")
+
+[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme = ExtResource("1_mo71a")
+
+[node name="ItemName" parent="MarginContainer" instance=ExtResource("3_dpsgr")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Hello"
+
+[node name="VSplitContainer2" type="VSplitContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_mo71a")
+
+[node name="Modifiers" type="VBoxContainer" parent="MarginContainer/VSplitContainer2"]
+unique_name_in_owner = true
+layout_mode = 2

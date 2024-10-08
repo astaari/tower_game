@@ -9,8 +9,10 @@
 
 [sub_resource type="Resource" id="Resource_1kxy2"]
 script = ExtResource("2_twhho")
-speed = 300.0
+speed = 400.0
 jump_height = 100.0
+damage = 2.0
+damage_resist = 0.0
 
 [sub_resource type="Animation" id="Animation_p7qkm"]
 length = 0.001
@@ -131,7 +133,7 @@ height = 96.0
 radius = 37.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-collision_mask = 8
+collision_mask = 72
 floor_max_angle = 1.22173
 script = ExtResource("1_negh2")
 player_stats = SubResource("Resource_1kxy2")
@@ -169,7 +171,7 @@ shape = SubResource("CapsuleShape2D_u7lm2")
 
 [node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_jq43u")]
 collision_layer = 256
-collision_mask = 516
+collision_mask = 2052
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]

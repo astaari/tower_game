@@ -51,7 +51,10 @@ var _rare_items : Array[Item] = [
 ]
 
 var _epic_items : Array[Item] = [
-	Item.new("Coin","A coin saved is a coin earned!",[Modifier.new("speed",50),Modifier.new("dash_speed",50)],6)
+	Item.new("Coin","A coin saved is a coin earned!",
+		[Modifier.new("speed",50),Modifier.new("dash_speed",50)],
+	5),
+	
 ]
 
 
@@ -63,7 +66,7 @@ const items: Array[Dictionary] = [
 	#{"name": "Bread Person", "description": "What is up with this mysterious, sentient bread?"}, 
 	#{"name": "Skullington", "description": "This skull is looking for his dad!"},
 	#{"name": "Tooth or Horn or Something", "description": "You're not quite sure what it is, but it's sharp!"},
-	{"name": "Coin", "description": "A coin saved is a coin earned!"},
+	#{"name": "Coin", "description": "A coin saved is a coin earned!"},
 	{"name": "Heart", "description": "Get this back inside your body!"},
 	{"name": "Sad Picture", "description": "Don't look at it too long, or you might start crying."},
 	{"name": "Drop of Blood", "description": "What happens when you drink it?"},

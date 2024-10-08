@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://chrubemaw2guk"]
+
+[ext_resource type="Theme" uid="uid://qb6dgmsbm5um" path="res://assets/themes/menu_theme.tres" id="1_tpv5e"]
+
+[node name="GameLabel" type="Label"]
+theme = ExtResource("1_tpv5e")
+theme_override_colors/font_color = Color(0, 0, 0, 1)

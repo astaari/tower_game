@@ -7,7 +7,7 @@ class_name RandomItem
 @export var random_items: RandomItems
 
 #TODO remove, testing purposes
-var modifier : Modifier
+var modifiers : Array[Modifier]
 var item_id : int = -1
 
 
@@ -26,7 +26,7 @@ func set_item():
 	item_id = item.sprite_index
 	%ItemLabel.text = item["name"]
 	sprite.frame = item_id
-	
+	self.modifiers = item.modifiers
 	#if item["name"] == "feather":
 	#modifier = Modifier.new()
 	#modifier.name = "speed"

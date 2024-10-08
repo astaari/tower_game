@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://qb6dgmsbm5um"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://qb6dgmsbm5um"]
 
 [ext_resource type="FontFile" uid="uid://ejkyijunr1ll" path="res://assets/fonts/arcade_regular.ttf" id="1_4uyf7"]
 [ext_resource type="StyleBox" uid="uid://dl0arq6nq5ydq" path="res://assets/themes/button_disabled.tres" id="2_i2vr5"]
@@ -9,8 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://1g3ipne3h4pn" path="res://assets/icons/circle-inverted.png" id="7_kt4fj"]
 [ext_resource type="StyleBox" uid="uid://c8ddbxr2roqkw" path="res://assets/themes/slider_general_style_box.tres" id="8_hw0rn"]
 [ext_resource type="StyleBox" uid="uid://b2vegek7io78g" path="res://assets/themes/slider_highlight_style_box.tres" id="9_aterq"]
+[ext_resource type="Texture2D" uid="uid://2vj8b8g7qdhv" path="res://assets/ui/tooltip.png" id="10_yyp7t"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vw4xe"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tgvtt"]
+texture = ExtResource("10_yyp7t")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_md1ic"]
 bg_color = Color(1, 1, 1, 1)
@@ -74,6 +78,7 @@ HSlider/styles/slider = ExtResource("8_hw0rn")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/fonts/font = ExtResource("1_4uyf7")
+Panel/styles/panel = SubResource("StyleBoxTexture_tgvtt")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_md1ic")
 VBoxContainer/constants/separation = 8
 VSlider/icons/grabber = ExtResource("6_8usky")
