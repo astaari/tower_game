@@ -14,13 +14,11 @@ const INTERACTION_RANGE = 150
 @onready var hurt_box_component: HurtBoxComponent = $HurtBoxComponent
 @onready var hurt_box_collision_shape: CollisionShape2D = $HurtBoxComponent/CollisionShape2D
 @onready var health_component : HealthComponent = $HealthComponent
+@onready var initial_pos = global_position
 @onready var effects : Effects = $Effects
 @onready var modifiers : Modifier
 
-
-
 @export var player_stats : PlayerStats = PlayerStats.new()
-
 
 var can_jump: bool = true
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -28,14 +26,14 @@ var jump_count: int = 0
 var last_movement_direction = Vector2.ZERO
 var max_jump_count = 2
 var number_colliding_bodies = 0
+var projectile_scene : PackedScene = preload("res://scenes/player/player_projectile.tscn")
 var temporary_inventory_array: Array[int] = []
+var tooltip : Panel
 
 var _current_direction = 0
 var movement_disabled : bool = false
 
-var tooltip : Panel
 
-@onready var initial_pos = global_position
 func _ready():
 	animation_tree.active = true
 	collision_area.body_entered.connect(on_body_entered)
@@ -65,9 +63,13 @@ func _physics_process(delta: float) -> void:
 		can_jump = !jump_count >= max_jump_count
 	if Input.is_action_pressed("down") and not is_on_floor():
 		velocity.y += 25
+	
 	# Left, right movement
 	var direction = Vector2(Input.get_action_strength("run_right") - Input.get_action_strength("run_left"), 0.0)
 	set_animation(direction)
+	
+	if Input.is_action_just_pressed("attack") and $DiceNode.projectiles_active < $DiceNode.projectiles_max:
+		attack()
 	
 	velocity.x = direction.x * player_stats.speed
 	velocity.x = clampf(velocity.x, -MAX_SPEED, MAX_SPEED)
@@ -84,6 +86,16 @@ func _physics_process(delta: float) -> void:
 	#print("Y-diff ", initial_pos.y-global_position.y)
 	interact()
 	move_and_slide()
+
+
+func attack():
+	var target_position = position
+	$DiceNode.scale.x = Vector2.RIGHT.x if target_position.x < 0 else Vector2.LEFT.x
+	var projectile = projectile_scene.instantiate()
+	projectile.direction = target_position
+	projectile.global_position = $DiceNode.global_position
+	$DiceNode.add_child(projectile)
+	$DiceNode.projectiles_active += 1
 
 
 func set_animation(direction: Vector2):
