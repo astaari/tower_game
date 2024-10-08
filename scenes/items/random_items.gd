@@ -19,25 +19,21 @@ func get_random_item() -> Item:
 		#epic
 		epic_count+=1
 		#print("got epic")
-		var idx = randi_range(0,len(_epic_items)-1)
-		item = _epic_items[idx]
+		item = _epic_items.pick_random()
 	elif rand <= epic_weight+rare_weight:
 		#print("got rare")
 		rare_count+=1
-		var idx = randi_range(0,len(_rare_items)-1)
-		item = _rare_items[idx]
+		item = _rare_items.pick_random()
 	else:
 		#print("got normal")
 		normal_count+=1
-		var idx = randi_range(0,len(_normal_items)-1)
-		item = _normal_items[idx]
+		item = _normal_items.pick_random()
 	print("Normal count: ",normal_count)
 	print("Rare count: ",rare_count)
 	print("Epic count: ",epic_count)
 	
 	
 	return item
-		
 
 var _normal_items : Array[Item] =[
 	Item.new("Potato Chip", "Salty, crisp, goodness", [Effect.new("health",10,0)],0),

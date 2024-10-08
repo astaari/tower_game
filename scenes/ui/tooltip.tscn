@@ -62,6 +62,7 @@ clip_text = true
 script = ExtResource("4_yuls1")
 _max_size = 16
 _current_font_size = 16
+_size_just_modified_by_autosizer = true
 _editor_defaults_set = true
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
