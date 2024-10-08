@@ -70,6 +70,7 @@ vframes = 8
 
 [node name="ItemLabel" type="Label" parent="Visuals"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
