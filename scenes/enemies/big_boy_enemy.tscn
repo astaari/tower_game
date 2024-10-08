@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvplnqtp0ws1m"]
+[gd_scene load_steps=10 format=3 uid="uid://cvplnqtp0ws1m"]
 
 [ext_resource type="PackedScene" uid="uid://bfqwv51eyfym2" path="res://scenes/enemies/enemy.tscn" id="1_0lpax"]
 [ext_resource type="Texture2D" uid="uid://m6ssipo4ilqg" path="res://assets/sprites/big_boy_enemy.png" id="2_etqhu"]
@@ -13,42 +13,136 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("Sprite2D:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(0, -135)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DetectionBox/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-211, -128)]
 }
 
 [sub_resource type="Animation" id="Animation_2ua7s"]
-resource_name = "hover"
+resource_name = "hover_left"
 length = 2.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("Sprite2D:offset")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.466667, 1, 1.5),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 10), Vector2(0, 0), Vector2(0, -10)]
+"values": [Vector2(0, -135), Vector2(0, -125), Vector2(0, -135), Vector2(0, -145)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DetectionBox/CollisionShape2D:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-211, -128)]
+}
+
+[sub_resource type="Animation" id="Animation_i017c"]
+resource_name = "hover_right"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -135), Vector2(0, -125), Vector2(0, -135), Vector2(0, -145)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DetectionBox/CollisionShape2D:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(211, -128)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_obm1l"]
 _data = {
 "RESET": SubResource("Animation_58wmh"),
-"hover": SubResource("Animation_2ua7s")
+"hover_left": SubResource("Animation_2ua7s"),
+"hover_right": SubResource("Animation_i017c")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hm6g7"]
 radius = 90.0
 height = 200.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i1u36"]
+radius = 140.0
+height = 684.33
 
 [node name="BigBoyEnemy" instance=ExtResource("1_0lpax")]
 script = ExtResource("2_lk87p")
@@ -56,6 +150,7 @@ script = ExtResource("2_lk87p")
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_etqhu")
 offset = Vector2(0, -135)
+flip_h = true
 
 [node name="HurtBoxCollider" parent="HurtBoxComponent" index="0"]
 position = Vector2(0, -128)
@@ -65,8 +160,13 @@ shape = SubResource("CapsuleShape2D_etcnj")
 libraries = {
 "": SubResource("AnimationLibrary_obm1l")
 }
-autoplay = "hover"
+autoplay = "hover_left"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent" index="0"]
 position = Vector2(0, -124)
 shape = SubResource("CapsuleShape2D_hm6g7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox" index="0"]
+position = Vector2(-211, -128)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_i1u36")
