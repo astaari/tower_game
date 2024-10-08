@@ -1,7 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://chrubemaw2guk"]
+[gd_scene load_steps=2 format=3 uid="uid://lomgcrk00tns"]
 
-[ext_resource type="Theme" uid="uid://qb6dgmsbm5um" path="res://assets/themes/menu_theme.tres" id="1_tpv5e"]
+[ext_resource type="Script" path="res://addons/GodotLabelFontAutoSizer-1.1.0_godot_4.3/addons/label_font_auto_sizer/label_auto_sizer.gd" id="1_pbcg0"]
 
-[node name="GameLabel" type="Label"]
-theme = ExtResource("1_tpv5e")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+[node name="AutoSizeLabel" type="Label"]
+custom_minimum_size = Vector2(160, 32)
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 16
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("1_pbcg0")
+_max_size = 16
+_current_font_size = 16
+_editor_defaults_set = true

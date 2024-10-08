@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4u4e8iwdxncn"]
+
+[ext_resource type="Script" path="res://addons/GodotLabelFontAutoSizer-1.1.0_godot_4.3/addons/label_font_auto_sizer/label_auto_sizer.gd" id="1_b2icw"]
+
+[node name="GameLabel" type="Label"]
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+autowrap_mode = 3
+clip_text = true
+max_lines_visible = 1
+script = ExtResource("1_b2icw")
+_max_size = 16
+_current_font_size = 16
+_editor_defaults_set = true

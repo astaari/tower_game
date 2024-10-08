@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GlobalAudio="*res://scenes/autoload/global_audio.tscn"
 EventManager="*res://scenes/autoload/event_manager.tscn"
+Game="*res://scenes/autoload/game.tscn"
 
 [display]
 
@@ -28,7 +29,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/GodotLabelFontAutoSizer-1.1.0_godot_4.3/addons/label_font_auto_sizer/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg")
 
 [global_group]
 

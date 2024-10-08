@@ -18,6 +18,7 @@ const INTERACTION_RANGE = 150
 @onready var modifiers : Modifier
 
 
+
 @export var player_stats : PlayerStats = PlayerStats.new()
 
 
@@ -31,6 +32,8 @@ var temporary_inventory_array: Array[int] = []
 
 var _current_direction = 0
 var movement_disabled : bool = false
+
+var tooltip : Panel
 
 @onready var initial_pos = global_position
 func _ready():
@@ -115,6 +118,9 @@ func interact():
 	)
 	
 	var item_closest_to_player = items[0] as RandomItem
+	var item_distance = item_closest_to_player.global_position.distance_squared_to(global_position)
+	
+	
 	
 	if Input.is_action_just_pressed("interact"):
 		# HACK – Storing item_ids in an inventory array for now (may not even need this for the game jam)

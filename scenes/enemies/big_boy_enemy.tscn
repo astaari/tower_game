@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvplnqtp0ws1m"]
+[gd_scene load_steps=11 format=3 uid="uid://cvplnqtp0ws1m"]
 
 [ext_resource type="PackedScene" uid="uid://bfqwv51eyfym2" path="res://scenes/enemies/enemy.tscn" id="1_0lpax"]
 [ext_resource type="Texture2D" uid="uid://m6ssipo4ilqg" path="res://assets/sprites/big_boy_enemy.png" id="2_etqhu"]
