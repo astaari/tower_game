@@ -12,6 +12,8 @@ func _ready() -> void:
 	set_shader_parameters()
 
 
+
+
 func set_shader_parameters() -> void:
 	var color_shader_rect = color_swap_canvas_layer.get_child(0) as ColorRect
 	if color_shader_rect == null:

@@ -59,6 +59,9 @@ one_way_collision = true
 shape = SubResource("CircleShape2D_o0lj8")
 debug_color = Color(0.752941, 0, 0.0901961, 0.670588)
 
+[node name="HealthComponent" parent="." index="4"]
+max_health = 12.0
+
 [node name="AnimationPlayer" parent="." index="5"]
 libraries = {
 "": SubResource("AnimationLibrary_se6iu"),

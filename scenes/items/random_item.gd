@@ -41,8 +41,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		tooltip = Game.tooltip_scene.instantiate() as Tooltip
 		tooltip.item = self.item
-		tooltip.position.y+=-300
+		tooltip.position.y+=-200
 		add_child(tooltip)
+		
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
