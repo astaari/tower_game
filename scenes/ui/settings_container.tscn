@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://de4ywqpi2apyu"]
+
+[ext_resource type="Script" path="res://scenes/ui/settings.gd" id="1_1k8e3"]
+[ext_resource type="LabelSettings" uid="uid://b1p4n4pnlwjq3" path="res://assets/themes/menu_title_label.tres" id="1_pyxq2"]
+[ext_resource type="Theme" uid="uid://qb6dgmsbm5um" path="res://assets/themes/menu_theme.tres" id="2_jjsq2"]
+[ext_resource type="LabelSettings" uid="uid://6cmppknv3tn2" path="res://assets/themes/title_description_label.tres" id="3_eh818"]
+[ext_resource type="PackedScene" uid="uid://qg3ytjovh6is" path="res://scenes/ui/audio_settings.tscn" id="5_b54wb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wqyln"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cb4ke"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="SettingsContainer" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_jjsq2")
+script = ExtResource("1_1k8e3")
+
+[node name="SettingsRows" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+
+[node name="SettingsLabel" type="Label" parent="SettingsRows" groups=["recolor"]]
+layout_mode = 2
+text = "Settings"
+label_settings = ExtResource("1_pyxq2")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="SettingsRows"]
+layout_mode = 2
+theme_override_constants/separation = 64
+theme_override_styles/separator = SubResource("StyleBoxEmpty_wqyln")
+
+[node name="AudioLabel" type="Label" parent="SettingsRows" groups=["recolor"]]
+layout_mode = 2
+theme = ExtResource("2_jjsq2")
+text = "Audio"
+label_settings = ExtResource("3_eh818")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="SettingsRows"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cb4ke")
+
+[node name="AudioSettings" parent="SettingsRows/Panel" instance=ExtResource("5_b54wb")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.5
+offset_top = -50.5
+offset_right = 250.5
+offset_bottom = 50.5
+
+[node name="SettingsBackButton" type="Button" parent="SettingsRows" groups=["recolor"]]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_jjsq2")
+text = "Back"

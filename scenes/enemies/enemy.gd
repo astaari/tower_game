@@ -3,6 +3,8 @@ enum EnemyState{PATROL,IDLE,PREPARE,ATTACK}
 
 @export var  current_state : EnemyState = EnemyState.PATROL
 @export var score : float = 100
+var jump_attempts : int = 0
+var max_jump_attempts : int = 3
 
 var current_target : CharacterBody2D
 
@@ -21,17 +23,12 @@ func _movement(delta : float) -> Vector2:
 
 func _physics_process(delta: float) -> void:
 	
-	#if current_state == EnemyState.PATROL:
-		#movement = _patrol(delta)
-	#elif current_state == EnemyState.PREPARE:
-		#movement = _prepare(delta)
-	#elif current_state == EnemyState.ATTACK:
-		#movement = _attack(delta,current_target)
 	var movement = _movement(delta)
 	
 	#print(velocity)
-	if is_on_wall() and is_on_floor():
+	if is_on_wall() and is_on_floor() and jump_attempts < max_jump_attempts:
 		movement.y = JUMP_VELOCITY
+		jump_attempts+=1
 		#velocity.x = 0
 		#velocity.x /= 2
 		#print(velocity, " before")

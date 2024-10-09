@@ -17,16 +17,19 @@ const player_stats : Array[String] = [
 	"damage_resist",
 	"projectiles_max",
 	"character_size",
-	"attack_cooldown",
+	"attack_speed",
 ]
 
 func get_player_stats() -> String:
-	return str(player.player_stats)
+	if player:
+		return str(player.player_stats)
+	return "Unavailable"
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_released("pause"):
 		paused = not paused
 		Engine.time_scale = _time_scale if not paused else 0.0
 		var pause_menu  = get_tree().get_first_node_in_group("pause")
-		pause_menu.visible = not pause_menu.visible
+		if pause_menu:
+			pause_menu.visible = not pause_menu.visible
 		

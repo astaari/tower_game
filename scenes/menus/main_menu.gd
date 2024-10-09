@@ -11,11 +11,8 @@ extends CanvasLayer
 @onready var settings_button: Button = %SettingsButton
 @onready var quit_button: Button = %QuitButton
 
-@onready var effects_slider: HSlider = %EffectsSlider
-@onready var music_slider: HSlider = %MusicSlider
-@onready var menu_sounds_slider: HSlider = %MenuSoundsSlider
-@onready var master_slider: HSlider = %MasterSlider
-@onready var settings_back_button: Button = %SettingsBackButton
+@onready var settings_container : Settings = %SettingsContainer
+
 
 
 func _ready() -> void:
@@ -24,23 +21,9 @@ func _ready() -> void:
 	settings_button.pressed.connect(_on_settings_button_pressed)
 	quit_button.pressed.connect(_on_quit_button_pressed)
 	
-	effects_slider.value_changed.connect(_on_effects_slider_changed)
-	music_slider.value_changed.connect(_on_music_slider_changed)
-	menu_sounds_slider.value_changed.connect(_on_menu_sounds_slider_changed)
-	master_slider.value_changed.connect(_on_master_slider_changed)
-	
-	settings_back_button.pressed.connect(_on_back_button_pressed)
+	settings_container.settings_back_button.visible=true
+	settings_container.settings_back_button.pressed.connect(_on_back_button_pressed)
 
-
-
-func update_audio_bus(audio_bus_name: String, value: float) -> void:
-	var audio_bus_index: int = AudioServer.get_bus_index(audio_bus_name)
-	
-	if audio_bus_index == -1:
-		print("Audio Bus Not Found: " + audio_bus_name)
-		return
-	
-	AudioServer.set_bus_volume_db(audio_bus_index, linear_to_db(value))
 
 
 func set_label_text() -> void:
@@ -64,20 +47,7 @@ func _on_back_button_pressed() -> void:
 	_toggle_menu_containers("title")
 
 
-func _on_effects_slider_changed(value: float) -> void:
-	update_audio_bus("Effects", value)
 
-
-func _on_master_slider_changed(value: float) -> void:
-	update_audio_bus("Master", value)
-
-
-func _on_menu_sounds_slider_changed(value: float) -> void:
-	update_audio_bus("Menu", value)
-
-
-func _on_music_slider_changed(value: float) -> void:
-	update_audio_bus("Music", value)
 
 
 func _on_start_button_pressed() -> void:

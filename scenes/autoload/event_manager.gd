@@ -6,6 +6,10 @@ signal item_picked_up()
 var current_level: int = -1
 
 
+func to_main_menu() ->void:
+	
+	emit_level_changed()
+
 func emit_level_changed():
 	current_level += 1
 	level_changed.emit()

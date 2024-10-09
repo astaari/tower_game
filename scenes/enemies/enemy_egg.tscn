@@ -39,9 +39,8 @@ radius = 20.025
 
 [node name="Enemy" instance=ExtResource("1_tjgf4")]
 script = ExtResource("2_knqhk")
-max_move_duration = null
-max_idle_duration = null
-current_state = null
+max_move_duration = 4.0
+max_idle_duration = 2.0
 
 [node name="ProjSpawnPoint" type="Node2D" parent="." index="0"]
 
@@ -73,8 +72,6 @@ shape = SubResource("CircleShape2D_akshf")
 debug_color = Color(0, 0, 0, 0.42)
 
 [node name="PatrolTimer" type="Timer" parent="." index="7"]
-
-[node name="Camera2D" type="Camera2D" parent="." index="8"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox" index="0"]
 shape = SubResource("CircleShape2D_teu8s")

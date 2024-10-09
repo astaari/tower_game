@@ -20,7 +20,7 @@ func _ready():
 	current_health = max_health
 
 
-func damage(damage_amount: float, knockback: float):
+func damage(damage_amount: float, knockback: float = 0):
 	if damage_immune:
 		return
 	damage_amount*=(1-damage_resist)

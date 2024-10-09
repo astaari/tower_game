@@ -71,7 +71,7 @@ var _rare_items : Array[Item] = [
 
 var _epic_items : Array[Item] = [
 	Item.new("Coin","A coin saved is a coin earned!",
-		[Modifier.new("speed",50),Modifier.new("damage_resist",0.03),Modifier.new("attack_cooldown",-0.125)],
+		[Modifier.new("speed",50),Modifier.new("damage_resist",0.03),Modifier.new("attack_speed",-0.125)],
 	5),
 	Item.new("Funshroom","Eating this mushroom will make you see the world differently!",
 		[Modifier.new("speed",75),Modifier.new("damage",1.5),Modifier.new("jump_height",25)],

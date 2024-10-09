@@ -21,6 +21,7 @@ const INTERACTION_RANGE = 150
 @export var player_stats : PlayerStats = PlayerStats.new()
 
 var can_jump: bool = true
+var can_attack : bool = true
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var jump_count: int = 0
 var last_movement_direction = Vector2.ZERO
@@ -34,10 +35,20 @@ var _current_direction = 0
 var movement_disabled : bool = false
 
 
+func _attack_timer_timeout():
+	can_attack = true
+
 func _ready():
 	player_stats.register(self)
 	animation_tree.active = true
 	coyote_timer.timeout.connect(on_coyote_timer_timeout)
+	$AttackTimer.timeout.connect(_attack_timer_timeout)
+	$AttackTimer.wait_time = player_stats.attack_speed
+	health_component.died.connect(func():
+		#EventManager.to_main_menu()
+		EventManager.current_level=-2
+		EventManager.emit_level_changed()
+		)
 	print(str(player_stats))
 
 func _exit_tree() -> void:
@@ -75,8 +86,11 @@ func _physics_process(delta: float) -> void:
 	var direction = Vector2(Input.get_action_strength("run_right") - Input.get_action_strength("run_left"), 0.0)
 	set_animation(direction)
 	
-	if Input.is_action_just_pressed("attack") and projectiles_active < player_stats.projectiles_max:
-		attack(direction)
+	if Input.is_action_pressed("attack"):
+		var attack_dir = global_position.direction_to(get_global_mouse_position())
+		attack_dir.x = -1 if attack_dir.x < 0 else 1
+		print(attack_dir)
+		attack(attack_dir)
 	
 	velocity.x = direction.x * player_stats.speed
 	velocity.x = clampf(velocity.x, -MAX_SPEED, MAX_SPEED)
@@ -98,15 +112,18 @@ func _physics_process(delta: float) -> void:
 
 
 func attack(direction: Vector2):
+	if not can_attack:
+		return
 	var projectile = projectile_scene.instantiate() as RigidBody2D
 	if direction.x == -1:
 		projectile.linear_velocity.x = projectile.linear_velocity.x * direction.x
 	projectile.global_position = global_position
 	projectiles_active = min(projectiles_active + 1, player_stats.projectiles_max)
 	projectile.damage = player_stats.damage
-	projectile.lifetime = player_stats.attack_cooldown
 	
 	get_tree().root.add_child(projectile)
+	can_attack=false
+	$AttackTimer.start()
 
 
 func set_animation(direction: Vector2):

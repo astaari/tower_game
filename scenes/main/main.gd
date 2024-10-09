@@ -16,6 +16,8 @@ func get_next_level_scene_path() -> String:
 	if EventManager.current_level == -1:
 		return main_menu_scene_path
 	var scene_path = str(scene_path_prefix, EventManager.current_level, ".tscn")
+	if not FileAccess.file_exists(scene_path):
+		pass
 	return scene_path if FileAccess.file_exists(scene_path) else end_game_scene_path
 
 

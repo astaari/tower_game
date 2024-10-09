@@ -1,14 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfqwv51eyfym2"]
+[gd_scene load_steps=6 format=3 uid="uid://bfqwv51eyfym2"]
 
 [ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_yy8fh"]
 [ext_resource type="Script" path="res://scenes/components/hurt_box_component.gd" id="2_tdb04"]
 [ext_resource type="Script" path="res://scenes/components/health_component.gd" id="3_5epwj"]
 [ext_resource type="Script" path="res://scenes/components/hit_box_component.gd" id="4_j7j6r"]
 [ext_resource type="Script" path="res://scenes/enemies/detection_box.gd" id="5_wkhex"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vmvq7"]
-radius = 96.0
-height = 224.0
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
@@ -19,7 +15,6 @@ script = ExtResource("1_yy8fh")
 
 [node name="MovementCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0, -121)
-shape = SubResource("CapsuleShape2D_vmvq7")
 
 [node name="HurtBoxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 collision_layer = 1024

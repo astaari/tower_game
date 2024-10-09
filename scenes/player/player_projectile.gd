@@ -3,8 +3,8 @@ class_name PlayerProjectile extends RigidBody2D
 @onready var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var speed : float = 200
 @export var direction = Vector2.ZERO
-@export var lifetime : float = 3.5
-@export var damage : float = 10
+@export var lifetime : float = 2.0
+@export var damage : float = 1
 
 func _ready() -> void:
 	var toss_value: int = randi_range(1, 6)

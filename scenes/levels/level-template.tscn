@@ -2,17 +2,16 @@
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_pdbx1"]
 [ext_resource type="PackedScene" uid="uid://cegmmbnx2nejg" path="res://scenes/game_camera/game_camera.tscn" id="2_umaoh"]
-[ext_resource type="Resource" uid="uid://bctsdjoi1iibc" path="res://scenes/items/random_colors.tres" id="2_xg4p4"]
 [ext_resource type="TileSet" uid="uid://b0qs5ymyd8j48" path="res://assets/tilesets/bw-tileset.tres" id="4_kysyd"]
 [ext_resource type="PackedScene" uid="uid://7o3yw1nov7qk" path="res://scenes/player/player.tscn" id="6_w3idt"]
 [ext_resource type="PackedScene" uid="uid://b76psagt11xrt" path="res://scenes/ui/game_ui.tscn" id="7_bf8jw"]
 [ext_resource type="PackedScene" uid="uid://do3pox5cyduq3" path="res://assets/shaders/color_swap_shader_scene.tscn" id="8_brgcj"]
+[ext_resource type="PackedScene" uid="uid://bj65xcvqsyr7s" path="res://scenes/environment/parallax_background.tscn" id="8_slee3"]
 [ext_resource type="PackedScene" uid="uid://5g0snpn01gj1" path="res://scenes/environment/level_gate.tscn" id="9_g4hyk"]
 
 [node name="Level" type="Node"]
 script = ExtResource("1_pdbx1")
 level = 1
-random_colors = ExtResource("2_xg4p4")
 
 [node name="GameCamera" parent="." instance=ExtResource("2_umaoh")]
 
@@ -32,3 +31,5 @@ position = Vector2(-1104, 66)
 position = Vector2(1041, -159)
 
 [node name="Enemies" type="Node" parent="."]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("8_slee3")]

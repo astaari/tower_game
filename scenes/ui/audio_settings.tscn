@@ -1,0 +1,87 @@
+[gd_scene load_steps=3 format=3 uid="uid://qg3ytjovh6is"]
+
+[ext_resource type="Script" path="res://scenes/ui/audio_settings.gd" id="1_01bvo"]
+[ext_resource type="Theme" uid="uid://qb6dgmsbm5um" path="res://assets/themes/menu_theme.tres" id="1_tdp7d"]
+
+[node name="AudioSettings" type="GridContainer"]
+offset_top = 32.0
+offset_right = 501.0
+offset_bottom = 133.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 32
+theme_override_constants/v_separation = 11
+columns = 2
+script = ExtResource("1_01bvo")
+
+[node name="EffectsLabel" type="Label" parent="." groups=["recolor"]]
+layout_mode = 2
+theme = ExtResource("1_tdp7d")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "Sound Effects"
+vertical_alignment = 1
+
+[node name="EffectsSlider" type="HSlider" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("1_tdp7d")
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MusicLabel" type="Label" parent="." groups=["recolor"]]
+layout_mode = 2
+theme = ExtResource("1_tdp7d")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "Music"
+vertical_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("1_tdp7d")
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MenuSoundsLabel" type="Label" parent="." groups=["recolor"]]
+layout_mode = 2
+theme = ExtResource("1_tdp7d")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "Menu Sounds"
+vertical_alignment = 1
+
+[node name="MenuSoundsSlider" type="HSlider" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("1_tdp7d")
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MasterLabel" type="Label" parent="." groups=["recolor"]]
+layout_mode = 2
+theme = ExtResource("1_tdp7d")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "Master"
+vertical_alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("1_tdp7d")
+max_value = 1.0
+step = 0.01
+value = 1.0

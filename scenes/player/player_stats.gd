@@ -9,15 +9,17 @@ class_name PlayerStats extends Resource
 		damage_resist = clampf(value,-0.25,0.75)
 		if _player:
 			_player.health_component.damage_resist = damage_resist
-@export var projectiles_max: int = 2
+@export var projectiles_max: int = 500
 @export var character_size : float = 1.0 :
 	set(value):
 		character_size = clampf(value,0.25,2.0)
 		if _player:
 			_player.scale = Vector2(character_size,character_size).clamp(Vector2(0.25,0.25),Vector2(2.0,2.0))
-@export var attack_cooldown = 3.5:
+@export var attack_speed = 3.5:
 	set(value):
-		attack_cooldown = clampf(value,1.0,5.0)
+		attack_speed = clampf(value,0.2,5.0)
+		if _player:
+			_player.get_node("AttackTimer").wait_time = attack_speed
 var _player : Player
 
 

@@ -13,9 +13,9 @@ speed = 400.0
 jump_height = 100.0
 damage = 2.0
 damage_resist = 0.0
-projectiles_max = 2
+projectiles_max = 500
 character_size = 1.0
-attack_cooldown = 3.5
+attack_speed = 0.5
 
 [sub_resource type="Animation" id="Animation_p7qkm"]
 length = 0.001
@@ -186,5 +186,8 @@ texture = ExtResource("2_5neol")
 hframes = 11
 vframes = 6
 frame = 44
+
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="body_shape_entered" from="HurtBoxComponent" to="." method="_on_hurt_box_component_body_shape_entered"]
