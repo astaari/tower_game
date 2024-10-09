@@ -43,36 +43,65 @@ var _normal_items : Array[Item] =[
 	Item.new("Potato Chip", "Salty, crisp, goodness", [Effect.new("health",10,0)],0),
 	Item.new("Skullington","This skull is looking for his dad!", [Modifier.new("jump",-10),Modifier.new("speed",10)],3),
 	Item.new("Tooth or Horn or Something","You're not quite sure what it is, but it's sharp!",[Modifier.new("damage",1)],4),
+	Item.new("Heart","Get this back inside your body!",[Modifier.new("max_health",10)],6),
+	Item.new("Sad Picture","Don't look at it too long, or you might start crying.",[Modifier.new("damage_resist",0.01),Modifier.new("max_health",-10)],7),
+	#Item.new("Key","This opens a locked something-or-other!",[Modifier.new("damage",0.5)],11),
+	#Item.new(),
+	#Item.new(),
+	#Item.new(),
+	#Item.new(),
+	#Item.new(),
+	#Item.new(),
+	#Item.new(),
+	
+	
+	
 ]
 
 var _rare_items : Array[Item] = [
 	Item.new("Bobby","Won't someone be his friend?", [Modifier.new("speed",50),Modifier.new("damage",1.25)],1),
 	Item.new("Bread Person", "What is up with this mysterious, sentient bread?",[Modifier.new("max_health",25)],2),
+	Item.new("Drop of Blood","What happens when you drink it?",[Modifier.new("max_health",20),Modifier.new("health",20)],8),
+	Item.new("Giant Coffee Bean", "Did you know that coffee beans are fruits?",[Modifier.new("health",40)],12),
+	#Item.new(),
+	#Item.new(),
+	#Item.new(),
+	#Item.new(),
+	#Item.new(),
+	#Item.new(),
+	
 ]
 
 var _epic_items : Array[Item] = [
 	Item.new("Coin","A coin saved is a coin earned!",
 		[Modifier.new("speed",50),Modifier.new("dash_speed",50)],
 	5),
+	Item.new("Funshroom","Eating this mushroom will make you see the world differently!",
+		[Modifier.new("speed",75),Modifier.new("damage",1.5),Modifier.new("jump_height",25)],
+	9),
+	Item.new("Spotshroom","They say a mean, old dog is looking for these!",
+		[Modifier.new("speed",75),Modifier.new("character_size",-10)],
+	10),
+	#Item.new(),
+	#Item.new(),
+	#Item.new(),
 	
 ]
 
 
 const items: Array[Dictionary] = [
 	#{"name": "Potato Chip", "description": "Salty, crispy, goodness."},
-	
 	#{"name": "Bobby", "description": "Won't someone be his friend?"},
-	
 	#{"name": "Bread Person", "description": "What is up with this mysterious, sentient bread?"}, 
 	#{"name": "Skullington", "description": "This skull is looking for his dad!"},
 	#{"name": "Tooth or Horn or Something", "description": "You're not quite sure what it is, but it's sharp!"},
 	#{"name": "Coin", "description": "A coin saved is a coin earned!"},
-	{"name": "Heart", "description": "Get this back inside your body!"},
-	{"name": "Sad Picture", "description": "Don't look at it too long, or you might start crying."},
-	{"name": "Drop of Blood", "description": "What happens when you drink it?"},
-	{"name": "Funshroom", "description": "Eating this mushroom will make you see the world differently!"},
-	{"name": "Spotshroom", "description": "They say a mean, old dog is looking for these!"},
-	{"name": "Key", "description": "This opens a locked something-or-other!"},
+	#{"name": "Heart", "description": "Get this back inside your body!"},
+	#{"name": "Sad Picture", "description": "Don't look at it too long, or you might start crying."},
+	#{"name": "Drop of Blood", "description": "What happens when you drink it?"},
+	#{"name": "Funshroom", "description": "Eating this mushroom will make you see the world differently!"},
+	#{"name": "Spotshroom", "description": "They say a mean, old dog is looking for these!"},
+	#{"name": "Key", "description": "This opens a locked something-or-other!"},
 	{"name": "Giant Coffee Bean", "description": "Did you know that coffee beans are fruits?"},
 	{"name": "Old Tin Can", "description": "Kick that thing!"},
 	{"name": "Grandma's Ring", "description": "She's been looking all over for that!"},

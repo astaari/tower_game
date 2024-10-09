@@ -3,8 +3,14 @@ class_name HealthComponent
 
 signal died
 signal health_changed(current)
+signal max_health_changed(max_health)
 
-@export var max_health: float = 100
+@export var max_health: float = 100 :
+	set(val):
+		max_health=val
+		max_health_changed.emit(val)
+	get():
+		return max_health
 var current_health : float 
 var damage_immune : bool = false
 @export var immune_time : float = 0.75

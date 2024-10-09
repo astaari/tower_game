@@ -37,12 +37,16 @@ var tooltip : Panel
 
 @onready var initial_pos = global_position
 func _ready():
+	player_stats.register(self)
 	animation_tree.active = true
 	collision_area.body_entered.connect(on_body_entered)
 	collision_area.body_exited.connect(on_body_exited)
 	coyote_timer.timeout.connect(on_coyote_timer_timeout)
 	EventManager.item_picked_up.connect(on_item_picked_up)
 
+func _exit_tree() -> void:
+	player_stats.unregister()
+	
 
 func _physics_process(delta: float) -> void:
 	# Reset jump flags when on the floor, else apply gravity

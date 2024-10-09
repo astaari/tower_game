@@ -17,9 +17,9 @@ func _ready() -> void:
 		progress_bar.max_value = health_component.max_health
 		progress_bar.value = health_component.current_health
 		health_component.health_changed.connect(_on_health_changed)
+		health_component.max_health_changed.connect(_on_max_health_changed)
 
-func _on_health_changed(value):
-	progress_bar.value = value
+func _update():
 	var percent : float = health_component.percent_remaining()
 	if percent > 0.66:
 		progress_bar.texture_over = overlays["full"]
@@ -27,8 +27,18 @@ func _on_health_changed(value):
 		progress_bar.texture_over = overlays["half"]
 	else:
 		progress_bar.texture_over = overlays["low"]
+
+func _on_health_changed(value):
+	progress_bar.value = value
+	_update()
+	%Label.text = str(value)+"/"+str(health_component.max_health)
 	
+func _on_max_health_changed(value : float)-> void:
+	progress_bar.max_value = value
+	_update()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if health_component:
+		%Label.text = str(health_component.current_health)+"/"+str(health_component.max_health)
+
 	

@@ -11,7 +11,7 @@ var sprite_index : int = 0
 #static func create(name : String, description : String, effects : Array[Modifier],sprite_index : int) -> Item:
 	#return Item.new(name,description,effects,sprite_index)
 
-func _init(name : String, description : String, modifiers : Array[Modifier],sprite_index : int, mod_type :ModType = ModType.ADDITIVE) -> void:
+func _init(name : String = "", description : String = "", modifiers : Array[Modifier] = [],sprite_index : int = 0, mod_type :ModType = ModType.ADDITIVE) -> void:
 	self.name = name
 	self.description=description
 	self.modifiers = modifiers
