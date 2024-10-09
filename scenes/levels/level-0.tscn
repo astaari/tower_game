@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://dg3gfe4p2wtap"]
+[gd_scene load_steps=13 format=4 uid="uid://dg3gfe4p2wtap"]
 
 [ext_resource type="PackedScene" uid="uid://cegmmbnx2nejg" path="res://scenes/game_camera/game_camera.tscn" id="1_sokj2"]
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_yyhii"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://5g0snpn01gj1" path="res://scenes/environment/level_gate.tscn" id="8_k8q8h"]
 [ext_resource type="PackedScene" uid="uid://bq3fmclbwhilv" path="res://scenes/enemies/enemy_egg.tscn" id="9_cwqpc"]
 [ext_resource type="PackedScene" uid="uid://cvplnqtp0ws1m" path="res://scenes/enemies/big_boy_enemy.tscn" id="11_nbfsj"]
+[ext_resource type="PackedScene" uid="uid://cjpugvxgnbepr" path="res://scenes/ui/pause_menu.tscn" id="12_l5jw0"]
 
 [node name="Level" type="Node"]
 script = ExtResource("1_yyhii")
@@ -76,3 +77,6 @@ position = Vector2(-495, -17)
 z_index = 2
 position = Vector2(-2, -56)
 collision_mask = 0
+
+[node name="PauseMenu" parent="." groups=["pause"] instance=ExtResource("12_l5jw0")]
+visible = false

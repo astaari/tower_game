@@ -80,13 +80,15 @@ func _physics_process(delta: float) -> void:
 	
 	velocity.x = direction.x * player_stats.speed
 	velocity.x = clampf(velocity.x, -MAX_SPEED, MAX_SPEED)
-	var slow_mod = effects.get_effect("slow") as Effect
-	var speed_mod = effects.get_effect("speed") as Effect
-	#print(slow_mod)
-	if slow_mod:
-		velocity.x *= slow_mod.value
-	if speed_mod:
-		velocity.x *= speed_mod.value
+	
+	#TODO Make sure effects from tiles don't do anything
+	#var slow_mod = effects.get_effect("slow") as Effect
+	#var speed_mod = effects.get_effect("speed") as Effect
+	##print(slow_mod)
+	#if slow_mod:
+		#velocity.x *= slow_mod.value
+	#if speed_mod:
+		#velocity.x *= speed_mod.value
 	
 	_current_direction = 1.0 if velocity.x > 0.0 else -1.0 if velocity.x > 0.0 else 0.0
 	#print("initial vs now : " , initial_pos, "  " , global_position)

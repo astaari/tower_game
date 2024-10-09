@@ -2,13 +2,17 @@ class_name Enemy extends CharacterBody2D
 enum EnemyState{PATROL,IDLE,PREPARE,ATTACK}
 
 @export var  current_state : EnemyState = EnemyState.PATROL
+@export var score : float = 100
 
 var current_target : CharacterBody2D
 
 const SPEED = 200.0
 const JUMP_VELOCITY = -400.0
 
-
+func _exit_tree() -> void:
+	if $HealthComponent.current_health <= 0:
+		Game.score+=score
+		
 func _draw_enemy():
 	pass
 

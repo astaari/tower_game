@@ -30,8 +30,11 @@ func unregister():
 
 func _to_string() -> String:
 	var str : String = "Player Stats: \n"
+	if _player:
+		str += "\t Max Health : %.2f\n" % _player.health_component.max_health
 	for prop in Game.player_stats:
 		str += "\t" + prop.replace("_"," ").capitalize() + " : " + str(self.get(prop)) + "\n"
+		
 	return str
 
 
@@ -51,7 +54,8 @@ func apply_modifier(modifier : Modifier):
 			var health = _player.get_node("HealthComponent") as HealthComponent
 			if modifier.property_name=="max_health":
 				health.max_health += modifier.value
-				health.heal(modifier.value)
+				if modifier.value > 0:
+					health.heal(modifier.value)
 			else:
 				health.heal(modifier.value)
 			

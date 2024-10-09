@@ -38,11 +38,10 @@ radius = 20.025
 [sub_resource type="CircleShape2D" id="CircleShape2D_teu8s"]
 
 [node name="Enemy" instance=ExtResource("1_tjgf4")]
-collision_mask = 8
 script = ExtResource("2_knqhk")
-max_move_duration = 4.0
-max_idle_duration = 2.0
-score = 100.0
+max_move_duration = null
+max_idle_duration = null
+current_state = null
 
 [node name="ProjSpawnPoint" type="Node2D" parent="." index="0"]
 

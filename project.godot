@@ -36,6 +36,7 @@ enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/
 player=""
 item=""
 enemy=""
+pause=""
 
 [input]
 
