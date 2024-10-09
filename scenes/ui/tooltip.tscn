@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bbxfeqychmiqp"]
+[gd_scene load_steps=10 format=3 uid="uid://bbxfeqychmiqp"]
 
 [ext_resource type="Theme" uid="uid://qb6dgmsbm5um" path="res://assets/themes/menu_theme.tres" id="1_mo71a"]
 [ext_resource type="Script" path="res://scenes/ui/tooltip.gd" id="2_rjtpu"]
@@ -18,6 +18,15 @@ value = 3.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_unwlu"]
 font = ExtResource("4_gxnq1")
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="LabelSettings" id="LabelSettings_abxoa"]
+font = ExtResource("4_gxnq1")
+font_size = 13
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 4
@@ -59,11 +68,18 @@ theme_override_font_sizes/font_size = 16
 label_settings = SubResource("LabelSettings_unwlu")
 autowrap_mode = 3
 clip_text = true
+max_lines_visible = 1
 script = ExtResource("4_yuls1")
 _max_size = 16
 _current_font_size = 16
 _size_just_modified_by_autosizer = true
 _editor_defaults_set = true
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer"]
+custom_minimum_size = Vector2(200, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
 custom_minimum_size = Vector2(200, 0)
@@ -82,15 +98,30 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer"]
+[node name="MarginContainer2" type="HFlowContainer" parent="MarginContainer"]
 custom_minimum_size = Vector2(160, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
-[node name="Label" type="Label" parent="MarginContainer/MarginContainer2"]
-custom_minimum_size = Vector2(160, 16)
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/MarginContainer2"]
+custom_minimum_size = Vector2(200, 32)
 layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label2" type="Label" parent="MarginContainer/MarginContainer2"]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 10
 text = "Press E to take"
+label_settings = SubResource("LabelSettings_abxoa")
+horizontal_alignment = 1
+autowrap_mode = 3
+clip_text = true
+max_lines_visible = 1
+script = ExtResource("4_yuls1")
+_max_size = 16
+_current_font_size = 13
+_editor_defaults_set = true

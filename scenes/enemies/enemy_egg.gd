@@ -2,6 +2,7 @@ extends Enemy
 @onready var patrol_timer : Timer = $PatrolTimer
 @export_range(1,4) var max_move_duration : float = 4
 @export_range(1,2) var max_idle_duration : float = 2.0
+@export var score : float = 100
 
 var min_range = 200
 var max_range = 400

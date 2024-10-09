@@ -4,8 +4,20 @@ class_name PlayerStats extends Resource
 @export var speed : float = 300
 @export var jump_height : float = 100
 @export var damage : float = 2.0
-@export var damage_resist : float = 0.0
-
+@export var damage_resist : float = 0.0 :
+	set(value):
+		damage_resist = clampf(value,-0.25,0.75)
+		if _player:
+			_player.health_component.damage_resist = damage_resist
+@export var projectiles_max: int = 2
+@export var character_size : float = 1.0 :
+	set(value):
+		character_size = clampf(value,0.25,2.0)
+		if _player:
+			_player.scale = Vector2(character_size,character_size).clamp(Vector2(0.25,0.25),Vector2(2.0,2.0))
+@export var attack_cooldown = 3.5:
+	set(value):
+		attack_cooldown = clampf(value,1.0,5.0)
 var _player : Player
 
 
@@ -16,6 +28,11 @@ func unregister():
 	_player = null
 
 
+func _to_string() -> String:
+	var str : String = "Player Stats: \n"
+	for prop in Game.player_stats:
+		str += "\t" + prop.replace("_"," ").capitalize() + " : " + str(self.get(prop)) + "\n"
+	return str
 
 
 func jump_height_to_speed() -> float:

@@ -5,6 +5,7 @@ class_name RandomItems
 @export var normal_weight = 10000
 @export var rare_weight = 4000
 @export var epic_weight = 1500
+
 var normal_count = 0
 var rare_count = 0
 var epic_count = 0
@@ -70,13 +71,13 @@ var _rare_items : Array[Item] = [
 
 var _epic_items : Array[Item] = [
 	Item.new("Coin","A coin saved is a coin earned!",
-		[Modifier.new("speed",50),Modifier.new("dash_speed",50)],
+		[Modifier.new("speed",50),Modifier.new("damage_resist",0.03),Modifier.new("attack_cooldown",-0.125)],
 	5),
 	Item.new("Funshroom","Eating this mushroom will make you see the world differently!",
 		[Modifier.new("speed",75),Modifier.new("damage",1.5),Modifier.new("jump_height",25)],
 	9),
 	Item.new("Spotshroom","They say a mean, old dog is looking for these!",
-		[Modifier.new("speed",75),Modifier.new("character_size",-10)],
+		[Modifier.new("speed",75),Modifier.new("character_size",-0.1)],
 	10),
 	#Item.new(),
 	#Item.new(),
@@ -98,7 +99,7 @@ const items: Array[Dictionary] = [
 	#{"name": "Funshroom", "description": "Eating this mushroom will make you see the world differently!"},
 	#{"name": "Spotshroom", "description": "They say a mean, old dog is looking for these!"},
 	#{"name": "Key", "description": "This opens a locked something-or-other!"},
-	{"name": "Giant Coffee Bean", "description": "Did you know that coffee beans are fruits?"},
+	#{"name": "Giant Coffee Bean", "description": "Did you know that coffee beans are fruits?"},
 	{"name": "Old Tin Can", "description": "Kick that thing!"},
 	{"name": "Grandma's Ring", "description": "She's been looking all over for that!"},
 	{"name": "Glass of Milk", "description": "Whether it's half empty or half full, this glass has milk in it."},

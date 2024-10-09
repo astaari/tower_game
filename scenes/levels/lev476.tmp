@@ -74,5 +74,3 @@ position = Vector2(-495, -17)
 
 [node name="BigBoyEnemy" parent="Enemies" instance=ExtResource("11_nbfsj")]
 z_index = 2
-position = Vector2(-2, -56)
-collision_mask = 0

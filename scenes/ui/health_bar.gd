@@ -18,8 +18,17 @@ func _ready() -> void:
 		progress_bar.value = health_component.current_health
 		health_component.health_changed.connect(_on_health_changed)
 		health_component.max_health_changed.connect(_on_max_health_changed)
+		health_component.died.connect(
+			func():
+			health_component.health_changed.disconnect(_on_health_changed)
+			health_component.max_health_changed.disconnect(_on_max_health_changed)
+			health_component=null
+			
+			)
 
 func _update():
+	if not health_component:
+		return
 	var percent : float = health_component.percent_remaining()
 	if percent > 0.66:
 		progress_bar.texture_over = overlays["full"]

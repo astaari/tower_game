@@ -1,16 +1,18 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://qb6dgmsbm5um"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://qb6dgmsbm5um"]
 
 [ext_resource type="FontFile" uid="uid://ejkyijunr1ll" path="res://assets/fonts/arcade_regular.ttf" id="1_kfk8w"]
 [ext_resource type="StyleBox" uid="uid://dl0arq6nq5ydq" path="res://assets/themes/button_disabled.tres" id="2_i2vr5"]
 [ext_resource type="StyleBox" uid="uid://c8bu0cndy83ik" path="res://assets/themes/button_hover.tres" id="3_mht15"]
 [ext_resource type="StyleBox" uid="uid://btni27v6yeqin" path="res://assets/themes/button_normal.tres" id="4_sssb7"]
 [ext_resource type="StyleBox" uid="uid://cr53kpcbnqvp2" path="res://assets/themes/button_pressed.tres" id="5_757n1"]
+[ext_resource type="Texture2D" uid="uid://2vj8b8g7qdhv" path="res://assets/ui/tooltip.png" id="8_gyi3b"]
 [ext_resource type="StyleBox" uid="uid://c8ddbxr2roqkw" path="res://assets/themes/slider_general_style_box.tres" id="8_hw0rn"]
 [ext_resource type="StyleBox" uid="uid://b2vegek7io78g" path="res://assets/themes/slider_highlight_style_box.tres" id="9_aterq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vw4xe"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tgvtt"]
+texture = ExtResource("8_gyi3b")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_md1ic"]
 bg_color = Color(1, 1, 1, 1)
@@ -25,6 +27,7 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
 [resource]
+default_font = ExtResource("1_kfk8w")
 default_font_size = 16
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_disabled_color = Color(1, 1, 1, 1)
@@ -72,7 +75,7 @@ HSlider/styles/grabber_area_highlight = ExtResource("9_aterq")
 HSlider/styles/slider = ExtResource("8_hw0rn")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
-Label/fonts/font = null
+Label/fonts/font = ExtResource("1_kfk8w")
 Panel/styles/panel = SubResource("StyleBoxTexture_tgvtt")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_md1ic")
 VBoxContainer/constants/separation = 8

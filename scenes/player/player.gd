@@ -28,7 +28,6 @@ var max_jump_count = 2
 var number_colliding_bodies = 0
 var projectile_scene : PackedScene = preload("res://scenes/player/player_projectile.tscn")
 var projectiles_active: int = 0
-var projectiles_max: int = 2
 var tooltip : Panel
 
 var _current_direction = 0
@@ -39,12 +38,18 @@ func _ready():
 	player_stats.register(self)
 	animation_tree.active = true
 	coyote_timer.timeout.connect(on_coyote_timer_timeout)
+	print(str(player_stats))
 
 func _exit_tree() -> void:
 	player_stats.unregister()
 	
 
+func _process(_delta: float) -> void:
+	$HurtBoxComponent.visible = health_component.damage_immune
+
 func _physics_process(delta: float) -> void:
+	if Game.paused:
+		return
 	# Reset jump flags when on the floor, else apply gravity
 	if is_on_floor():
 		can_jump = true
@@ -70,7 +75,7 @@ func _physics_process(delta: float) -> void:
 	var direction = Vector2(Input.get_action_strength("run_right") - Input.get_action_strength("run_left"), 0.0)
 	set_animation(direction)
 	
-	if Input.is_action_just_pressed("attack") and projectiles_active < projectiles_max:
+	if Input.is_action_just_pressed("attack") and projectiles_active < player_stats.projectiles_max:
 		attack(direction)
 	
 	velocity.x = direction.x * player_stats.speed
@@ -95,7 +100,10 @@ func attack(direction: Vector2):
 	if direction.x == -1:
 		projectile.linear_velocity.x = projectile.linear_velocity.x * direction.x
 	projectile.global_position = global_position
-	projectiles_active = min(projectiles_active + 1, projectiles_max)
+	projectiles_active = min(projectiles_active + 1, player_stats.projectiles_max)
+	projectile.damage = player_stats.damage
+	projectile.lifetime = player_stats.attack_cooldown
+	
 	get_tree().root.add_child(projectile)
 
 
@@ -139,7 +147,6 @@ func interact():
 		item_closest_to_player.queue_free()
 		for modifier in item_closest_to_player.modifiers:
 			player_stats.apply_modifier(modifier)
-		#TODO move to appropriate location
 		#effects.apply_effect(item_closest_to_player.modifier)
 
 

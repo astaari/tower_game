@@ -12,6 +12,7 @@ signal max_health_changed(max_health)
 	get():
 		return max_health
 var current_health : float 
+var damage_resist : float = 0.0
 var damage_immune : bool = false
 @export var immune_time : float = 0.75
 const tween_curve : Curve = preload("res://data/constant.tres")
@@ -22,6 +23,7 @@ func _ready():
 func damage(damage_amount: float, knockback: float):
 	if damage_immune:
 		return
+	damage_amount*=(1-damage_resist)
 	current_health = max(current_health - damage_amount, 0)
 	health_changed.emit(current_health)
 	get_tree().create_timer(immune_time).timeout.connect(

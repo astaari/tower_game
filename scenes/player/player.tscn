@@ -13,6 +13,9 @@ speed = 400.0
 jump_height = 100.0
 damage = 2.0
 damage_resist = 0.0
+projectiles_max = 2
+character_size = 1.0
+attack_cooldown = 3.5
 
 [sub_resource type="Animation" id="Animation_p7qkm"]
 length = 0.001
