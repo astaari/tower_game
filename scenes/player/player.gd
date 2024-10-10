@@ -30,6 +30,7 @@ var max_jump_count = 2
 var number_colliding_bodies = 0
 var projectile_scene : PackedScene = preload("res://scenes/player/player_projectile.tscn")
 var projectiles_active: int = 0
+var projectiles_max: int = 2
 var tooltip : Panel
 
 var _current_direction = 0
@@ -90,11 +91,8 @@ func _physics_process(delta: float) -> void:
 	var direction = Vector2(Input.get_action_strength("run_right") - Input.get_action_strength("run_left"), 0.0)
 	set_animation(direction)
 	
-	if Input.is_action_pressed("attack"):
-		var attack_dir = global_position.direction_to(get_global_mouse_position())
-		attack_dir.x = -1 if attack_dir.x < 0 else 1
-		#print(attack_dir)
-		attack(attack_dir)
+	if Input.is_action_pressed("attack") and projectiles_active < projectiles_max:
+		attack(last_movement_direction)
 	
 	velocity.x = direction.x * player_stats.speed
 	velocity.x = clampf(velocity.x, -MAX_SPEED, MAX_SPEED)
@@ -116,8 +114,7 @@ func _physics_process(delta: float) -> void:
 
 
 func attack(direction: Vector2):
-	print(direction)
-	print(global_position)
+	print(projectiles_active)
 	if not can_attack:
 		return
 	var projectile = projectile_scene.instantiate() as RigidBody2D
