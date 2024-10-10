@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cqcqon1dyk1c5"]
+[gd_scene load_steps=10 format=3 uid="uid://cqcqon1dyk1c5"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_pdbx1"]
 [ext_resource type="PackedScene" uid="uid://cegmmbnx2nejg" path="res://scenes/game_camera/game_camera.tscn" id="2_umaoh"]
@@ -9,13 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://bj65xcvqsyr7s" path="res://scenes/environment/parallax_background.tscn" id="8_slee3"]
 [ext_resource type="PackedScene" uid="uid://5g0snpn01gj1" path="res://scenes/environment/level_gate.tscn" id="9_g4hyk"]
 [ext_resource type="PackedScene" uid="uid://cjpugvxgnbepr" path="res://scenes/ui/pause_menu.tscn" id="9_krw2m"]
-[ext_resource type="PackedScene" uid="uid://dfoxqh1p83quf" path="res://scenes/levels/spawner.tscn" id="10_6mdut"]
-
-[sub_resource type="Curve2D" id="Curve2D_4vhxc"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -814, -172, 0, 0, 0, 0, -726, -174, 0, 0, 0, 0, -530, -169, 0, 0, 0, 0, -424, -173, 0, 0, 0, 0, -315, -170)
-}
-point_count = 5
 
 [node name="Level" type="Node"]
 script = ExtResource("1_pdbx1")
@@ -25,13 +18,6 @@ level = 1
 
 [node name="LevelTileSet" type="TileMapLayer" parent="."]
 tile_set = ExtResource("4_kysyd")
-
-[node name="Items" type="Path2D" parent="."]
-curve = SubResource("Curve2D_4vhxc")
-
-[node name="Follow" type="PathFollow2D" parent="Items"]
-position = Vector2(-814, -172)
-rotation = -0.0227234
 
 [node name="Player" parent="." instance=ExtResource("6_w3idt")]
 position = Vector2(-1104, 66)
@@ -50,5 +36,4 @@ position = Vector2(1041, -159)
 [node name="PauseMenu" parent="." instance=ExtResource("9_krw2m")]
 visible = false
 
-[node name="Path2D" parent="." node_paths=PackedStringArray("enemy_container") instance=ExtResource("10_6mdut")]
-enemy_container = NodePath("../Enemies")
+[node name="Items" type="Node2D" parent="."]
