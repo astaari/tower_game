@@ -1,0 +1,48 @@
+[gd_scene load_steps=11 format=3 uid="uid://dya264wpvqr7i"]
+
+[ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_gcpgl"]
+[ext_resource type="PackedScene" uid="uid://cegmmbnx2nejg" path="res://scenes/game_camera/game_camera.tscn" id="2_gtnkp"]
+[ext_resource type="PackedScene" uid="uid://bj65xcvqsyr7s" path="res://scenes/environment/parallax_background.tscn" id="3_htcp6"]
+[ext_resource type="TileSet" uid="uid://b0qs5ymyd8j48" path="res://assets/tilesets/bw-tileset.tres" id="4_n65ot"]
+[ext_resource type="PackedScene" uid="uid://cwl3encoi54s6" path="res://scenes/items/random_item.tscn" id="5_8ebpv"]
+[ext_resource type="PackedScene" uid="uid://7o3yw1nov7qk" path="res://scenes/player/player.tscn" id="6_cbgq7"]
+[ext_resource type="PackedScene" uid="uid://5g0snpn01gj1" path="res://scenes/environment/level_gate.tscn" id="7_cntna"]
+[ext_resource type="PackedScene" uid="uid://b76psagt11xrt" path="res://scenes/ui/game_ui.tscn" id="8_qxryp"]
+[ext_resource type="PackedScene" uid="uid://cjpugvxgnbepr" path="res://scenes/ui/pause_menu.tscn" id="9_p6po8"]
+[ext_resource type="PackedScene" uid="uid://do3pox5cyduq3" path="res://assets/shaders/color_swap_shader_scene.tscn" id="10_oeom4"]
+
+[node name="Level" type="Node"]
+script = ExtResource("1_gcpgl")
+level = 3
+dark_color = Color(0.110968, 0.0568189, 0.163611, 1)
+light_color = Color(0.592132, 0.506592, 0.794215, 1)
+
+[node name="GameCamera" parent="." instance=ExtResource("2_gtnkp")]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("3_htcp6")]
+
+[node name="LevelTileSet" type="TileMapLayer" parent="."]
+tile_set = ExtResource("4_n65ot")
+
+[node name="SecretPaths" type="TileMapLayer" parent="."]
+tile_set = ExtResource("4_n65ot")
+
+[node name="Items" type="Node" parent="."]
+
+[node name="RandomItem1" parent="Items" instance=ExtResource("5_8ebpv")]
+position = Vector2(-615, 116)
+
+[node name="Player" parent="." instance=ExtResource("6_cbgq7")]
+position = Vector2(-1099, 113)
+
+[node name="LevelGate" parent="." instance=ExtResource("7_cntna")]
+position = Vector2(-328, 73)
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="GameUi" parent="." instance=ExtResource("8_qxryp")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("9_p6po8")]
+visible = false
+
+[node name="ColorSwapCanvasLayer" parent="." instance=ExtResource("10_oeom4")]
