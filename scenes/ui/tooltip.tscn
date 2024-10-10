@@ -107,6 +107,7 @@ size_flags_vertical = 8
 custom_minimum_size = Vector2(200, 32)
 layout_mode = 2
 size_flags_vertical = 0
+theme = ExtResource("1_mo71a")
 
 [node name="Label2" type="Label" parent="MarginContainer/MarginContainer2"]
 custom_minimum_size = Vector2(200, 32)
