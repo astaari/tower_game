@@ -4,8 +4,8 @@
 
 [resource]
 font = ExtResource("1_wankn")
-font_size = 11
-outline_size = 2
+font_size = 12
+outline_size = 8
 outline_color = Color(0, 0, 0, 1)
-shadow_size = 2
-shadow_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_offset = Vector2(0, 0)

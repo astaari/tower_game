@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bbxfeqychmiqp"]
+[gd_scene load_steps=11 format=3 uid="uid://bbxfeqychmiqp"]
 
 [ext_resource type="Theme" uid="uid://qb6dgmsbm5um" path="res://assets/themes/menu_theme.tres" id="1_mo71a"]
 [ext_resource type="Script" path="res://scenes/ui/tooltip.gd" id="2_rjtpu"]
 [ext_resource type="Script" path="res://data/modifiers/modifier.gd" id="3_go6gq"]
 [ext_resource type="FontFile" uid="uid://ejkyijunr1ll" path="res://assets/fonts/arcade_regular.ttf" id="4_gxnq1"]
 [ext_resource type="Script" path="res://addons/label_font_auto_sizer/label_auto_sizer.gd" id="4_yuls1"]
+[ext_resource type="LabelSettings" uid="uid://bup1e1joct8xf" path="res://assets/themes/in_game_label.tres" id="6_ukpbu"]
 
 [sub_resource type="Resource" id="Resource_ryddy"]
 script = ExtResource("3_go6gq")
@@ -16,22 +17,21 @@ script = ExtResource("3_go6gq")
 property_name = "poo"
 value = 3.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_o1xci"]
+[sub_resource type="LabelSettings" id="LabelSettings_og8ua"]
 font = ExtResource("4_gxnq1")
-font_size = 14
-outline_size = 2
+font_size = 12
+outline_size = 8
 outline_color = Color(0, 0, 0, 1)
-shadow_size = 2
-shadow_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_offset = Vector2(0, 0)
 
-[sub_resource type="LabelSettings" id="LabelSettings_juitn"]
+[sub_resource type="LabelSettings" id="LabelSettings_af4xd"]
 font = ExtResource("4_gxnq1")
-font_size = 13
-outline_size = 2
+font_size = 12
+outline_size = 8
 outline_color = Color(0, 0, 0, 1)
-shadow_size = 2
-shadow_color = Color(0, 0, 0, 1)
-shadow_offset = Vector2(2, 2)
+shadow_size = 0
+shadow_offset = Vector2(0, 0)
 
 [node name="Tooltip" type="Panel"]
 z_index = 200
@@ -64,15 +64,16 @@ custom_minimum_size = Vector2(160, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 12
 text = "{item name}"
-label_settings = SubResource("LabelSettings_o1xci")
+label_settings = SubResource("LabelSettings_og8ua")
 autowrap_mode = 3
 clip_text = true
 max_lines_visible = 1
 script = ExtResource("4_yuls1")
-_max_size = 16
-_current_font_size = 14
+_max_size = 12
+_min_size = 8
+_current_font_size = 12
 _size_just_modified_by_autosizer = true
 _editor_defaults_set = true
 
@@ -111,20 +112,29 @@ layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("1_mo71a")
 
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Press E to Take
+Press T to DROP"
+label_settings = ExtResource("6_ukpbu")
+
 [node name="Label2" type="Label" parent="MarginContainer/MarginContainer2"]
 custom_minimum_size = Vector2(200, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 13
-text = "[E] to Take
-[T] to Discard"
-label_settings = SubResource("LabelSettings_juitn")
+theme_override_font_sizes/font_size = 12
+text = "Press E to Take
+Press T to DROP"
+label_settings = SubResource("LabelSettings_af4xd")
 autowrap_mode = 3
 clip_text = true
 max_lines_visible = 2
 script = ExtResource("4_yuls1")
-_max_size = 16
-_min_size = 12
-_current_font_size = 13
+_max_size = 12
+_min_size = 8
+_current_font_size = 12
+_size_just_modified_by_autosizer = true
 _editor_defaults_set = true

@@ -2,6 +2,7 @@ extends Node2D
 class_name LevelGate
 
 @onready var particles: CPUParticles2D = $CPUParticles2D
+@onready var audio_stream_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 func _ready():
@@ -17,6 +18,10 @@ func on_area_entered(other_body: Node2D):
 	
 	if parent.level < EventManager.current_level:
 		print("EventManager level_changed() signal has already been emitted for this level.")
+		print("Current Level: ", EventManager.current_level)
 		return
+	
+	var audio_fade_tween = create_tween()
+	audio_fade_tween.tween_property(audio_stream_player, "volume_db", -80, 6).set_ease(Tween.EASE_IN)
 	particles.emitting = true
 	EventManager.emit_level_changed()

@@ -2,6 +2,7 @@ extends Node2D
 class_name RandomItem
 
 @onready var sprite: Sprite2D = $Visuals/Sprite2D
+@onready var audio_stream_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 # TODO – Create weighted table for random items
 #@export var random_items: RandomItems
@@ -35,7 +36,6 @@ func set_item():
 	#modifier.name = "speed"
 	#modifier.duration = 2.0
 	#modifier.value = 2.5
-
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
