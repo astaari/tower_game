@@ -13,8 +13,8 @@
 
 [node name="Level" type="Node"]
 script = ExtResource("1_yyhii")
-dark_color = Color(0.0425677, 0.126473, 0.306937, 1)
-light_color = Color(0.475568, 0.636832, 0.955897, 1)
+dark_color = Color(0.0132825, 0.189884, 0.0132487, 1)
+light_color = Color(0, 0.698039, 0.556863, 1)
 
 [node name="GameCamera" parent="." instance=ExtResource("1_sokj2")]
 

@@ -39,7 +39,6 @@ position = Vector2(0, -128)
 shape = SubResource("CapsuleShape2D_etcnj")
 
 [node name="HealthComponent" parent="." index="3"]
-max_health = 50.0
 immune_time = 0.3
 
 [node name="AnimationPlayer" parent="." index="4"]
