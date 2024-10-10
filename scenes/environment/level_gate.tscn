@@ -1,14 +1,93 @@
-[gd_scene load_steps=5 format=3 uid="uid://5g0snpn01gj1"]
+[gd_scene load_steps=10 format=3 uid="uid://5g0snpn01gj1"]
 
 [ext_resource type="Script" path="res://scenes/environment/level_gate.gd" id="1_7v8t8"]
 [ext_resource type="Texture2D" uid="uid://besxk33c46ukk" path="res://assets/sprites/gate_left.png" id="2_85ckf"]
 [ext_resource type="Texture2D" uid="uid://bl002es6e5uxm" path="res://assets/sprites/gate_right .png" id="3_lwyls"]
+[ext_resource type="Texture2D" uid="uid://orhs66oyiekq" path="res://assets/sprites/spark.png" id="4_ij0fa"]
+[ext_resource type="AudioStream" uid="uid://cto2pal4nmhtr" path="res://assets/sounds/level_gate_drone_v1.wav" id="5_cjde4"]
+
+[sub_resource type="Animation" id="Animation_5w3j2"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Portal:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Portal:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.14159, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_fcqb5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Portal:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Portal:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_64qr2"]
+_data = {
+"RESET": SubResource("Animation_fcqb5"),
+"idle": SubResource("Animation_5w3j2")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cefmx"]
-size = Vector2(64, 128)
+size = Vector2(64, 100)
 
 [node name="LevelGate" type="Node2D"]
+scale = Vector2(1.25, 1.25)
 script = ExtResource("1_7v8t8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_64qr2")
+}
+autoplay = "idle"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(1, 1)
+stream = ExtResource("5_cjde4")
+volume_db = -15.0
+autoplay = true
+max_distance = 1000.0
+bus = &"Effects"
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
@@ -27,3 +106,24 @@ vframes = 12
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("3_lwyls")
 vframes = 12
+
+[node name="Portal" type="Sprite2D" parent="."]
+scale = Vector2(1, 1)
+texture = ExtResource("4_ij0fa")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 64
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.53
+randomness = 0.15
+texture = ExtResource("4_ij0fa")
+direction = Vector2(1, -35)
+initial_velocity_min = 400.0
+initial_velocity_max = 700.0
+angular_velocity_min = 128.0
+angular_velocity_max = 256.0
+scale_amount_max = 1.25
+hue_variation_min = 0.4
+hue_variation_max = 0.6

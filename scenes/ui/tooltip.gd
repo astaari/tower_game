@@ -22,7 +22,7 @@ func set_item_data () -> void:
 	%ItemName.set_text(item.name)
 	%ItemName._check_line_count()
 	for mod in modifiers:
-		print(mod)
+		#print(mod)
 		var label : Label = label_scene.instantiate()
 		label.custom_minimum_size = Vector2(160,16)
 		label.set_text(str(mod))

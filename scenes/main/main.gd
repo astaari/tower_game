@@ -8,6 +8,7 @@ const scene_path_prefix: String = "res://scenes/levels/level-"
 const main_menu_scene_path: String = "res://scenes/menus/main_menu.tscn"
 const end_game_scene_path: String = "res://scenes/menus/game_over.tscn"
 
+
 func _ready() -> void:
 	EventManager.level_changed.connect(_on_level_changed)
 

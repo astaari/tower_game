@@ -53,11 +53,11 @@ size = Vector2(32, 32)
 z_index = 100
 collision_layer = 2
 collision_mask = 10
-mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_ia3ad")
 linear_velocity = Vector2(400, -400)
 angular_velocity = 18.8496
 script = ExtResource("1_7svy6")
+lifetime = 5.0
 damage = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
