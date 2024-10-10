@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://qg3ytjovh6is"]
+[gd_scene load_steps=4 format=3 uid="uid://qg3ytjovh6is"]
 
 [ext_resource type="Script" path="res://scenes/ui/audio_settings.gd" id="1_01bvo"]
 [ext_resource type="Theme" uid="uid://qb6dgmsbm5um" path="res://assets/themes/menu_theme.tres" id="1_tdp7d"]
+[ext_resource type="LabelSettings" uid="uid://bup1e1joct8xf" path="res://assets/themes/in_game_label.tres" id="3_11k7q"]
 
 [node name="AudioSettings" type="GridContainer"]
 offset_top = 32.0
@@ -20,6 +21,7 @@ theme = ExtResource("1_tdp7d")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 text = "Sound Effects"
+label_settings = ExtResource("3_11k7q")
 vertical_alignment = 1
 
 [node name="EffectsSlider" type="HSlider" parent="."]
@@ -38,6 +40,7 @@ theme = ExtResource("1_tdp7d")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 text = "Music"
+label_settings = ExtResource("3_11k7q")
 vertical_alignment = 1
 
 [node name="MusicSlider" type="HSlider" parent="."]
@@ -56,6 +59,7 @@ theme = ExtResource("1_tdp7d")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 text = "Menu Sounds"
+label_settings = ExtResource("3_11k7q")
 vertical_alignment = 1
 
 [node name="MenuSoundsSlider" type="HSlider" parent="."]
@@ -74,6 +78,7 @@ theme = ExtResource("1_tdp7d")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 text = "Master"
+label_settings = ExtResource("3_11k7q")
 vertical_alignment = 1
 
 [node name="MasterSlider" type="HSlider" parent="."]
