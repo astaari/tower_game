@@ -12,6 +12,8 @@ func _ready() -> void:
 	get_tree().create_timer(lifetime).timeout.connect(
 		func ():
 			var player = get_tree().get_first_node_in_group("player")
+			if player == null:
+				return
 			player.projectiles_active = max(player.projectiles_active - 1, 0)
 			queue_free()
 	)

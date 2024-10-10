@@ -1,10 +1,11 @@
-[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://b0qs5ymyd8j48"]
+[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://b0qs5ymyd8j48"]
 
 [ext_resource type="Texture2D" uid="uid://jf1ytlvrswsq" path="res://assets/tilesets/bw-tileset-01.png" id="1_myeac"]
 [ext_resource type="Texture2D" uid="uid://bdud0csyr38cc" path="res://assets/tilesets/bw-tileset-02.png" id="2_05mnq"]
 [ext_resource type="Texture2D" uid="uid://cxrlsute78ylx" path="res://assets/tilesets/hazards.png" id="3_2jbhp"]
 [ext_resource type="Script" path="res://data/modifiers/effect.gd" id="3_gp0ty"]
 [ext_resource type="Texture2D" uid="uid://3jkl3jhq1fnu" path="res://assets/tilesets/bw-tileset-03.png" id="5_i67fi"]
+[ext_resource type="Texture2D" uid="uid://d061m60hkimd8" path="res://assets/tilesets/bw-tileset-04.png" id="6_1agey"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_an8o7"]
 texture = ExtResource("1_myeac")
@@ -105,6 +106,7 @@ texture = ExtResource("2_05mnq")
 0:0/0/z_index = -1
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, -8, -8, -8, 8, 8, 8)
 1:0/0 = 0
+1:0/0/z_index = -1
 1:0/0/probability = 100.0
 2:0/0 = 0
 3:0/0 = 0
@@ -352,6 +354,95 @@ texture = ExtResource("5_i67fi")
 1:1/animation_frame_6/duration = 0.25
 1:1/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xlgea"]
+texture = ExtResource("6_1agey")
+0:0/0 = 0
+0:0/0/z_index = 10
+1:0/0 = 0
+1:0/0/z_index = 10
+2:0/0 = 0
+2:0/0/z_index = 10
+3:0/0 = 0
+3:0/0/z_index = 10
+4:0/0 = 0
+4:0/0/z_index = 10
+5:0/0 = 0
+5:0/0/z_index = 10
+6:0/0 = 0
+6:0/0/z_index = 10
+7:0/0 = 0
+7:0/0/z_index = 10
+0:1/0 = 0
+0:1/0/z_index = 10
+0:2/0 = 0
+0:2/0/z_index = 10
+1:2/0 = 0
+1:2/0/z_index = 10
+2:2/0 = 0
+2:2/0/z_index = 10
+3:2/0 = 0
+3:2/0/z_index = 10
+4:2/0 = 0
+4:2/0/z_index = 10
+5:2/0 = 0
+5:2/0/z_index = 10
+6:2/0 = 0
+6:2/0/z_index = 10
+7:2/0 = 0
+7:2/0/z_index = 10
+0:3/0 = 0
+0:3/0/z_index = 10
+1:3/0 = 0
+1:3/0/z_index = 10
+2:3/0 = 0
+2:3/0/z_index = 10
+3:3/0 = 0
+3:3/0/z_index = 10
+4:3/0 = 0
+4:3/0/z_index = 10
+5:3/0 = 0
+5:3/0/z_index = 10
+6:3/0 = 0
+6:3/0/z_index = 10
+7:3/0 = 0
+7:3/0/z_index = 10
+0:4/0 = 0
+0:4/0/z_index = 10
+1:4/0 = 0
+1:4/0/z_index = 10
+2:4/0 = 0
+2:4/0/z_index = 10
+3:4/0 = 0
+3:4/0/z_index = 10
+4:4/0 = 0
+4:4/0/z_index = 10
+5:4/0 = 0
+5:4/0/z_index = 10
+6:4/0 = 0
+6:4/0/z_index = 10
+7:4/0 = 0
+7:4/0/z_index = 10
+0:5/0 = 0
+0:5/0/z_index = 10
+1:5/0 = 0
+1:5/0/z_index = 10
+2:5/0 = 0
+2:5/0/z_index = 10
+3:5/0 = 0
+3:5/0/z_index = 10
+4:5/0 = 0
+4:5/0/z_index = 10
+5:5/0 = 0
+5:5/0/z_index = 10
+6:5/0 = 0
+6:5/0/z_index = 10
+7:5/0 = 0
+7:5/0/z_index = 10
+0:6/0 = 0
+0:6/0/z_index = -1
+1:6/0 = 0
+1:6/0/z_index = -1
+
 [resource]
 occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 8
@@ -363,3 +454,4 @@ sources/0 = SubResource("TileSetAtlasSource_an8o7")
 sources/1 = SubResource("TileSetAtlasSource_t3687")
 sources/2 = SubResource("TileSetAtlasSource_qg3qd")
 sources/3 = SubResource("TileSetAtlasSource_kpnyo")
+sources/5 = SubResource("TileSetAtlasSource_xlgea")

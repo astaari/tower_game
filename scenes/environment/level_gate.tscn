@@ -6,6 +6,33 @@
 [ext_resource type="Texture2D" uid="uid://orhs66oyiekq" path="res://assets/sprites/spark.png" id="4_ij0fa"]
 [ext_resource type="AudioStream" uid="uid://cto2pal4nmhtr" path="res://assets/sounds/level_gate_drone_v1.wav" id="5_cjde4"]
 
+[sub_resource type="Animation" id="Animation_fcqb5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Portal:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Portal:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_5w3j2"]
 resource_name = "idle"
 length = 2.0
@@ -35,33 +62,6 @@ tracks/1/keys = {
 "values": [0.0, 3.14159, 6.28319]
 }
 
-[sub_resource type="Animation" id="Animation_fcqb5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Portal:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Portal:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_64qr2"]
 _data = {
 "RESET": SubResource("Animation_fcqb5"),
@@ -82,9 +82,8 @@ libraries = {
 autoplay = "idle"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-scale = Vector2(1, 1)
 stream = ExtResource("5_cjde4")
-volume_db = -15.0
+volume_db = -8.0
 autoplay = true
 max_distance = 1000.0
 bus = &"Effects"
@@ -108,7 +107,6 @@ texture = ExtResource("3_lwyls")
 vframes = 12
 
 [node name="Portal" type="Sprite2D" parent="."]
-scale = Vector2(1, 1)
 texture = ExtResource("4_ij0fa")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
