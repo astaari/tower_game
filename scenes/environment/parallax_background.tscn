@@ -21,7 +21,7 @@ texture = ExtResource("1_j6r30")
 
 [node name="Sky" type="Parallax2D" parent="."]
 scale = Vector2(2, 2)
-scroll_scale = Vector2(0.1, 0.1)
+scroll_scale = Vector2(0.15, 0.15)
 scroll_offset = Vector2(0, -512)
 repeat_size = Vector2(512, 0)
 repeat_times = 4
