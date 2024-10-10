@@ -18,6 +18,7 @@ value = 3.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_unwlu"]
 font = ExtResource("4_gxnq1")
+font_size = 14
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 4
@@ -65,13 +66,14 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
+text = "{item name}"
 label_settings = SubResource("LabelSettings_unwlu")
 autowrap_mode = 3
 clip_text = true
 max_lines_visible = 1
 script = ExtResource("4_yuls1")
 _max_size = 16
-_current_font_size = 16
+_current_font_size = 14
 _editor_defaults_set = true
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer"]
@@ -107,6 +109,7 @@ size_flags_vertical = 8
 custom_minimum_size = Vector2(200, 32)
 layout_mode = 2
 size_flags_vertical = 0
+theme = ExtResource("1_mo71a")
 
 [node name="Label2" type="Label" parent="MarginContainer/MarginContainer2"]
 custom_minimum_size = Vector2(200, 32)

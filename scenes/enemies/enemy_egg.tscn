@@ -7,10 +7,10 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ptayo"]
 radius = 29.0
-height = 94.0
+height = 80.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o0lj8"]
-radius = 27.0185
+radius = 32.0
 
 [sub_resource type="Animation" id="Animation_r6y27"]
 length = 0.001
@@ -33,9 +33,10 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_akshf"]
-radius = 20.025
+radius = 25.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_teu8s"]
+radius = 64.0
 
 [node name="Enemy" instance=ExtResource("1_tjgf4")]
 script = ExtResource("2_knqhk")
@@ -43,16 +44,21 @@ max_move_duration = 4.0
 max_idle_duration = 2.0
 
 [node name="ProjSpawnPoint" type="Node2D" parent="." index="0"]
+position = Vector2(0, -38)
 
 [node name="Sprite2D" parent="." index="1"]
+position = Vector2(0, -46)
 texture = ExtResource("2_1sd24")
 hframes = 8
 vframes = 3
 
 [node name="MovementCollider" parent="." index="2"]
-position = Vector2(-1, -5)
+position = Vector2(0, -35)
 shape = SubResource("CapsuleShape2D_ptayo")
 one_way_collision = true
+
+[node name="HurtBoxComponent" parent="." index="3"]
+position = Vector2(1, -46)
 
 [node name="HurtBoxCollider" parent="HurtBoxComponent" index="0"]
 shape = SubResource("CircleShape2D_o0lj8")
@@ -67,11 +73,17 @@ libraries = {
 "enemy_egg_animations": ExtResource("2_xygeq")
 }
 
+[node name="HitBoxComponent" parent="." index="6"]
+position = Vector2(0, -45)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent" index="0"]
 shape = SubResource("CircleShape2D_akshf")
 debug_color = Color(0, 0, 0, 0.42)
 
 [node name="PatrolTimer" type="Timer" parent="." index="7"]
+
+[node name="DetectionBox" parent="." index="8"]
+position = Vector2(0, -46)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox" index="0"]
 shape = SubResource("CircleShape2D_teu8s")
