@@ -6,8 +6,8 @@
 [ext_resource type="AnimationLibrary" uid="uid://c8wdfvwgqmkbu" path="res://scenes/enemies/big_boy_enemy.tres" id="4_144ep"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2eg1e"]
-radius = 62.0
-height = 194.0
+radius = 100.0
+height = 256.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_etcnj"]
 radius = 128.0
@@ -17,9 +17,8 @@ height = 258.0
 radius = 90.0
 height = 200.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i1u36"]
-radius = 140.0
-height = 684.33
+[sub_resource type="CircleShape2D" id="CircleShape2D_cvrth"]
+radius = 512.0
 
 [node name="BigBoyEnemy" instance=ExtResource("1_0lpax")]
 script = ExtResource("2_lk87p")
@@ -32,10 +31,14 @@ offset = Vector2(0, -135)
 flip_h = true
 
 [node name="MovementCollider" parent="." index="1"]
-position = Vector2(5, -127)
+position = Vector2(5, -108)
 shape = SubResource("CapsuleShape2D_2eg1e")
 
+[node name="HurtBoxComponent" parent="." index="2"]
+visible = false
+
 [node name="HurtBoxCollider" parent="HurtBoxComponent" index="0"]
+visible = false
 position = Vector2(0, -128)
 shape = SubResource("CapsuleShape2D_etcnj")
 
@@ -48,13 +51,16 @@ libraries = {
 }
 autoplay = "hover_left"
 
+[node name="HitBoxComponent" parent="." index="5"]
+visible = false
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent" index="0"]
 position = Vector2(0, -124)
 shape = SubResource("CapsuleShape2D_hm6g7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox" index="0"]
-position = Vector2(211, -128)
+position = Vector2(0, -107)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_i1u36")
+shape = SubResource("CircleShape2D_cvrth")
 
 [node name="Timer" type="Timer" parent="." index="7"]

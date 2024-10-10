@@ -1,11 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://cjuap0q4ph22y"]
+[gd_scene load_steps=10 format=3 uid="uid://cjuap0q4ph22y"]
 
 [ext_resource type="Script" path="res://scenes/player/player_projectile.gd" id="1_7svy6"]
 [ext_resource type="Texture2D" uid="uid://dgchu5p74wxc3" path="res://assets/sprites/die-projectile.png" id="2_6by7t"]
 [ext_resource type="Script" path="res://scenes/components/hit_box_component.gd" id="3_d3qk3"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_157i5"]
-radius = 16.0
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ia3ad"]
+bounce = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uy4kj"]
+size = Vector2(32, 32)
 
 [sub_resource type="Animation" id="Animation_7xbo1"]
 length = 0.001
@@ -24,7 +27,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_roc03"]
 resource_name = "attack"
-length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -32,10 +34,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [1, 6]
+"values": [1, 6, 1, 6]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6kcow"]
@@ -50,15 +52,16 @@ size = Vector2(32, 32)
 [node name="DieProjectile" type="RigidBody2D"]
 z_index = 100
 collision_layer = 2
-collision_mask = 8
-linear_velocity = Vector2(400, -500)
-angular_velocity = 6.28319
+collision_mask = 10
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_ia3ad")
+linear_velocity = Vector2(400, -400)
+angular_velocity = 18.8496
 script = ExtResource("1_7svy6")
-lifetime = 3.0
 damage = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_157i5")
+shape = SubResource("RectangleShape2D_uy4kj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_6by7t")

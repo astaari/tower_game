@@ -44,6 +44,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -41)]
+}
 
 [sub_resource type="Animation" id="Animation_mrneg"]
 resource_name = "idle"
@@ -63,7 +75,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("Sprite2D:offset")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
@@ -93,14 +105,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:offset")
-tracks/1/interp = 2
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-4, -24)]
+"values": [Vector2(-3, -35)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6bu6l"]
@@ -142,12 +154,15 @@ floor_max_angle = 1.22173
 script = ExtResource("1_negh2")
 player_stats = SubResource("Resource_1kxy2")
 
-[node name="Effects" type="Node" parent="."]
-script = ExtResource("3_gpny6")
-
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
+
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Effects" type="Node" parent="."]
+script = ExtResource("3_gpny6")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_m25mh")]
 
@@ -162,7 +177,7 @@ tree_root = SubResource("AnimationNodeStateMachine_0b1wr")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -26)
+position = Vector2(0, -37)
 shape = SubResource("CapsuleShape2D_rst82")
 
 [node name="CollisionArea2D" type="Area2D" parent="."]
@@ -170,7 +185,7 @@ collision_layer = 49
 collision_mask = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea2D"]
-position = Vector2(0, -39)
+position = Vector2(0, -41)
 shape = SubResource("CapsuleShape2D_u7lm2")
 
 [node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_jq43u")]
@@ -179,16 +194,14 @@ collision_mask = 2052
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
-position = Vector2(0, -44)
+position = Vector2(0, -42)
 shape = SubResource("CircleShape2D_7nslh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3, -41)
 texture = ExtResource("2_5neol")
 hframes = 11
 vframes = 6
 frame = 44
-
-[node name="AttackTimer" type="Timer" parent="."]
-one_shot = true
 
 [connection signal="body_shape_entered" from="HurtBoxComponent" to="." method="_on_hurt_box_component_body_shape_entered"]
