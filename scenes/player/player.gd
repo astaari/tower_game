@@ -5,7 +5,7 @@ const ACCELERATION_SMOOTHING = 10
 const JUMP_VELOCITY = -350.0
 const DOUBLE_JUMP_VELOCITY = -700.0
 const DASH_VELOCITY = MAX_SPEED * 2.5
-const INTERACTION_RANGE = 150
+const INTERACTION_RANGE = 100
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animation_mode = animation_tree.get("parameters/playback")
@@ -19,6 +19,8 @@ const INTERACTION_RANGE = 150
 @onready var modifiers : Modifier
 
 @export var player_stats : PlayerStats = PlayerStats.new()
+
+var _tooltip : Tooltip
 
 var can_jump: bool = true
 var can_attack : bool = true
@@ -44,6 +46,7 @@ func _ready():
 	coyote_timer.timeout.connect(on_coyote_timer_timeout)
 	$AttackTimer.timeout.connect(_attack_timer_timeout)
 	$AttackTimer.wait_time = player_stats.attack_speed
+	health_component.max_health = player_stats.max_health
 	health_component.died.connect(func():
 		#EventManager.to_main_menu()
 		EventManager.current_level=-2
@@ -89,7 +92,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("attack"):
 		var attack_dir = global_position.direction_to(get_global_mouse_position())
 		attack_dir.x = -1 if attack_dir.x < 0 else 1
-		print(attack_dir)
+		#print(attack_dir)
 		attack(attack_dir)
 	
 	velocity.x = direction.x * player_stats.speed
@@ -149,6 +152,7 @@ func interact():
 	)
 	
 	if items.size() == 0:
+		Game.hide_tooltip()
 		return
 	
 	items.sort_custom(func(a: Node2D, b: Node2D):
@@ -159,13 +163,20 @@ func interact():
 	
 	var item_closest_to_player = items[0] as RandomItem
 	var item_distance = item_closest_to_player.global_position.distance_squared_to(global_position)
-	
-	
+
+	print(items)
+	if item_closest_to_player.item!=Game.current_tooltip.item:
+		Game.show_tooltip(item_closest_to_player)
+		
 	
 	if Input.is_action_just_pressed("interact"):
 		item_closest_to_player.queue_free()
 		for modifier in item_closest_to_player.modifiers:
 			player_stats.apply_modifier(modifier)
+		Game.hide_tooltip()
+	elif Input.is_action_just_pressed("discard"):
+		item_closest_to_player.queue_free()
+		Game.hide_tooltip()
 		#effects.apply_effect(item_closest_to_player.modifier)
 
 

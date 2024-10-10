@@ -1,11 +1,19 @@
 class_name Tooltip extends Panel
 
-@export var item : Item 
+@export var item : Item :
+	set(value):
+		item = value
+		set_item_data() 
 @export var modifiers : Array[Modifier]
 var label_scene : PackedScene = preload("res://scenes/ui/game_label.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	set_item_data()
+	
+func set_item_data () -> void:
+	for child in %Modifiers.get_children():
+		child.queue_free()
 	if not item:
 		%ItemName.set_text("No Item data :(")
 		return
@@ -23,7 +31,6 @@ func _ready() -> void:
 		label._check_line_count()
 		%Modifiers.add_child(label)
 	tooltip_text=item.description
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

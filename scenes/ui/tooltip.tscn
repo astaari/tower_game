@@ -26,7 +26,7 @@ shadow_offset = Vector2(4, 4)
 
 [sub_resource type="LabelSettings" id="LabelSettings_abxoa"]
 font = ExtResource("4_gxnq1")
-font_size = 13
+font_size = 11
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 4
@@ -114,14 +114,14 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
-text = "Press E to take"
+text = "Press E to take
+Press T to discard"
 label_settings = SubResource("LabelSettings_abxoa")
 horizontal_alignment = 1
 autowrap_mode = 3
 clip_text = true
-max_lines_visible = 1
+max_lines_visible = 2
 script = ExtResource("4_yuls1")
 _max_size = 16
-_current_font_size = 13
-_size_just_modified_by_autosizer = true
+_current_font_size = 11
 _editor_defaults_set = true

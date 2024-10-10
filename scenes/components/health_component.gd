@@ -7,7 +7,10 @@ signal max_health_changed(max_health)
 
 @export var max_health: float = 100 :
 	set(val):
+		var diff = val-max_health
 		max_health=val
+		if diff > 0:
+			heal(diff)
 		max_health_changed.emit(val)
 	get():
 		return max_health

@@ -4,7 +4,7 @@ class_name RandomItem
 @onready var sprite: Sprite2D = $Visuals/Sprite2D
 
 # TODO – Create weighted table for random items
-@export var random_items: RandomItems
+#@export var random_items: RandomItems
 var tooltip : Tooltip
 
 
@@ -19,13 +19,13 @@ func _ready():
 
 
 func set_item():
-	if random_items == null:
+	if Game.items == null:
 		return
 	
 	var random_index = randi_range(0, (sprite.hframes * sprite.vframes) - 1)
 	#var item = random_items["items"][random_index]
 	
-	item = random_items.get_random_item()
+	item = Game.items.get_random_item()
 	item_id = item.sprite_index
 	%ItemLabel.text = item["name"]
 	sprite.frame = item_id
@@ -39,14 +39,21 @@ func set_item():
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		tooltip = Game.tooltip_scene.instantiate() as Tooltip
-		tooltip.item = self.item
-		tooltip.position.y+=-300
-		add_child(tooltip)
+		pass
+		#if not Game.tooltip_is_visible():
+			#Game.show_tooltip(self)
+		#tooltip = Game.tooltip_scene.instantiate() as Tooltip
+		#tooltip.item = self.item
+		#tooltip.position.y+=-300
+		#add_child(tooltip)
 		
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		tooltip.queue_free()
-		tooltip = null
+		#if Game.current_tooltip.item == self.item:
+			#Game.hide_tooltip()
+		pass
+		
+		#tooltip.queue_free()
+		#tooltip = null

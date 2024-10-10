@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/ui/pause_menu.gd" id="1_xq006"]
 [ext_resource type="PackedScene" uid="uid://qg3ytjovh6is" path="res://scenes/ui/audio_settings.tscn" id="2_khgpp"]
 
-[node name="PauseMenu" type="CanvasLayer"]
+[node name="PauseMenu" type="CanvasLayer" groups=["pause"]]
 script = ExtResource("1_xq006")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

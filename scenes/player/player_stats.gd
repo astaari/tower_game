@@ -2,6 +2,12 @@ class_name PlayerStats extends Resource
 
 
 @export var speed : float = 300
+@export var max_health = 100 :
+	set(value):
+		max_health = value
+		if _player:
+			_player.health_component.max_health=value
+			
 @export var jump_height : float = 100
 @export var damage : float = 2.0
 @export var damage_resist : float = 0.0 :
@@ -55,7 +61,7 @@ func apply_modifier(modifier : Modifier):
 		if _player:
 			var health = _player.get_node("HealthComponent") as HealthComponent
 			if modifier.property_name=="max_health":
-				health.max_health += modifier.value
+				max_health += modifier.value
 				if modifier.value > 0:
 					health.heal(modifier.value)
 			else:

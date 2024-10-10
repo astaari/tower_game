@@ -23,6 +23,8 @@ height = 684.33
 
 [node name="BigBoyEnemy" instance=ExtResource("1_0lpax")]
 script = ExtResource("2_lk87p")
+score = 500.0
+damage = 25.0
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_etqhu")
@@ -37,6 +39,9 @@ shape = SubResource("CapsuleShape2D_2eg1e")
 position = Vector2(0, -128)
 shape = SubResource("CapsuleShape2D_etcnj")
 
+[node name="HealthComponent" parent="." index="3"]
+immune_time = 0.3
+
 [node name="AnimationPlayer" parent="." index="4"]
 libraries = {
 "big_boy_enemy": ExtResource("4_144ep")
@@ -48,6 +53,8 @@ position = Vector2(0, -124)
 shape = SubResource("CapsuleShape2D_hm6g7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox" index="0"]
-position = Vector2(-211, -128)
+position = Vector2(211, -128)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_i1u36")
+
+[node name="Timer" type="Timer" parent="." index="7"]

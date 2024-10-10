@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfoxqh1p83quf"]
+
+[ext_resource type="Script" path="res://scenes/levels/spawn_path.gd" id="1_2iy06"]
+
+[sub_resource type="Curve2D" id="Curve2D_58wkd"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -667, 42, 0, 0, 0, 0, -398, 4, 0, 0, 0, 0, -35, 59, 0, 0, 0, 0, -83, 110, 0, 0, 0, 0, -248, 104, 0, 0, 0, 0, -440, 73, 0, 0, 0, 0, -600, 70, 0, 0, 0, 0, -683, 102, 0, 0, 0, 0, -666, 45, 0, 0, 0, 0, -445, -427, 0, 0, 0, 0, -445, -427)
+}
+point_count = 11
+
+[node name="Path2D" type="Path2D"]
+curve = SubResource("Curve2D_58wkd")
+script = ExtResource("1_2iy06")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(-667, 42)
+rotation = -0.140335
+
+[node name="SpawnTimer" type="Timer" parent="."]

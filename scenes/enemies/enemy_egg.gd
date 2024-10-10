@@ -10,7 +10,6 @@ var x_dir : float = -1
 
 
 var projectile : PackedScene = preload("res://scenes/enemies/egg_projectile.tscn")
-var target_direction : Vector2 = Vector2.ZERO
 
 var idling : bool = false
 func _ready():

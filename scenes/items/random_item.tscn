@@ -1,7 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cwl3encoi54s6"]
 
 [ext_resource type="Script" path="res://scenes/items/random_item.gd" id="1_7bpu7"]
-[ext_resource type="Resource" uid="uid://bo055b3dw3r6y" path="res://scenes/items/random_items.tres" id="2_b2opi"]
 [ext_resource type="Texture2D" uid="uid://bv8cqnothaxqn" path="res://assets/sprites/random-items.png" id="2_wu8o5"]
 [ext_resource type="LabelSettings" uid="uid://bup1e1joct8xf" path="res://assets/themes/in_game_label.tres" id="3_2c04t"]
 
@@ -44,10 +43,14 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7vv8n"]
+radius = 32.0
 
-[node name="RandomItem" type="Node2D" groups=["item"]]
+[sub_resource type="CircleShape2D" id="CircleShape2D_smwte"]
+
+[node name="RandomItem" type="RigidBody2D" groups=["item"]]
+collision_layer = 32768
+collision_mask = 8
 script = ExtResource("1_7bpu7")
-random_items = ExtResource("2_b2opi")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -56,7 +59,7 @@ libraries = {
 autoplay = "float"
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 32768
+collision_layer = 32776
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_7vv8n")
@@ -87,6 +90,9 @@ text = "Test Text"
 label_settings = ExtResource("3_2c04t")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_smwte")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
