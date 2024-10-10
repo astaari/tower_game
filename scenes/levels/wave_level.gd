@@ -4,9 +4,11 @@ signal on_level_finished
 @onready var enemy_spawner : Spawner =  $EnemySpawner
 #TODO change this back to a normal time
 #TODO Scale spawn rate maybe?
-@export var level_length : float = 10
+@export var level_length : float = 5
+@onready var items : Path2D = $Items/ItemPath
+@onready var items_follow : PathFollow2D = $Items/ItemPath/Follow
 
-
+var wave_number : int = 0
 var _base_item_drop_count = 3
 var _elapsed : float = 0
 
@@ -26,21 +28,18 @@ func _level_timer_timeout():
 func _process(delta : float):
 	_elapsed+=delta
 	
+	
 func _on_all_enemies_dead():
 	print("Success!")
 	$LevelGate.visible=true
-	Game.difficulty_mult=4
 	_drop_items()
 	
 func _drop_items():
 	var count : int = floor((Game.difficulty_mult-1)/0.25+_base_item_drop_count)
-	var step = 1/(count-1)
+	#var step = 1/(count-1)
 	for i in range(count):
 		var item : RandomItem = random_item_scene.instantiate()
-		item.position = $Items/Follow.position
-		$Items/Follow.progress+=64
-		$Items.add_child(item)
+		item.position = items_follow.position
+		items_follow.progress+=64
+		items.add_child(item)
 		
-		
-	#RandomItems
-	pass

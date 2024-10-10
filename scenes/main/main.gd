@@ -14,15 +14,19 @@ func _ready() -> void:
 
 
 func get_next_level_scene_path() -> String:
+	print(EventManager.current_level)
 	if EventManager.current_level == -1:
 		return main_menu_scene_path
 	var scene_path = str(scene_path_prefix, EventManager.current_level, ".tscn")
+	print(scene_path)
 	if not FileAccess.file_exists(scene_path):
+		print("o?")
 		pass
 	return scene_path if FileAccess.file_exists(scene_path) else end_game_scene_path
 
 
 func _on_level_changed():
+	Game.block_pause()
 	var next_scene_path = get_next_level_scene_path()
 	var next_scene = load(next_scene_path).instantiate()
 	animation_player.play("fade_out")
@@ -31,3 +35,6 @@ func _on_level_changed():
 	current_scene.queue_free()
 	current_scene = next_scene
 	animation_player.play("fade_in")
+	await animation_player.animation_finished
+	Game.unblock_pause()
+	

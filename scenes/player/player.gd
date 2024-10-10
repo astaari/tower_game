@@ -120,7 +120,7 @@ func attack(direction: Vector2):
 	var projectile = projectile_scene.instantiate() as RigidBody2D
 	projectile.linear_velocity.x = projectile.linear_velocity.x * direction.x
 	var spawn_position = global_position
-	spawn_position.y -= 100
+	spawn_position.y -= 50
 	projectile.global_position = spawn_position
 	
 	projectiles_active = min(projectiles_active + 1, player_stats.projectiles_max)

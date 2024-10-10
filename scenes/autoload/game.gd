@@ -14,7 +14,13 @@ var health_mult : float = 1.0
 var damage_mult : float = 1.0
 var difficulty_mult : float = 1.0
 
+var _block_pause : bool = false
 
+func block_pause():
+	_block_pause=true
+func unblock_pause():
+	_block_pause = false
+	
 func _ready() -> void:
 	current_tooltip = _tooltip_scene.instantiate()
 	current_tooltip.global_position = Vector2.ZERO
@@ -52,15 +58,22 @@ const player_stats : Array[String] = [
 ]
 
 func get_player_stats() -> String:
+	if not player:
+		player = get_tree().get_first_node_in_group("player")
 	if player:
 		return str(player.player_stats)
+		
 	return "Unavailable"
 
+
+func pause():
+	paused = not paused
+	Engine.time_scale = _time_scale if not paused else 0.0
+	var pause_menu  = get_tree().get_first_node_in_group("pause")
+	if pause_menu:
+		pause_menu.visible = not pause_menu.visible
+
 func _input(event: InputEvent) -> void:
-	if event.is_action_released("pause"):
-		paused = not paused
-		Engine.time_scale = _time_scale if not paused else 0.0
-		var pause_menu  = get_tree().get_first_node_in_group("pause")
-		if pause_menu:
-			pause_menu.visible = not pause_menu.visible
+	if event.is_action_pressed("pause") and not _block_pause:
+		pause()
 		

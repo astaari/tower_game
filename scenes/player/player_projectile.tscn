@@ -57,7 +57,6 @@ physics_material_override = SubResource("PhysicsMaterial_ia3ad")
 linear_velocity = Vector2(400, -400)
 angular_velocity = 18.8496
 script = ExtResource("1_7svy6")
-lifetime = 5.0
 damage = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

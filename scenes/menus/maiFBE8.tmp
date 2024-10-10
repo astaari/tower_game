@@ -137,6 +137,7 @@ text = "Start"
 
 [node name="ArcadeButton" type="Button" parent="TitleContainer/TitleRows/Buttons"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "Arcade mode"
 
@@ -161,7 +162,6 @@ text = "Quit"
 
 [node name="Howtoplay" parent="." instance=ExtResource("6_ktgxq")]
 unique_name_in_owner = true
-visible = false
 
 [node name="SettingsContainer" parent="." instance=ExtResource("6_qbysn")]
 unique_name_in_owner = true

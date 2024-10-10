@@ -8,6 +8,8 @@ extends CanvasLayer
 @onready var title_label: Label = %TitleLabel
 @onready var description_label: Label = %DescriptionLabel
 @onready var start_button: Button = %StartButton
+@onready var arcade_button : Button = %ArcadeButton
+@onready var howto_button : Button = %HowtoButton
 @onready var settings_button: Button = %SettingsButton
 @onready var quit_button: Button = %QuitButton
 
@@ -20,11 +22,24 @@ func _ready() -> void:
 	start_button.pressed.connect(_on_start_button_pressed)
 	settings_button.pressed.connect(_on_settings_button_pressed)
 	quit_button.pressed.connect(_on_quit_button_pressed)
+	arcade_button.pressed.connect(_on_arcade_button_pressed)
+	howto_button.pressed.connect(_on_howto_button_pressed)
+	
 	
 	settings_container.settings_back_button.visible=true
 	settings_container.settings_back_button.pressed.connect(_on_back_button_pressed)
 
-
+func _on_arcade_button_pressed():
+	if animation_player.is_playing():
+		return
+	EventManager.current_level=99
+	EventManager.emit_level_changed()
+	print("OOO")
+	
+func _on_howto_button_pressed():
+	if animation_player.is_playing():
+		return
+	%Howtoplay.visible=true
 
 func set_label_text() -> void:
 	title_label.text = title
@@ -51,13 +66,20 @@ func _on_back_button_pressed() -> void:
 
 
 func _on_start_button_pressed() -> void:
+	if animation_player.is_playing():
+		return
 	animation_player.play("start")
 	EventManager.emit_level_changed()
+	
 
 
 func _on_settings_button_pressed() -> void:
+	if animation_player.is_playing():
+		return
 	_toggle_menu_containers("settings")
 
 
 func _on_quit_button_pressed() -> void:
+	if animation_player.is_playing():
+		return
 	get_tree().quit()
