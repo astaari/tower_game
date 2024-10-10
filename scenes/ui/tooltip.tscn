@@ -16,27 +16,26 @@ script = ExtResource("3_go6gq")
 property_name = "poo"
 value = 3.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_unwlu"]
+[sub_resource type="LabelSettings" id="LabelSettings_o1xci"]
 font = ExtResource("4_gxnq1")
 font_size = 14
-outline_size = 4
+outline_size = 2
 outline_color = Color(0, 0, 0, 1)
-shadow_size = 4
+shadow_size = 2
 shadow_color = Color(0, 0, 0, 1)
-shadow_offset = Vector2(4, 4)
 
-[sub_resource type="LabelSettings" id="LabelSettings_abxoa"]
+[sub_resource type="LabelSettings" id="LabelSettings_juitn"]
 font = ExtResource("4_gxnq1")
-font_size = 11
-outline_size = 4
+font_size = 13
+outline_size = 2
 outline_color = Color(0, 0, 0, 1)
-shadow_size = 4
+shadow_size = 2
 shadow_color = Color(0, 0, 0, 1)
-shadow_offset = Vector2(4, 4)
+shadow_offset = Vector2(2, 2)
 
 [node name="Tooltip" type="Panel"]
 z_index = 200
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(64, 64)
 offset_right = 256.0
 offset_bottom = 256.0
 tooltip_text = "hello"
@@ -65,15 +64,16 @@ custom_minimum_size = Vector2(160, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 14
 text = "{item name}"
-label_settings = SubResource("LabelSettings_unwlu")
+label_settings = SubResource("LabelSettings_o1xci")
 autowrap_mode = 3
 clip_text = true
 max_lines_visible = 1
 script = ExtResource("4_yuls1")
 _max_size = 16
 _current_font_size = 14
+_size_just_modified_by_autosizer = true
 _editor_defaults_set = true
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer"]
@@ -116,15 +116,15 @@ custom_minimum_size = Vector2(200, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 10
-text = "Press E to take
-Press T to discard"
-label_settings = SubResource("LabelSettings_abxoa")
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 13
+text = "[E] to Take
+[T] to Discard"
+label_settings = SubResource("LabelSettings_juitn")
 autowrap_mode = 3
 clip_text = true
 max_lines_visible = 2
 script = ExtResource("4_yuls1")
 _max_size = 16
-_current_font_size = 11
+_min_size = 12
+_current_font_size = 13
 _editor_defaults_set = true

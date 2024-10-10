@@ -8,12 +8,14 @@ const overlays : Dictionary = {
 	"half":	preload("res://assets/ui/health-bar-overlay-half.png"),
 	"low" : preload("res://assets/ui/health-bar-overlay-low.png"),
 }
-# Called when the node enters the scene tree for the first time.
+
+
 func _ready() -> void:
 	var player = get_tree().get_first_node_in_group("player")
 	if player and not health_component:
-		health_component=player.health_component
+		health_component = player.health_component
 	if health_component:
+		%Label.text = str(health_component.current_health, "/", health_component.max_health)
 		progress_bar.max_value = health_component.max_health
 		progress_bar.value = health_component.current_health
 		health_component.health_changed.connect(_on_health_changed)
@@ -22,8 +24,7 @@ func _ready() -> void:
 			func():
 			health_component.health_changed.disconnect(_on_health_changed)
 			health_component.max_health_changed.disconnect(_on_max_health_changed)
-			health_component=null
-			
+			health_component = null
 			)
 
 func _update():
@@ -40,14 +41,8 @@ func _update():
 func _on_health_changed(value):
 	progress_bar.value = value
 	_update()
-	%Label.text = str(value)+"/"+str(health_component.max_health)
+	%Label.text = str(value, "/", health_component.max_health)
 	
 func _on_max_health_changed(value : float)-> void:
 	progress_bar.max_value = value
 	_update()
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if health_component:
-		%Label.text = str(health_component.current_health)+"/"+str(health_component.max_health)
-
-	

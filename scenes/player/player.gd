@@ -7,8 +7,7 @@ const DOUBLE_JUMP_VELOCITY = -700.0
 const DASH_VELOCITY = MAX_SPEED * 2.5
 const INTERACTION_RANGE = 100
 
-@onready var animation_tree: AnimationTree = $AnimationTree
-@onready var animation_mode = animation_tree.get("parameters/playback")
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var collision_area: Area2D = $CollisionArea2D
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var hurt_box_component: HurtBoxComponent = $HurtBoxComponent
@@ -41,8 +40,8 @@ func _attack_timer_timeout():
 	can_attack = true
 
 func _ready():
+	EventManager.level_changed.connect(on_level_changed)
 	player_stats.register(self)
-	animation_tree.active = true
 	coyote_timer.timeout.connect(on_coyote_timer_timeout)
 	$AttackTimer.timeout.connect(_attack_timer_timeout)
 	$AttackTimer.wait_time = player_stats.attack_speed
@@ -54,12 +53,14 @@ func _ready():
 		)
 	print(str(player_stats))
 
+
 func _exit_tree() -> void:
 	player_stats.unregister()
-	
+
 
 func _process(_delta: float) -> void:
 	$HurtBoxComponent.visible = health_component.damage_immune
+
 
 func _physics_process(delta: float) -> void:
 	if Game.paused:
@@ -115,17 +116,21 @@ func _physics_process(delta: float) -> void:
 
 
 func attack(direction: Vector2):
+	print(direction)
+	print(global_position)
 	if not can_attack:
 		return
 	var projectile = projectile_scene.instantiate() as RigidBody2D
-	if direction.x == -1:
-		projectile.linear_velocity.x = projectile.linear_velocity.x * direction.x
-	projectile.global_position = global_position
+	projectile.linear_velocity.x = projectile.linear_velocity.x * direction.x
+	var spawn_position = global_position
+	spawn_position.y -= 100
+	projectile.global_position = spawn_position
+	
 	projectiles_active = min(projectiles_active + 1, player_stats.projectiles_max)
 	projectile.damage = player_stats.damage
 	
 	get_tree().root.add_child(projectile)
-	can_attack=false
+	can_attack = false
 	$AttackTimer.start()
 
 
@@ -133,18 +138,14 @@ func set_animation(direction: Vector2):
 	if direction == null:
 		return
 	
+	$Sprite2D.flip_h= (direction.x < 0)
 	if not direction.is_zero_approx():
 		last_movement_direction = direction
-		animation_mode.travel("run_right")
-		#animation_tree.set("parameters/run/blend_position", direction)
+		animation_player.play("run_right")
 	else:
-		animation_mode.travel("idle")
-	
-	$Sprite2D.flip_h= (direction.x < 0)
+		animation_player.play("idle")
 
-# TODO – Expand the interact() function
-# Enable the player to interact with game objects (i.e., item pick-up, doors, etc.)
-# This is currently only set up with items
+
 func interact():
 	var items = get_tree().get_nodes_in_group("item")
 	items = items.filter(func(item: Node2D):
@@ -164,7 +165,6 @@ func interact():
 	var item_closest_to_player = items[0] as RandomItem
 	var item_distance = item_closest_to_player.global_position.distance_squared_to(global_position)
 
-	print(items)
 	if item_closest_to_player.item!=Game.current_tooltip.item:
 		Game.show_tooltip(item_closest_to_player)
 		
@@ -184,7 +184,6 @@ func on_coyote_timer_timeout():
 	can_jump = false
 
 
-
 func _on_hurt_box_component_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	# FIXME – What are local_shape_index and body_shape_index used for?
 	if is_instance_of(body,TileMapLayer):
@@ -200,14 +199,18 @@ func _on_hurt_box_component_body_shape_entered(body_rid: RID, body: Node2D, body
 			#print("Knockback ")
 			velocity.x += -_current_direction * data["knockback"]
 			velocity.y -= data["knockback"]
-			movement_disabled=true
+			movement_disabled = true
 			get_tree().create_timer(0.5).timeout.connect(
 			func():
-				movement_disabled=false
+				movement_disabled = false
 				)
 		if "slow" in data:
 			#print("apply slow")
 			print(typeof(data["slow"]), " type")
 			var mdat : Effect = data["slow"] as Effect
 			effects.apply_effect(mdat)
-			
+
+func on_level_changed() -> void:
+	velocity = Vector2.ZERO
+	movement_disabled = true
+	animation_player.play("into_the_portal")

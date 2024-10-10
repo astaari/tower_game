@@ -34,11 +34,7 @@ flip_h = true
 position = Vector2(5, -108)
 shape = SubResource("CapsuleShape2D_2eg1e")
 
-[node name="HurtBoxComponent" parent="." index="2"]
-visible = false
-
 [node name="HurtBoxCollider" parent="HurtBoxComponent" index="0"]
-visible = false
 position = Vector2(0, -128)
 shape = SubResource("CapsuleShape2D_etcnj")
 
@@ -50,9 +46,6 @@ libraries = {
 "big_boy_enemy": ExtResource("4_144ep")
 }
 autoplay = "hover_left"
-
-[node name="HitBoxComponent" parent="." index="5"]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent" index="0"]
 position = Vector2(0, -124)
