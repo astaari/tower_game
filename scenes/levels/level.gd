@@ -21,7 +21,7 @@ var _elapsed : float = 0
 
 func _ready() -> void:
 	set_shader_parameters()
-	$LevelGate.visible=false
+	#$LevelGate.visible=false
 	get_tree().create_timer(level_length).timeout.connect(_level_timer_timeout)
 	if enemy_spawner:
 		enemy_spawner.all_enemies_dead.connect(_on_all_enemies_dead)
