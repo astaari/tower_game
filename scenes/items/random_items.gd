@@ -37,7 +37,7 @@ func get_random_item() -> Item:
 	return item
 
 var _normal_items : Array[Item] =[
-	Item.new("Potato Chip", "Salty, crisp, goodness", [Effect.new("health",10,0)],0),
+	Item.new("Potato Chip", "Salty, crisp, goodness", [Effect.new("health",15,0)],0),
 	Item.new("Skullington","This skull is looking for his dad!", [Modifier.new("jump",-10),Modifier.new("speed",10)],3),
 	Item.new("Tooth or Horn or Something","You're not quite sure what it is, but it's sharp!",[Modifier.new("damage",1)],4),
 	Item.new("Heart","Get this back inside your body!",[Modifier.new("max_health",10)],6),
