@@ -1,5 +1,8 @@
-[gd_resource type="LabelSettings" format=3 uid="uid://6cmppknv3tn2"]
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://6cmppknv3tn2"]
+
+[ext_resource type="FontFile" uid="uid://ejkyijunr1ll" path="res://assets/fonts/arcade_regular.ttf" id="1_hi0af"]
 
 [resource]
+font = ExtResource("1_hi0af")
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)

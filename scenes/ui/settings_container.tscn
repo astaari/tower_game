@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://de4ywqpi2apyu"]
+[gd_scene load_steps=7 format=3 uid="uid://de4ywqpi2apyu"]
 
 [ext_resource type="Script" path="res://scenes/ui/settings.gd" id="1_1k8e3"]
 [ext_resource type="LabelSettings" uid="uid://b1p4n4pnlwjq3" path="res://assets/themes/menu_title_label.tres" id="1_pyxq2"]
@@ -7,9 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://qg3ytjovh6is" path="res://scenes/ui/audio_settings.tscn" id="5_b54wb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wqyln"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cb4ke"]
-bg_color = Color(0, 0, 0, 1)
 
 [node name="SettingsContainer" type="MarginContainer"]
 anchors_preset = 15
@@ -48,7 +45,6 @@ vertical_alignment = 1
 [node name="Panel" type="Panel" parent="SettingsRows"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_cb4ke")
 
 [node name="AudioSettings" parent="SettingsRows/Panel" instance=ExtResource("5_b54wb")]
 layout_mode = 1
