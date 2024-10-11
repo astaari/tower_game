@@ -23,8 +23,7 @@ func update_audio_bus(audio_bus_name: String, value: float) -> void:
 	
 	AudioServer.set_bus_volume_db(audio_bus_index, linear_to_db(value))
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
 	
 func _on_effects_slider_changed(value: float) -> void:
 	update_audio_bus("Effects", value)

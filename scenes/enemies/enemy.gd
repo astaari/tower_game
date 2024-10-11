@@ -15,9 +15,18 @@ var SPEED = 200.0
 var JUMP_VELOCITY = -400.0
 
 func _ready() -> void:
+	health_component.health_changed.connect(_health_changed)
+	health_component.max_health_changed.connect(_max_health_changed)
 	health_component.max_health *= Game.health_mult
 	damage *= Game.damage_mult
 	
+func _health_changed(val):
+	print("HEALTH CHANGING") 
+	$HealthBar.value=val
+	print(val,$HealthBar.value)
+	
+func _max_health_changed(val):
+	$HealthBar.max_value=val
 
 func _exit_tree() -> void:
 	if $HealthComponent.current_health <= 0:
@@ -26,7 +35,7 @@ func _exit_tree() -> void:
 func _draw_enemy():
 	pass
 
-func _movement(delta : float) -> Vector2:
+func _movement(_delta : float) -> Vector2:
 	return Vector2.ZERO
 
 func _physics_process(delta: float) -> void:

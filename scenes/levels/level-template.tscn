@@ -22,7 +22,8 @@ tile_set = ExtResource("4_kysyd")
 [node name="Player" parent="." instance=ExtResource("6_w3idt")]
 position = Vector2(-1104, 66)
 
-[node name="GameUi" parent="." instance=ExtResource("7_bf8jw")]
+[node name="GameUi" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_bf8jw")]
+player = NodePath("../Player")
 
 [node name="ColorSwapCanvasLayer" parent="." instance=ExtResource("8_brgcj")]
 

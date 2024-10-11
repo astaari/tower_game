@@ -28,5 +28,3 @@ func _update_text() -> void:
 		%Label.text = Game.get_player_stats()
 		%Label.text += "\n Score : %d" % Game.score 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

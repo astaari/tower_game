@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcdvwr27deug7"]
+[gd_scene load_steps=11 format=3 uid="uid://dcdvwr27deug7"]
 
 [ext_resource type="PackedScene" uid="uid://g3j3w1yhq2tt" path="res://scenes/menus/main_menu.tscn" id="1_gdkpf"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_x5ihv"]
+[ext_resource type="PackedScene" uid="uid://7o3yw1nov7qk" path="res://scenes/player/player.tscn" id="3_qiwul"]
+[ext_resource type="Script" path="res://scenes/player/player_stats.gd" id="4_hrm5m"]
+[ext_resource type="PackedScene" uid="uid://b76psagt11xrt" path="res://scenes/ui/game_ui.tscn" id="5_4yvoq"]
 
 [sub_resource type="Animation" id="Animation_1sm5o"]
 length = 0.001
@@ -57,6 +60,17 @@ _data = {
 "fade_out": SubResource("Animation_qn1qv")
 }
 
+[sub_resource type="Resource" id="Resource_2jvbd"]
+script = ExtResource("4_hrm5m")
+speed = 350.0
+max_health = 100
+jump_height = 100.0
+damage = 1.0
+damage_resist = 0.0
+projectiles_max = 3
+character_size = 1.0
+attack_speed = 1.5
+
 [node name="Main" type="Node"]
 script = ExtResource("1_x5ihv")
 
@@ -80,3 +94,12 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 metadata/_edit_use_anchors_ = true
+
+[node name="Player" parent="." instance=ExtResource("3_qiwul")]
+visible = false
+z_index = 4096
+player_stats = SubResource("Resource_2jvbd")
+
+[node name="GameUi" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_4yvoq")]
+visible = false
+player = NodePath("../Player")

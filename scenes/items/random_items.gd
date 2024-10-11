@@ -39,12 +39,13 @@ func get_random_item() -> Item:
 var _normal_items : Array[Item] =[
 	Item.new("Potato Chip", "Salty, crisp, goodness", [Effect.new("health",15,0)],0),
 	Item.new("Skullington","This skull is looking for his dad!", [Modifier.new("jump",-10),Modifier.new("speed",10)],3),
-	Item.new("Tooth or Horn or Something","You're not quite sure what it is, but it's sharp!",[Modifier.new("damage",1)],4),
+	Item.new("Sharp Tooth","You're not quite sure what it is, but it's sharp!",[Modifier.new("damage",0.3)],4),
 	Item.new("Heart","Get this back inside your body!",[Modifier.new("max_health",10)],6),
 	Item.new("Sad Picture","Don't look at it too long, or you might start crying.",[Modifier.new("damage_resist",0.01),Modifier.new("max_health",-10)],7),
-	#Item.new("Key","This opens a locked something-or-other!",[Modifier.new("damage",0.5)],11),
-	#Item.new(),
-	#Item.new(),
+	Item.new("Key","This opens a locked something-or-other!",[Modifier.new("damage",0.1),Modifier.new("damage_resist",0.01)],11),
+	Item.new("Glass of Milk","Yum",[Modifier.new("max_health",5),Modifier.new("health",10)],15),
+	
+	Item.new("Old Tin Can", "Kick That Thing",[Modifier.new("damage_resist",0.01)],13),
 	#Item.new(),
 	#Item.new(),
 	#Item.new(),
@@ -58,8 +59,13 @@ var _normal_items : Array[Item] =[
 var _rare_items : Array[Item] = [
 	Item.new("Bobby","Won't someone be his friend?", [Modifier.new("speed",50),Modifier.new("damage",1.25)],1),
 	Item.new("Bread Person", "What is up with this mysterious, sentient bread?",[Modifier.new("max_health",25)],2),
+	Item.new("Coin","A coin saved is a coin earned!",
+		[Modifier.new("speed",30),Modifier.new("damage_resist",0.03),Modifier.new("attack_speed",-0.8)],
+	5),
 	Item.new("Drop of Blood","What happens when you drink it?",[Modifier.new("max_health",20),Modifier.new("health",20)],8),
 	Item.new("Giant Coffee Bean", "Did you know that coffee beans are fruits?",[Modifier.new("health",40)],12),
+	Item.new("Grandma's Ring", "She's been looking all over for that!",[Modifier.new("character_size",-0.05),Modifier.new("attack_speed",-0.075)],14),
+	Item.new("Leaf","Where did it come from?",[Modifier.new("damage",0.3),Modifier.new("attack_speed",-0.05)],17),
 	#Item.new(),
 	#Item.new(),
 	#Item.new(),
@@ -70,15 +76,16 @@ var _rare_items : Array[Item] = [
 ]
 
 var _epic_items : Array[Item] = [
-	Item.new("Coin","A coin saved is a coin earned!",
-		[Modifier.new("speed",50),Modifier.new("damage_resist",0.03),Modifier.new("attack_speed",-0.125)],
-	5),
 	Item.new("Funshroom","Eating this mushroom will make you see the world differently!",
-		[Modifier.new("speed",75),Modifier.new("damage",1.5),Modifier.new("jump_height",25)],
+		[Modifier.new("speed",40),Modifier.new("damage",0.75),Modifier.new("character_size",-0.1)],
 	9),
 	Item.new("Spotshroom","They say a mean, old dog is looking for these!",
-		[Modifier.new("speed",75),Modifier.new("character_size",-0.1)],
+		[Modifier.new("speed",40),Modifier.new("character_size",0.1)],
 	10),
+	Item.new("Feather","What's heavier, a kilogram of steel, or a kilogram of feathers?",
+		[Modifier.new("speed",75),Modifier.new("jump_height",30),Modifier.new("attack_speed",-0.075)],
+	16),
+	Item.new("Divide","And conquer!",[Modifier.new("damage_resist",0.05),Modifier.new("max_health",15)]),
 	#Item.new(),
 	#Item.new(),
 	#Item.new(),
@@ -87,24 +94,24 @@ var _epic_items : Array[Item] = [
 
 
 const items: Array[Dictionary] = [
-	#{"name": "Potato Chip", "description": "Salty, crispy, goodness."},
-	#{"name": "Bobby", "description": "Won't someone be his friend?"},
-	#{"name": "Bread Person", "description": "What is up with this mysterious, sentient bread?"}, 
-	#{"name": "Skullington", "description": "This skull is looking for his dad!"},
-	#{"name": "Tooth or Horn or Something", "description": "You're not quite sure what it is, but it's sharp!"},
-	#{"name": "Coin", "description": "A coin saved is a coin earned!"},
-	#{"name": "Heart", "description": "Get this back inside your body!"},
-	#{"name": "Sad Picture", "description": "Don't look at it too long, or you might start crying."},
-	#{"name": "Drop of Blood", "description": "What happens when you drink it?"},
-	#{"name": "Funshroom", "description": "Eating this mushroom will make you see the world differently!"},
-	#{"name": "Spotshroom", "description": "They say a mean, old dog is looking for these!"},
-	#{"name": "Key", "description": "This opens a locked something-or-other!"},
-	#{"name": "Giant Coffee Bean", "description": "Did you know that coffee beans are fruits?"},
-	{"name": "Old Tin Can", "description": "Kick that thing!"},
-	{"name": "Grandma's Ring", "description": "She's been looking all over for that!"},
-	{"name": "Glass of Milk", "description": "Whether it's half empty or half full, this glass has milk in it."},
-	{"name": "Feather", "description": "At least, it's supposed to be a feather."},
-	{"name": "Leaf", "description": "Where did it come from?"},
+	#{"name": "Potato Chip", "description": "Salty, crispy, goodness."}, 0
+	#{"name": "Bobby", "description": "Won't someone be his friend?"}, 1
+	#{"name": "Bread Person", "description": "What is up with this mysterious, sentient bread?"},  2
+	#{"name": "Skullington", "description": "This skull is looking for his dad!"}, 3
+	#{"name": "Tooth or Horn or Something", "description": "You're not quite sure what it is, but it's sharp!"}, 4 
+	#{"name": "Coin", "description": "A coin saved is a coin earned!"},5
+	#{"name": "Heart", "description": "Get this back inside your body!"}, 6
+	#{"name": "Sad Picture", "description": "Don't look at it too long, or you might start crying."}, 7
+	#{"name": "Drop of Blood", "description": "What happens when you drink it?"},8
+	#{"name": "Funshroom", "description": "Eating this mushroom will make you see the world differently!"},9
+	#{"name": "Spotshroom", "description": "They say a mean, old dog is looking for these!"},10
+	#{"name": "Key", "description": "This opens a locked something-or-other!"},11
+	#{"name": "Giant Coffee Bean", "description": "Did you know that coffee beans are fruits?"},12
+	#{"name": "Old Tin Can", "description": "Kick that thing!"},13
+	#{"name": "Grandma's Ring", "description": "She's been looking all over for that!"},14
+	#{"name": "Glass of Milk", "description": "Whether it's half empty or half full, this glass has milk in it."},15
+	#{"name": "Feather", "description": "At least, it's supposed to be a feather."},16
+	#{"name": "Leaf", "description": "Where did it come from?"},17
 	{"name": "Jumpshroom", "description": "Jump on these bad boys for a good time!"},
 	{"name": "Approximately", "description": "Neither here nor there, as the kids are saying these days."},
 	{"name": "Divide", "description": "...and conquer!"},

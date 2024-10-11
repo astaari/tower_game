@@ -2,7 +2,7 @@ extends Node2D
 class_name RandomItem
 
 @onready var sprite: Sprite2D = $Visuals/Sprite2D
-@onready var audio_stream_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
+#@onready var audio_stream_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 # TODO – Create weighted table for random items
 #@export var random_items: RandomItems
@@ -23,7 +23,7 @@ func set_item():
 	if Game.items == null:
 		return
 	
-	var random_index = randi_range(0, (sprite.hframes * sprite.vframes) - 1)
+	#var random_index = randi_range(0, (sprite.hframes * sprite.vframes) - 1)
 	#var item = random_items["items"][random_index]
 	
 	item = Game.items.get_random_item()

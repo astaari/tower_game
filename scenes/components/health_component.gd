@@ -9,9 +9,10 @@ signal max_health_changed(max_health)
 	set(val):
 		var diff = val-max_health
 		max_health=val
-		if diff > 0:
-			heal(diff)
+		
 		max_health_changed.emit(val)
+		if current_health+diff > 0:
+			heal(diff)
 	get():
 		return max_health
 var current_health : float 
@@ -23,7 +24,7 @@ func _ready():
 	current_health = max_health
 
 
-func damage(damage_amount: float, knockback: float = 0):
+func damage(damage_amount: float, _knockback: float = 0):
 	if damage_immune:
 		return
 	damage_amount*=(1-damage_resist)

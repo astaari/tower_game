@@ -1,12 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://dg3gfe4p2wtap"]
+[gd_scene load_steps=10 format=4 uid="uid://dg3gfe4p2wtap"]
 
 [ext_resource type="PackedScene" uid="uid://cegmmbnx2nejg" path="res://scenes/game_camera/game_camera.tscn" id="1_sokj2"]
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_yyhii"]
 [ext_resource type="PackedScene" uid="uid://bj65xcvqsyr7s" path="res://scenes/environment/parallax_background.tscn" id="2_aceja"]
 [ext_resource type="TileSet" uid="uid://b0qs5ymyd8j48" path="res://assets/tilesets/bw-tileset.tres" id="3_osnvo"]
 [ext_resource type="PackedScene" uid="uid://cwl3encoi54s6" path="res://scenes/items/random_item.tscn" id="4_hcyxp"]
-[ext_resource type="PackedScene" uid="uid://7o3yw1nov7qk" path="res://scenes/player/player.tscn" id="5_8neiu"]
-[ext_resource type="PackedScene" uid="uid://b76psagt11xrt" path="res://scenes/ui/game_ui.tscn" id="6_i7c66"]
 [ext_resource type="PackedScene" uid="uid://do3pox5cyduq3" path="res://assets/shaders/color_swap_shader_scene.tscn" id="7_tgdxh"]
 [ext_resource type="PackedScene" uid="uid://5g0snpn01gj1" path="res://scenes/environment/level_gate.tscn" id="8_k8q8h"]
 [ext_resource type="PackedScene" uid="uid://bq3fmclbwhilv" path="res://scenes/enemies/enemy_egg.tscn" id="9_cwqpc"]
@@ -53,9 +51,6 @@ position = Vector2(2182, -14)
 [node name="RandomItem11" parent="Items" instance=ExtResource("4_hcyxp")]
 position = Vector2(974, -1212)
 
-[node name="Player" parent="." instance=ExtResource("5_8neiu")]
-position = Vector2(-1104, 66)
-
 [node name="LevelGate" parent="." instance=ExtResource("8_k8q8h")]
 position = Vector2(3428, 9)
 
@@ -67,9 +62,10 @@ position = Vector2(-495, -17)
 [node name="Enemy2" parent="Enemies" instance=ExtResource("9_cwqpc")]
 position = Vector2(1056, -890)
 
-[node name="GameUi" parent="." instance=ExtResource("6_i7c66")]
-
 [node name="PauseMenu" parent="." instance=ExtResource("12_l5jw0")]
 visible = false
 
 [node name="ColorSwapCanvasLayer" parent="." instance=ExtResource("7_tgdxh")]
+
+[node name="PlayerSpawnPoint" type="Node2D" parent="."]
+position = Vector2(-1103, 26)

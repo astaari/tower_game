@@ -16,6 +16,7 @@ func _process(delta):
 func set_target_position():
 	var player_node = get_tree().get_first_node_in_group("player") as Node2D
 	if player_node == null:
+		print("NO PLAYER")
 		return
 	target_position = player_node.global_position
 	target_position.y += y_offset

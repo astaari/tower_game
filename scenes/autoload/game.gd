@@ -8,7 +8,7 @@ var current_tooltip : Tooltip
 var pause_scene : PackedScene
 var _time_scale : float = 1.0
 var score : float = 0
-@onready var player : Player = get_tree().get_first_node_in_group("player")
+@onready var player : Player
 
 var health_mult : float = 1.0
 var damage_mult : float = 1.0

@@ -19,7 +19,6 @@ const INTERACTION_RANGE = 100
 
 @export var player_stats : PlayerStats = PlayerStats.new()
 
-var _tooltip : Tooltip
 
 var can_jump: bool = true
 var can_attack : bool = true
@@ -49,7 +48,7 @@ func _ready():
 	health_component.max_health = player_stats.max_health
 	health_component.died.connect(func():
 		#EventManager.to_main_menu()
-		EventManager.current_level=-2
+		EventManager.current_level=-3
 		EventManager.emit_level_changed()
 		)
 	print(str(player_stats))
@@ -96,15 +95,7 @@ func _physics_process(delta: float) -> void:
 	
 	velocity.x = direction.x * player_stats.speed
 	velocity.x = clampf(velocity.x, -MAX_SPEED, MAX_SPEED)
-	
-	#TODO Make sure effects from tiles don't do anything
-	#var slow_mod = effects.get_effect("slow") as Effect
-	#var speed_mod = effects.get_effect("speed") as Effect
-	##print(slow_mod)
-	#if slow_mod:
-		#velocity.x *= slow_mod.value
-	#if speed_mod:
-		#velocity.x *= speed_mod.value
+
 	
 	_current_direction = 1.0 if velocity.x > 0.0 else -1.0 if velocity.x > 0.0 else 0.0
 	#print("initial vs now : " , initial_pos, "  " , global_position)
@@ -119,8 +110,7 @@ func attack(direction: Vector2):
 		return
 	var projectile = projectile_scene.instantiate() as RigidBody2D
 	projectile.linear_velocity.x = projectile.linear_velocity.x * direction.x
-	var spawn_position = global_position
-	spawn_position.y -= 50
+	var spawn_position = $ProjectilePos.global_position
 	projectile.global_position = spawn_position
 	
 	projectiles_active = min(projectiles_active + 1, player_stats.projectiles_max)
@@ -160,7 +150,6 @@ func interact():
 	)
 	
 	var item_closest_to_player = items[0] as RandomItem
-	var item_distance = item_closest_to_player.global_position.distance_squared_to(global_position)
 
 	if item_closest_to_player.item!=Game.current_tooltip.item:
 		Game.show_tooltip(item_closest_to_player)
@@ -181,7 +170,7 @@ func on_coyote_timer_timeout():
 	can_jump = false
 
 
-func _on_hurt_box_component_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+func _on_hurt_box_component_body_shape_entered(body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
 	# FIXME – What are local_shape_index and body_shape_index used for?
 	if is_instance_of(body,TileMapLayer):
 		var tilemap : TileMapLayer = body as TileMapLayer
@@ -211,3 +200,11 @@ func on_level_changed() -> void:
 	velocity = Vector2.ZERO
 	movement_disabled = true
 	animation_player.play("into_the_portal")
+	await animation_player.animation_finished
+	visible = false
+	animation_player.queue("RESET")
+	animation_player.play_backwards("into_the_portal")
+
+	
+	#animation_player.play_backwards("into_the_portal")
+	#animation_player.stop()

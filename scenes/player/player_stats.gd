@@ -9,7 +9,7 @@ class_name PlayerStats extends Resource
 			_player.health_component.max_health=value
 			
 @export var jump_height : float = 100
-@export var damage : float = 2.0
+@export var damage : float = 1
 @export var damage_resist : float = 0.0 :
 	set(value):
 		damage_resist = clampf(value,-0.25,0.75)
@@ -37,18 +37,17 @@ func unregister():
 
 
 func _to_string() -> String:
-	var str : String = "Player Stats: \n"
+	var res: String = "Player Stats: \n"
 	if _player:
-		str += "\t Max Health : %.2f\n" % _player.health_component.max_health
+		res += "\t Max Health : %.2f\n" % _player.health_component.max_health
 	for prop in Game.player_stats:
-		str += "\t" + prop.replace("_"," ").capitalize() + " : " + str(self.get(prop)) + "\n"
+		res += "\t" + prop.replace("_"," ").capitalize() + " : " + str(self.get(prop)) + "\n"
 		
-	return str
+	return res
 
 
 func jump_height_to_speed() -> float:
 	var gravity = ProjectSettings.get("physics/2d/default_gravity")
-	var time_to_max : float = 12
 	var result_vel = -sqrt(2*gravity*jump_height)
 	return result_vel
 

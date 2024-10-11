@@ -7,7 +7,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2eg1e"]
 radius = 100.0
-height = 256.0
+height = 216.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_etcnj"]
 radius = 128.0
@@ -57,3 +57,10 @@ rotation = 1.5708
 shape = SubResource("CircleShape2D_cvrth")
 
 [node name="Timer" type="Timer" parent="." index="7"]
+
+[node name="HealthBar" parent="." index="8"]
+offset_left = -37.0
+offset_top = -277.0
+offset_right = 91.0
+offset_bottom = -237.0
+scale = Vector2(0.66, 0.25)

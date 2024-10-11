@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfqwv51eyfym2"]
+[gd_scene load_steps=9 format=3 uid="uid://bfqwv51eyfym2"]
 
 [ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_yy8fh"]
 [ext_resource type="Script" path="res://scenes/components/hurt_box_component.gd" id="2_tdb04"]
 [ext_resource type="Script" path="res://scenes/components/health_component.gd" id="3_5epwj"]
 [ext_resource type="Script" path="res://scenes/components/hit_box_component.gd" id="4_j7j6r"]
 [ext_resource type="Script" path="res://scenes/enemies/detection_box.gd" id="5_wkhex"]
+[ext_resource type="Texture2D" uid="uid://dd0b5ihstrh32" path="res://assets/ui/enemy-health-bar-under.png" id="6_lihmw"]
+[ext_resource type="Texture2D" uid="uid://bh016d2i6jsjy" path="res://assets/ui/enemy-health-bar-over.png" id="7_bsbb6"]
+[ext_resource type="Texture2D" uid="uid://wud3oaxmmxkp" path="res://assets/ui/enemy-health-bar.png" id="8_x78ig"]
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
@@ -37,3 +40,12 @@ script = ExtResource("4_j7j6r")
 [node name="DetectionBox" type="Area2D" parent="."]
 collision_layer = 64
 script = ExtResource("5_wkhex")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.25, 0.25)
+value = 100.0
+texture_under = ExtResource("6_lihmw")
+texture_over = ExtResource("7_bsbb6")
+texture_progress = ExtResource("8_x78ig")
