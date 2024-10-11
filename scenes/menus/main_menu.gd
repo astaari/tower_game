@@ -37,7 +37,6 @@ func _on_arcade_button_pressed():
 		return
 	EventManager.current_level=99
 	EventManager.emit_level_changed()
-	print("OOO")
 	
 func _on_howto_button_pressed():
 	if animation_player.is_playing():

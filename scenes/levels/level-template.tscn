@@ -24,11 +24,7 @@ tile_set = ExtResource("4_kysyd")
 
 [node name="Items" type="Node2D" parent="."]
 
-[node name="GameUi" parent="." instance=ExtResource("7_bf8jw")]
-
 [node name="PauseMenu" parent="." instance=ExtResource("9_krw2m")]
 visible = false
-
-[node name="Items" type="Node2D" parent="."]
 
 [node name="PlayerSpawnPoint" type="Node2D" parent="."]

@@ -8,6 +8,18 @@ const scene_path_prefix: String = "res://scenes/levels/level-"
 const main_menu_scene_path: String = "res://scenes/menus/main_menu.tscn"
 const end_game_scene_path: String = "res://scenes/menus/game_over.tscn"
 
+const levels = [
+	preload("res://scenes/levels/level-0.tscn"),
+	preload("res://scenes/levels/level-1.tscn"),
+	preload("res://scenes/levels/level-2.tscn"),
+	preload("res://scenes/levels/level-3.tscn"),
+	preload("res://scenes/levels/level-4.tscn"),
+]
+
+const arcade_level = preload("res://scenes/levels/level-100.tscn")
+const game_over = preload("res://scenes/menus/game_over.tscn")
+const main_menu = preload("res://scenes/menus/main_menu.tscn")
+
 @onready var player : Player = $Player
 
 
@@ -16,23 +28,27 @@ func _ready() -> void:
 	Game.player=player
 
 
-func get_next_level_scene_path() -> String:
+func get_next_level_scene() -> PackedScene:
 	print(EventManager.current_level)
 	if EventManager.current_level == -1:
-		return main_menu_scene_path
-	var scene_path = str(scene_path_prefix, EventManager.current_level, ".tscn")
-	print(scene_path)
-	if not FileAccess.file_exists(scene_path):
-		print("o?")
-		pass
-	return scene_path if FileAccess.file_exists(scene_path) else end_game_scene_path
+		return main_menu
+	if EventManager.current_level<-1:
+		return game_over
+	if EventManager.current_level >= len(levels):
+		if $GameUi:
+			$GameUi.show_score_panel()
+		return arcade_level
+	if $GameUi:
+		$GameUi.hide_score_panel()
+	#var scene_path = str(scene_path_prefix, EventManager.current_level, ".tscn")
+	#print(scene_path)
+	return levels[EventManager.current_level]
 
 
 func _on_level_changed():
 	Game.block_pause()
 	#player.reparent(self)
-	var next_scene_path = get_next_level_scene_path()
-	var next_scene = load(next_scene_path).instantiate()
+	var next_scene = get_next_level_scene().instantiate()
 	animation_player.play("fade_out")
 	await animation_player.animation_finished
 	if EventManager.current_level>=0:
@@ -47,11 +63,11 @@ func _on_level_changed():
 	await animation_player.animation_finished
 	if Game.player:
 		Game.player.visible = true
-    Game.player.z_index=9
+		Game.player.z_index=9
 		Game.player.animation_player.stop()
 	
-		Game.player.animation_player.play_backwards("into_the_portal")
-		await Game.player.animation_player.animation_finished
+		#Game.player.animation_player.play_backwards("into_the_portal")
+		#await Game.player.animation_player.animation_finished
 		Game.player.animation_player.queue("RESET")
 		Game.player.movement_disabled=false
 

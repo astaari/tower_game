@@ -50,6 +50,7 @@ _data = {
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_pop28")
 title = "Mr. Hat's Tower"
+description = "Find truth"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15

@@ -26,6 +26,8 @@ var current_scene_timer
 func _ready() -> void:
 	super._ready()
 	Game.score=0
+	if Game.player:
+		Game.player.visible=true
 	wave_ui.wavenum_label.text = "Wave: %d" % wave_number
 	
 	break_timer.wait_time = break_time

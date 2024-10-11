@@ -41,7 +41,10 @@ S - accelerate down
 E - Interact
 T - Discard item
 
-Enter / Left click - attack"
+Enter / Left click - attack
+
+Projectile travels in Direction
+of Movement"
 
 [node name="HSeparator" type="HSeparator" parent="VSplitContainer/CenterContainer/HFlowContainer"]
 custom_minimum_size = Vector2(400, 100)

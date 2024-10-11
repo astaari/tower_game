@@ -1,6 +1,6 @@
-[gd_resource type="Theme" load_steps=16 format=3 uid="uid://qb6dgmsbm5um"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://qb6dgmsbm5um"]
 
-[ext_resource type="FontFile" uid="uid://ejkyijunr1ll" path="res://assets/themes/arcade_regular.ttf" id="1_xb040"]
+[ext_resource type="FontFile" uid="uid://ejkyijunr1ll" path="res://assets/themes/arcade_regular.ttf" id="1_ei8xq"]
 [ext_resource type="StyleBox" uid="uid://dl0arq6nq5ydq" path="res://assets/themes/button_disabled.tres" id="2_i2vr5"]
 [ext_resource type="StyleBox" uid="uid://c8bu0cndy83ik" path="res://assets/themes/button_hover.tres" id="3_mht15"]
 [ext_resource type="StyleBox" uid="uid://btni27v6yeqin" path="res://assets/themes/button_normal.tres" id="4_sssb7"]
@@ -8,9 +8,7 @@
 [ext_resource type="StyleBox" uid="uid://di5rxuqrxikcg" path="res://assets/themes/separator_style_box_line.tres" id="5_gr78m"]
 [ext_resource type="StyleBox" uid="uid://c8ddbxr2roqkw" path="res://assets/themes/slider_general_style_box.tres" id="8_hw0rn"]
 [ext_resource type="StyleBox" uid="uid://b2vegek7io78g" path="res://assets/themes/slider_highlight_style_box.tres" id="9_aterq"]
-[ext_resource type="Texture2D" uid="uid://1g3ipne3h4pn" path="res://assets/sprites/circle-inverted.png" id="10_ml8iv"]
 [ext_resource type="StyleBox" uid="uid://crmghb3kijj3g" path="res://assets/themes/panel_style_box.tres" id="11_fidtt"]
-[ext_resource type="Texture2D" uid="uid://bmybrf2nkmwuf" path="res://assets/sprites/circle.png" id="11_qexbm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p53vn"]
 bg_color = Color(0, 0, 0, 1)
@@ -41,8 +39,9 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
 [resource]
+default_font = ExtResource("1_ei8xq")
 default_font_size = 16
-AcceptDialog/fonts/title_font = ExtResource("1_xb040")
+AcceptDialog/fonts/title_font = ExtResource("1_ei8xq")
 AcceptDialog/styles/embedded_border = SubResource("StyleBoxFlat_p53vn")
 AcceptDialog/styles/panel = SubResource("StyleBoxFlat_p0eqo")
 Button/colors/font_color = Color(1, 1, 1, 1)
@@ -63,7 +62,7 @@ Button/constants/h_separation = 8
 Button/constants/icon_max_width = 16
 Button/constants/outline_size = 0
 Button/font_sizes/font_size = 16
-Button/fonts/font = ExtResource("1_xb040")
+Button/fonts/font = ExtResource("1_ei8xq")
 Button/styles/disabled = ExtResource("2_i2vr5")
 Button/styles/focus = SubResource("StyleBoxEmpty_vw4xe")
 Button/styles/hover = ExtResource("3_mht15")
@@ -81,26 +80,26 @@ FlatButton/colors/icon_hover_color = Color(1, 1, 1, 1)
 FlatButton/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
 FlatButton/colors/icon_normal_color = Color(1, 1, 1, 1)
 FlatButton/colors/icon_pressed_color = Color(1, 1, 1, 1)
-FlatButton/fonts/font = ExtResource("1_xb040")
+FlatButton/fonts/font = ExtResource("1_ei8xq")
 HSeparator/constants/separation = 4
 HSeparator/styles/separator = ExtResource("5_gr78m")
 HSlider/constants/center_grabber = 0
 HSlider/constants/grabber_offset = 0
-HSlider/icons/grabber = ExtResource("10_ml8iv")
-HSlider/icons/grabber_disabled = ExtResource("11_qexbm")
-HSlider/icons/grabber_highlight = ExtResource("10_ml8iv")
+HSlider/icons/grabber = null
+HSlider/icons/grabber_disabled = null
+HSlider/icons/grabber_highlight = null
 HSlider/styles/grabber_area = ExtResource("8_hw0rn")
 HSlider/styles/grabber_area_highlight = ExtResource("9_aterq")
 HSlider/styles/slider = ExtResource("8_hw0rn")
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/colors/font_outline_color = Color(1, 1, 1, 1)
-Label/fonts/font = ExtResource("1_xb040")
+Label/fonts/font = ExtResource("1_ei8xq")
 Panel/styles/panel = ExtResource("11_fidtt")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_md1ic")
 VBoxContainer/constants/separation = 8
-VSlider/icons/grabber = ExtResource("10_ml8iv")
-VSlider/icons/grabber_disabled = ExtResource("11_qexbm")
-VSlider/icons/grabber_highlight = ExtResource("10_ml8iv")
+VSlider/icons/grabber = null
+VSlider/icons/grabber_disabled = null
+VSlider/icons/grabber_highlight = null
 VSlider/icons/tick = null
 VSlider/styles/grabber_area = ExtResource("8_hw0rn")
 VSlider/styles/grabber_area_highlight = ExtResource("9_aterq")

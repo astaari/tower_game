@@ -44,6 +44,7 @@ func reset_player():
 	health_component.max_health=100
 	health_component.current_health=100
 	health_component.damage_resist=0
+	movement_disabled=true
 	
 func _ready():
 	EventManager.level_changed.connect(on_level_changed)
@@ -114,7 +115,7 @@ func _physics_process(delta: float) -> void:
 
 
 func attack(direction: Vector2):
-	print(projectiles_active)
+	#print(projectiles_active)
 	if not can_attack:
 		return
 	var projectile = projectile_scene.instantiate() as RigidBody2D
