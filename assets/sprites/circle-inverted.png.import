@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyatlo3mxhhmv"
-path="res://.godot/imported/lock.png-8b5781e292369a8e02e29f0128fda63f.ctex"
+uid="uid://1g3ipne3h4pn"
+path="res://.godot/imported/circle-inverted.png-08187b5fa642cad47b3518b02f606c2c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/lock.png"
-dest_files=["res://.godot/imported/lock.png-8b5781e292369a8e02e29f0128fda63f.ctex"]
+source_file="res://assets/sprites/circle-inverted.png"
+dest_files=["res://.godot/imported/circle-inverted.png-08187b5fa642cad47b3518b02f606c2c.ctex"]
 
 [params]
 

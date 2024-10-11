@@ -47,6 +47,7 @@ func _on_level_changed():
 	await animation_player.animation_finished
 	if Game.player:
 		Game.player.visible = true
+    Game.player.z_index=9
 		Game.player.animation_player.stop()
 	
 		Game.player.animation_player.play_backwards("into_the_portal")
@@ -55,5 +56,3 @@ func _on_level_changed():
 		Game.player.movement_disabled=false
 
 	Game.unblock_pause()
-	
-	

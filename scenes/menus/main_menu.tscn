@@ -49,8 +49,7 @@ _data = {
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_pop28")
-title = "Mr Hat's Tower"
-description = "Find truth!"
+title = "Mr. Hat's Tower"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -133,7 +132,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("1_r1mvb")
-text = "Start"
+text = "Adventure Mode"
 
 [node name="ArcadeButton" type="Button" parent="TitleContainer/TitleRows/Buttons"]
 unique_name_in_owner = true

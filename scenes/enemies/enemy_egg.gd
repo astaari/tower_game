@@ -1,4 +1,5 @@
 extends Enemy
+
 @onready var patrol_timer : Timer = $PatrolTimer
 @export_range(1,4) var max_move_duration : float = 4
 @export_range(1,2) var max_idle_duration : float = 2.0
@@ -96,14 +97,19 @@ func _to_attack_mode(target : Player):
 	#pass
 	current_target = target
 	current_state=EnemyState.ATTACK
-	
+
+
 func _exit_attack_mode():
 	print("EXITING")
 	current_target=null
 	current_state = EnemyState.PATROL
-	
+
+
+func _on_died() -> void:
+	pass
+
+
 func _on_hurt_box_component_body_entered(body: Node2D) -> void:
-	
 	if body.is_in_group("player"):
 		print(body, " YOU")
 		

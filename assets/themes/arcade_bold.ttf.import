@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://1em38utp4wxq"
-path="res://.godot/imported/arcade_italic.ttf-bcb2a9210eb859f56c3fd8b3274e1b05.fontdata"
+uid="uid://bm6ew4if0i2qa"
+path="res://.godot/imported/arcade_bold.ttf-4c1bf3bffa62115746529f027645940e.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/arcade_italic.ttf"
-dest_files=["res://.godot/imported/arcade_italic.ttf-bcb2a9210eb859f56c3fd8b3274e1b05.fontdata"]
+source_file="res://assets/themes/arcade_bold.ttf"
+dest_files=["res://.godot/imported/arcade_bold.ttf-4c1bf3bffa62115746529f027645940e.fontdata"]
 
 [params]
 
@@ -32,7 +32,8 @@ preload=[{
 "chars": [],
 "glyphs": [],
 "name": "New Configuration",
-"size": Vector2i(16, 0)
+"size": Vector2i(16, 0),
+"variation_embolden": 0.0
 }]
 language_support={}
 script_support={}

@@ -73,7 +73,6 @@ func _on_start_button_pressed() -> void:
 		return
 	animation_player.play("start")
 	EventManager.emit_level_changed()
-	
 
 
 func _on_settings_button_pressed() -> void:

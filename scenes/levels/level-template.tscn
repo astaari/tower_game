@@ -22,6 +22,10 @@ tile_set = ExtResource("4_kysyd")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("8_slee3")]
 
+[node name="Items" type="Node2D" parent="."]
+
+[node name="GameUi" parent="." instance=ExtResource("7_bf8jw")]
+
 [node name="PauseMenu" parent="." instance=ExtResource("9_krw2m")]
 visible = false
 

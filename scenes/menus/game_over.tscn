@@ -83,7 +83,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -135,7 +134,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_yc1e6")
 theme_override_font_sizes/font_size = 16
-text = "You beat or lost the game!"
+text = "Thanks for playing!"
 label_settings = ExtResource("5_uue8w")
 
 [node name="HSeparator" type="HSeparator" parent="TitleContainer/TitleRows"]

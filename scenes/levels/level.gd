@@ -11,9 +11,7 @@ const random_item_scene : PackedScene = preload("res://scenes/items/random_item.
 @onready var player_spawn_point : Node2D = $PlayerSpawnPoint
 
 func _ready() -> void:
-	
 	Game.player.global_position = player_spawn_point.global_position
-	print(Game.player.global_position)
 	set_shader_parameters()
 	#$LevelGate.visible=false
 	

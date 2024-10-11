@@ -1,6 +1,6 @@
 [gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://b1p4n4pnlwjq3"]
 
-[ext_resource type="FontFile" uid="uid://1em38utp4wxq" path="res://assets/fonts/arcade_italic.ttf" id="1_3ufmr"]
+[ext_resource type="FontFile" uid="uid://1em38utp4wxq" path="res://assets/themes/arcade_italic.ttf" id="1_3ufmr"]
 
 [resource]
 line_spacing = 8.0
