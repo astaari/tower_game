@@ -102,7 +102,7 @@ position = Vector2(-700, -341)
 [node name="PauseMenu" parent="." instance=ExtResource("10_twgeu")]
 visible = false
 
-[node name="ColorSwapCanvasLayer" parent="." instance=ExtResource("8_n4jjj")]
-
 [node name="PlayerSpawnPoint" type="Node2D" parent="."]
 position = Vector2(-1098, 30)
+
+[node name="ColorSwapCanvasLayer" parent="." instance=ExtResource("8_n4jjj")]

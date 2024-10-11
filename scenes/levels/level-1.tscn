@@ -14,7 +14,7 @@
 script = ExtResource("1_yyhii")
 level = 1
 dark_color = Color(0, 0.143762, 0.079501, 1)
-light_color = Color(1.49205e-06, 0.583288, 0.361893, 1)
+light_color = Color(0.562571, 0.86646, 0.855399, 1)
 
 [node name="GameCamera" parent="." instance=ExtResource("1_sokj2")]
 
@@ -67,7 +67,7 @@ position = Vector2(1056, -890)
 [node name="PauseMenu" parent="." instance=ExtResource("12_l5jw0")]
 visible = false
 
-[node name="ColorSwapCanvasLayer" parent="." instance=ExtResource("7_tgdxh")]
-
 [node name="PlayerSpawnPoint" type="Node2D" parent="."]
 position = Vector2(-1103, 26)
+
+[node name="ColorSwapCanvasLayer" parent="." instance=ExtResource("7_tgdxh")]

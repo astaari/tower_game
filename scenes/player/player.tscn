@@ -198,7 +198,7 @@ height = 96.0
 radius = 37.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-z_index = 9
+z_index = 8
 z_as_relative = false
 position = Vector2(385, 304)
 collision_mask = 72
