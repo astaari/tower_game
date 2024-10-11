@@ -32,8 +32,6 @@ position = Vector2(808, -134)
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="PrettyGhostWizard" parent="Enemies" instance=ExtResource("8_6tcl8")]
-position = Vector2(-649, 83)
 [node name="PauseMenu" parent="." instance=ExtResource("12_l5jw0")]
 visible = false
 
