@@ -2,9 +2,9 @@ class_name PlayerProjectile extends RigidBody2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
-@export var speed : float = 200
+@export var speed : float = 300
 @export var direction = Vector2.ZERO
-@export var lifetime : float = 2.5
+@export var lifetime : float = 2
 @export var damage : float = 0.333
 
 func _ready() -> void:

@@ -1,7 +1,7 @@
 class_name PlayerStats extends Resource
 
 
-@export var speed : float = 300
+@export var speed : float = 375
 @export var max_health = 100 :
 	set(value):
 		max_health = value
@@ -9,19 +9,19 @@ class_name PlayerStats extends Resource
 			_player.health_component.max_health=value
 			
 @export var jump_height : float = 100
-@export var damage : float = 1
+@export var damage : float = 1.5
 @export var damage_resist : float = 0.0 :
 	set(value):
 		damage_resist = clampf(value,-0.25,0.75)
 		if _player:
 			_player.health_component.damage_resist = damage_resist
-@export var projectiles_max: int = 500
+@export var projectiles_max: int = 3
 @export var character_size : float = 1.0 :
 	set(value):
 		character_size = clampf(value,0.25,2.0)
 		if _player:
 			_player.scale = Vector2(character_size,character_size).clamp(Vector2(0.25,0.25),Vector2(2.0,2.0))
-@export var attack_speed = 3.5:
+@export var attack_speed = 1.25:
 	set(value):
 		attack_speed = clampf(value,0.2,5.0)
 		if _player:

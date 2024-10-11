@@ -8,8 +8,8 @@ var current_tooltip : Tooltip
 var pause_scene : PackedScene
 var _time_scale : float = 1.0
 var score : float = 0
-@onready var player : Player
-
+var player : Player
+@onready var projectile_container : Node2D = $ProjectileContainer
 var health_mult : float = 1.0
 var damage_mult : float = 1.0
 var difficulty_mult : float = 1.0
@@ -52,7 +52,7 @@ const player_stats : Array[String] = [
 	"jump_height",
 	"damage",
 	"damage_resist",
-	#"projectiles_max",
+	"projectiles_max",
 	"character_size",
 	"attack_speed",
 ]

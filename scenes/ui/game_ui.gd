@@ -10,5 +10,6 @@ func _ready() -> void:
 	health_bar.health_component=player.health_component
 	#health_bar.initialize()
 
-
+func _process(_delta : float):
+	%Label.text = "Score: %d" % Game.score
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b76psagt11xrt"]
+[gd_scene load_steps=4 format=3 uid="uid://b76psagt11xrt"]
 
 [ext_resource type="Script" path="res://scenes/ui/game_ui.gd" id="1_2oqcu"]
 [ext_resource type="PackedScene" uid="uid://wy8uu1vi1cij" path="res://scenes/ui/health_bar.tscn" id="1_dhs82"]
+[ext_resource type="Theme" uid="uid://qb6dgmsbm5um" path="res://assets/themes/menu_theme.tres" id="3_mudi2"]
 
 [node name="GameUi" type="CanvasLayer"]
 script = ExtResource("1_2oqcu")
@@ -18,3 +19,22 @@ theme_override_constants/margin_top = 16
 
 [node name="HealthBar" parent="MarginContainer" instance=ExtResource("1_dhs82")]
 layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+custom_minimum_size = Vector2(180, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("3_mudi2")
+
+[node name="Label" type="Label" parent="MarginContainer/Panel"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 12.0
+offset_top = 3.0
+offset_right = 113.0
+offset_bottom = 26.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = "Score:{score}"

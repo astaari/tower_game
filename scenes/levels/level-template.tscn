@@ -1,13 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqcqon1dyk1c5"]
+[gd_scene load_steps=7 format=3 uid="uid://cqcqon1dyk1c5"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_pdbx1"]
 [ext_resource type="PackedScene" uid="uid://cegmmbnx2nejg" path="res://scenes/game_camera/game_camera.tscn" id="2_umaoh"]
 [ext_resource type="TileSet" uid="uid://b0qs5ymyd8j48" path="res://assets/tilesets/bw-tileset.tres" id="4_kysyd"]
-[ext_resource type="PackedScene" uid="uid://7o3yw1nov7qk" path="res://scenes/player/player.tscn" id="6_w3idt"]
-[ext_resource type="PackedScene" uid="uid://b76psagt11xrt" path="res://scenes/ui/game_ui.tscn" id="7_bf8jw"]
 [ext_resource type="PackedScene" uid="uid://do3pox5cyduq3" path="res://assets/shaders/color_swap_shader_scene.tscn" id="8_brgcj"]
 [ext_resource type="PackedScene" uid="uid://bj65xcvqsyr7s" path="res://scenes/environment/parallax_background.tscn" id="8_slee3"]
-[ext_resource type="PackedScene" uid="uid://5g0snpn01gj1" path="res://scenes/environment/level_gate.tscn" id="9_g4hyk"]
 [ext_resource type="PackedScene" uid="uid://cjpugvxgnbepr" path="res://scenes/ui/pause_menu.tscn" id="9_krw2m"]
 
 [node name="Level" type="Node"]
@@ -19,16 +16,7 @@ level = 1
 [node name="LevelTileSet" type="TileMapLayer" parent="."]
 tile_set = ExtResource("4_kysyd")
 
-[node name="Player" parent="." instance=ExtResource("6_w3idt")]
-position = Vector2(-1104, 66)
-
-[node name="GameUi" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_bf8jw")]
-player = NodePath("../Player")
-
 [node name="ColorSwapCanvasLayer" parent="." instance=ExtResource("8_brgcj")]
-
-[node name="LevelGate" parent="." instance=ExtResource("9_g4hyk")]
-position = Vector2(1041, -159)
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -38,3 +26,5 @@ position = Vector2(1041, -159)
 visible = false
 
 [node name="Items" type="Node2D" parent="."]
+
+[node name="PlayerSpawnPoint" type="Node2D" parent="."]

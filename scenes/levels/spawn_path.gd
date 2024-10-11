@@ -5,7 +5,7 @@ signal all_enemies_dead
 @export var enemy_container : Node
 
 @export var small_weight : float = 1000
-@export var big_weight : float = 50
+@export var big_weight : float = 0
 @onready var spawn_timer : Timer = $SpawnTimer
 
 var enemies_alive : Array[Enemy]
@@ -24,6 +24,10 @@ const big_enemies = [
 func _ready() -> void:
 	$SpawnTimer.wait_time = spawn_time
 	$SpawnTimer.timeout.connect(_on_spawn)
+	#$SpawnTimer.start()
+
+func start():
+	_on_spawn()
 	$SpawnTimer.start()
 
 func _on_spawn():
@@ -47,6 +51,5 @@ func _on_spawn():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$PathFollow2D.progress_ratio+=delta
-	if enemy_container.get_child_count()==0 and spawn_timer.is_stopped():
-		all_enemies_dead.emit()
-		queue_free()
+
+		#queue_free()

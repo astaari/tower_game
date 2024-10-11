@@ -62,14 +62,14 @@ _data = {
 
 [sub_resource type="Resource" id="Resource_2jvbd"]
 script = ExtResource("4_hrm5m")
-speed = 350.0
+speed = 375.0
 max_health = 100
 jump_height = 100.0
-damage = 1.0
+damage = 1.5
 damage_resist = 0.0
 projectiles_max = 3
 character_size = 1.0
-attack_speed = 1.5
+attack_speed = 1.25
 
 [node name="Main" type="Node"]
 script = ExtResource("1_x5ihv")

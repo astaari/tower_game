@@ -19,6 +19,9 @@ extends CanvasLayer
 
 func _ready() -> void:
 	set_label_text()
+	if Game.player:
+		Game.player.health_component.heal(1000000000000)
+
 	start_button.pressed.connect(_on_start_button_pressed)
 	settings_button.pressed.connect(_on_settings_button_pressed)
 	quit_button.pressed.connect(_on_quit_button_pressed)

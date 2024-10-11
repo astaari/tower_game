@@ -27,9 +27,6 @@ func get_next_level_scene_path() -> String:
 		pass
 	return scene_path if FileAccess.file_exists(scene_path) else end_game_scene_path
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("discard"):
-		EventManager.emit_level_changed()
 
 func _on_level_changed():
 	Game.block_pause()
@@ -48,14 +45,14 @@ func _on_level_changed():
 	current_scene = next_scene
 	animation_player.play("fade_in")
 	await animation_player.animation_finished
-	if player:
-		player.visible = true
-		player.animation_player.stop()
+	if Game.player:
+		Game.player.visible = true
+		Game.player.animation_player.stop()
 	
-		player.animation_player.play_backwards("into_the_portal")
-		await player.animation_player.animation_finished
-		player.animation_player.queue("RESET")
-		player.movement_disabled=false
+		Game.player.animation_player.play_backwards("into_the_portal")
+		await Game.player.animation_player.animation_finished
+		Game.player.animation_player.queue("RESET")
+		Game.player.movement_disabled=false
 
 	Game.unblock_pause()
 	

@@ -24,12 +24,12 @@ func initialize():
 		progress_bar.value = health_component.current_health
 		health_component.health_changed.connect(_on_health_changed)
 		health_component.max_health_changed.connect(_on_max_health_changed)
-		health_component.died.connect(
-			func():
-			health_component.health_changed.disconnect(_on_health_changed)
-			health_component.max_health_changed.disconnect(_on_max_health_changed)
-			health_component = null
-			)
+		#health_component.died.connect(
+			#func():
+			#health_component.health_changed.disconnect(_on_health_changed)
+			#health_component.max_health_changed.disconnect(_on_max_health_changed)
+			#health_component = null
+			#)
 	else:
 		print("NO HEALTH COMPONENT")
 func _update():

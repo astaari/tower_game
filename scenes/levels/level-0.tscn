@@ -6,7 +6,6 @@
 [ext_resource type="TileSet" uid="uid://b0qs5ymyd8j48" path="res://assets/tilesets/bw-tileset.tres" id="3_osnvo"]
 [ext_resource type="PackedScene" uid="uid://cwl3encoi54s6" path="res://scenes/items/random_item.tscn" id="4_hcyxp"]
 [ext_resource type="PackedScene" uid="uid://do3pox5cyduq3" path="res://assets/shaders/color_swap_shader_scene.tscn" id="7_tgdxh"]
-[ext_resource type="PackedScene" uid="uid://2jrfc7ggiayw" path="res://scenes/enemies/pretty_ghost_wizard.tscn" id="8_6tcl8"]
 [ext_resource type="PackedScene" uid="uid://5g0snpn01gj1" path="res://scenes/environment/level_gate.tscn" id="8_k8q8h"]
 [ext_resource type="PackedScene" uid="uid://cjpugvxgnbepr" path="res://scenes/ui/pause_menu.tscn" id="12_l5jw0"]
 
@@ -28,13 +27,14 @@ tile_set = ExtResource("3_osnvo")
 [node name="RandomItem1" parent="Items" instance=ExtResource("4_hcyxp")]
 position = Vector2(317, -86)
 
+[node name="RandomItem2" parent="Items" instance=ExtResource("4_hcyxp")]
+position = Vector2(-701, 71)
+
 [node name="LevelGate" parent="." instance=ExtResource("8_k8q8h")]
 position = Vector2(808, -134)
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="PrettyGhostWizard" parent="Enemies" instance=ExtResource("8_6tcl8")]
-position = Vector2(-649, 83)
 [node name="PauseMenu" parent="." instance=ExtResource("12_l5jw0")]
 visible = false
 

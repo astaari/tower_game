@@ -2,8 +2,8 @@ class_name Projectile extends Node2D
 
 @export var speed : float = 200
 @export var direction = Vector2.ZERO
-@export var lifetime : float = 5.0
-@export var damage : float = 10
+@export var lifetime : float = 3.5
+@export var damage : float = 5
 
 
 func _ready() -> void:

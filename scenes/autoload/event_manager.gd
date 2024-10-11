@@ -8,6 +8,8 @@ var current_level: int = -1
 
 func to_main_menu() ->void:
 	current_level=-2
+	if Game.player:
+		Game.player.reset_player()
 	emit_level_changed()
 
 func emit_level_changed():

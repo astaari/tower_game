@@ -7,7 +7,7 @@ var min_range = 200
 var max_range = 400
 
 var x_dir : float = -1
-
+var active_projectiles : Array[Projectile] = []
 
 var projectile : PackedScene = preload("res://scenes/enemies/egg_projectile.tscn")
 
@@ -21,6 +21,7 @@ func _ready():
 	reset_patrol_timer()
 	patrol_timer.timeout.connect(_on_patrol_timer_timeout)
 	patrol_timer.start()
+	
 	
 func reset_patrol_timer():
 	if not idling:
@@ -57,7 +58,7 @@ func do_attack():
 	var proj = projectile.instantiate()
 	proj.direction = target_direction
 	proj.global_position = $ProjSpawnPoint.global_position
-	get_tree().root.add_child(proj)
+	Game.projectile_container.add_child(proj)
 		
 
 
@@ -79,7 +80,7 @@ func _movement(_delta : float):
 			target_direction = global_position.direction_to(current_target.global_position)
 			if distance > min_range and distance < max_range:
 				#print(distance)
-				$AnimationPlayer.play("enemy_egg_animations/attack")
+				$AnimationPlayer.play("enemy_egg_animations/attack",-1,0.66)
 			elif distance <=max_range:
 				movement = Vector2(-target_direction.x,0)*SPEED
 			else:

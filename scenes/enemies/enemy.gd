@@ -19,6 +19,7 @@ func _ready() -> void:
 	health_component.max_health_changed.connect(_max_health_changed)
 	health_component.max_health *= Game.health_mult
 	damage *= Game.damage_mult
+	health_component.died.connect(func():queue_free())
 	
 func _health_changed(val):
 	print("HEALTH CHANGING") 

@@ -39,6 +39,12 @@ var movement_disabled : bool = false
 func _attack_timer_timeout():
 	can_attack = true
 
+func reset_player():
+	player_stats = PlayerStats.new()
+	health_component.max_health=100
+	health_component.current_health=100
+	health_component.damage_resist=0
+	
 func _ready():
 	EventManager.level_changed.connect(on_level_changed)
 	player_stats.register(self)
@@ -46,16 +52,19 @@ func _ready():
 	$AttackTimer.timeout.connect(_attack_timer_timeout)
 	$AttackTimer.wait_time = player_stats.attack_speed
 	health_component.max_health = player_stats.max_health
+	health_component.immune_time = 0.66
 	health_component.died.connect(func():
 		#EventManager.to_main_menu()
+		
+		
 		EventManager.current_level=-3
 		EventManager.emit_level_changed()
 		)
 	print(str(player_stats))
 
 
-func _exit_tree() -> void:
-	player_stats.unregister()
+	#player_stats.unregister()
+	#Game.player=null
 
 
 func _process(_delta: float) -> void:
@@ -190,11 +199,6 @@ func _on_hurt_box_component_body_shape_entered(body_rid: RID, body: Node2D, _bod
 			func():
 				movement_disabled = false
 				)
-		if "slow" in data:
-			#print("apply slow")
-			print(typeof(data["slow"]), " type")
-			var mdat : Effect = data["slow"] as Effect
-			effects.apply_effect(mdat)
 
 func on_level_changed() -> void:
 	velocity = Vector2.ZERO

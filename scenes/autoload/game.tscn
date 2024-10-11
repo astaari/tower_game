@@ -4,3 +4,5 @@
 
 [node name="Game" type="Node"]
 script = ExtResource("1_ye4f3")
+
+[node name="ProjectileContainer" type="Node2D" parent="."]

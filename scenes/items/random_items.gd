@@ -85,7 +85,7 @@ var _epic_items : Array[Item] = [
 	Item.new("Feather","What's heavier, a kilogram of steel, or a kilogram of feathers?",
 		[Modifier.new("speed",75),Modifier.new("jump_height",30),Modifier.new("attack_speed",-0.075)],
 	16),
-	Item.new("Divide","And conquer!",[Modifier.new("damage_resist",0.05),Modifier.new("max_health",15)]),
+	Item.new("Divide","And conquer!",[Modifier.new("damage_resist",0.05),Modifier.new("projectiles_max",1)],20),
 	#Item.new(),
 	#Item.new(),
 	#Item.new(),
@@ -114,7 +114,7 @@ const items: Array[Dictionary] = [
 	#{"name": "Leaf", "description": "Where did it come from?"},17
 	{"name": "Jumpshroom", "description": "Jump on these bad boys for a good time!"},
 	{"name": "Approximately", "description": "Neither here nor there, as the kids are saying these days."},
-	{"name": "Divide", "description": "...and conquer!"},
+	#{"name": "Divide", "description": "...and conquer!"},
 	{"name": "Scary Right Hand", "description": "If this game weren't limited to two colors, you bet this hand would be red!"},
 	{"name": "Just a Flower", "description": "That's all there is to this."},
 	{"name": "Love Letter", "description": "Tell them how you really feel!"},
