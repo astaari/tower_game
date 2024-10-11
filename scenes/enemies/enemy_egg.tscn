@@ -89,6 +89,12 @@ position = Vector2(0, -46)
 shape = SubResource("CircleShape2D_teu8s")
 debug_color = Color(0.565669, 0.392282, 1, 0.42)
 
+[node name="HealthBar" parent="." index="9"]
+offset_left = -19.0
+offset_top = -117.0
+offset_right = 109.0
+offset_bottom = -77.0
+
 [connection signal="body_entered" from="HurtBoxComponent" to="." method="_on_hurt_box_component_body_entered"]
 [connection signal="body_exited" from="HurtBoxComponent" to="." method="_on_hurt_box_component_body_exited"]
 [connection signal="body_entered" from="DetectionBox" to="DetectionBox" method="_on_body_entered"]

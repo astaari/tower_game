@@ -12,11 +12,11 @@ script = ExtResource("2_twhho")
 speed = 400.0
 max_health = 100
 jump_height = 100.0
-damage = 2.0
+damage = 1.0
 damage_resist = 0.0
-projectiles_max = 500
+projectiles_max = 2
 character_size = 1.0
-attack_speed = 0.5
+attack_speed = 1.0
 
 [sub_resource type="Animation" id="Animation_p7qkm"]
 length = 0.001
@@ -34,7 +34,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("Sprite2D:offset")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -46,7 +46,7 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/path = NodePath("Sprite2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
@@ -66,7 +66,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-6.28319]
+"values": [0.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -198,6 +198,8 @@ height = 96.0
 radius = 37.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+z_index = 99
+position = Vector2(385, 304)
 collision_mask = 72
 floor_max_angle = 1.22173
 script = ExtResource("1_negh2")
@@ -244,10 +246,12 @@ shape = SubResource("CircleShape2D_7nslh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-3, -41)
-rotation = -6.28319
 texture = ExtResource("2_5neol")
 hframes = 11
 vframes = 6
 frame = 44
+
+[node name="ProjectilePos" type="Node2D" parent="."]
+position = Vector2(2, -35)
 
 [connection signal="body_shape_entered" from="HurtBoxComponent" to="." method="_on_hurt_box_component_body_shape_entered"]

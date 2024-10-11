@@ -13,8 +13,8 @@ var projectile : PackedScene = preload("res://scenes/enemies/egg_projectile.tscn
 
 var idling : bool = false
 func _ready():
-	#super._ready()
-	$DetectionBox/CollisionShape2D.shape.radius = (max_range+min_range)/2
+	super._ready()
+	$DetectionBox/CollisionShape2D.shape.radius = float(max_range+min_range)/2.
 	#print($DetectionBox/CollisionShape2D.shape.radius)
 	$DetectionBox.player_in_range.connect(_to_attack_mode)
 	$DetectionBox.player_out_of_range.connect(_exit_attack_mode)
@@ -62,7 +62,7 @@ func do_attack():
 
 
 
-func _movement(delta : float):
+func _movement(_delta : float):
 	var movement = Vector2.ZERO
 	if current_state == EnemyState.PATROL:
 		if not idling:

@@ -1,14 +1,12 @@
-[gd_scene load_steps=12 format=4 uid="uid://dya264wpvqr7i"]
+[gd_scene load_steps=10 format=4 uid="uid://dya264wpvqr7i"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_gcpgl"]
 [ext_resource type="PackedScene" uid="uid://cegmmbnx2nejg" path="res://scenes/game_camera/game_camera.tscn" id="2_gtnkp"]
 [ext_resource type="PackedScene" uid="uid://bj65xcvqsyr7s" path="res://scenes/environment/parallax_background.tscn" id="3_htcp6"]
 [ext_resource type="TileSet" uid="uid://b0qs5ymyd8j48" path="res://assets/tilesets/bw-tileset.tres" id="4_n65ot"]
 [ext_resource type="PackedScene" uid="uid://cwl3encoi54s6" path="res://scenes/items/random_item.tscn" id="5_8ebpv"]
-[ext_resource type="PackedScene" uid="uid://7o3yw1nov7qk" path="res://scenes/player/player.tscn" id="6_cbgq7"]
 [ext_resource type="PackedScene" uid="uid://5g0snpn01gj1" path="res://scenes/environment/level_gate.tscn" id="7_cntna"]
 [ext_resource type="PackedScene" uid="uid://cvplnqtp0ws1m" path="res://scenes/enemies/big_boy_enemy.tscn" id="8_odqxd"]
-[ext_resource type="PackedScene" uid="uid://b76psagt11xrt" path="res://scenes/ui/game_ui.tscn" id="8_qxryp"]
 [ext_resource type="PackedScene" uid="uid://cjpugvxgnbepr" path="res://scenes/ui/pause_menu.tscn" id="9_p6po8"]
 [ext_resource type="PackedScene" uid="uid://do3pox5cyduq3" path="res://assets/shaders/color_swap_shader_scene.tscn" id="10_oeom4"]
 
@@ -43,8 +41,8 @@ position = Vector2(379, -7655)
 [node name="RandomItem4" parent="Items" instance=ExtResource("5_8ebpv")]
 position = Vector2(1465, -7658)
 
-[node name="Player" parent="." instance=ExtResource("6_cbgq7")]
-position = Vector2(-2311, -7094)
+[node name="PlayerSpawnPoint" type="Node2D" parent="."]
+position = Vector2(-2310, -7137)
 
 [node name="LevelGate" parent="." instance=ExtResource("7_cntna")]
 position = Vector2(4268, -7159)
@@ -71,8 +69,6 @@ modulate = Color(1, 0.278431, 1, 1)
 position = Vector2(3119, -7136)
 scale = Vector2(2, 2)
 damage = 50.0
-
-[node name="GameUi" parent="." instance=ExtResource("8_qxryp")]
 
 [node name="PauseMenu" parent="." instance=ExtResource("9_p6po8")]
 visible = false

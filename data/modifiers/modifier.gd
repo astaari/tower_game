@@ -4,14 +4,14 @@ class_name Modifier extends Resource
 @export var property_name : String
 @export var value : float
 
-func _init(property_name : String = "",value : float=0):
-	self.property_name=property_name
-	self.value=value
+func _init(prop_name : String = "",val : float=0):
+	self.property_name=prop_name
+	self.value=val
 
 
 func _to_string() -> String:
-	var str : String = property_name.replace("_"," ")
-	str = str.capitalize()
-	var sign = "+" if value > 0 else ""
-	str += ": " + sign+  str(value)
-	return str
+	var res : String = property_name.replace("_"," ")
+	res = res.capitalize()
+	var val_sign = "+" if value > 0 else ""
+	res += ": " + val_sign+  str(value)
+	return res

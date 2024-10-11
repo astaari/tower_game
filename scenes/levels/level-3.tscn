@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://crsgemhbyqyso"]
+[gd_scene load_steps=12 format=4 uid="uid://crsgemhbyqyso"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_33q3a"]
 [ext_resource type="PackedScene" uid="uid://cegmmbnx2nejg" path="res://scenes/game_camera/game_camera.tscn" id="2_esks0"]
@@ -6,8 +6,6 @@
 [ext_resource type="TileSet" uid="uid://b0qs5ymyd8j48" path="res://assets/tilesets/bw-tileset.tres" id="4_f4kli"]
 [ext_resource type="PackedScene" uid="uid://cwl3encoi54s6" path="res://scenes/items/random_item.tscn" id="5_1e4a4"]
 [ext_resource type="TileSet" uid="uid://c0xa5k4ro4vkx" path="res://assets/tilesets/secret_paths.tres" id="5_weww6"]
-[ext_resource type="PackedScene" uid="uid://7o3yw1nov7qk" path="res://scenes/player/player.tscn" id="6_ab83t"]
-[ext_resource type="PackedScene" uid="uid://b76psagt11xrt" path="res://scenes/ui/game_ui.tscn" id="7_wtro0"]
 [ext_resource type="PackedScene" uid="uid://do3pox5cyduq3" path="res://assets/shaders/color_swap_shader_scene.tscn" id="8_60no1"]
 [ext_resource type="PackedScene" uid="uid://bq3fmclbwhilv" path="res://scenes/enemies/enemy_egg.tscn" id="8_jqjqy"]
 [ext_resource type="PackedScene" uid="uid://cvplnqtp0ws1m" path="res://scenes/enemies/big_boy_enemy.tscn" id="9_ja6j4"]
@@ -64,9 +62,6 @@ position = Vector2(-2091, -3072)
 [node name="RandomItem10" parent="Items" instance=ExtResource("5_1e4a4")]
 position = Vector2(-1584, -3981)
 
-[node name="Player" parent="." instance=ExtResource("6_ab83t")]
-position = Vector2(-1099, 113)
-
 [node name="LevelGate" parent="." instance=ExtResource("9_xu6nd")]
 position = Vector2(-608, -6374)
 
@@ -95,9 +90,10 @@ position = Vector2(-670, -5687)
 score = 125.0
 damage = 20.0
 
-[node name="GameUi" parent="." instance=ExtResource("7_wtro0")]
-
 [node name="PauseMenu" parent="." instance=ExtResource("9_kehnv")]
 visible = false
 
 [node name="ColorSwapCanvasLayer" parent="." instance=ExtResource("8_60no1")]
+
+[node name="PlayerSpawnPoint" type="Node2D" parent="."]
+position = Vector2(-1098, 55)
