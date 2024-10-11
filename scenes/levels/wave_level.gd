@@ -20,7 +20,7 @@ func _ready() -> void:
 	if enemy_spawner:
 		enemy_spawner.all_enemies_dead.connect(_on_all_enemies_dead)
 
-	
+
 func _level_timer_timeout():
 	if enemy_spawner:
 		enemy_spawner.spawn_timer.stop()

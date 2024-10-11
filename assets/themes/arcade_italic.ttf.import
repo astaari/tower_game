@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://ejkyijunr1ll"
-path="res://.godot/imported/arcade_regular.ttf-5a32b375ddee882f3239de107722be7c.fontdata"
+uid="uid://1em38utp4wxq"
+path="res://.godot/imported/arcade_italic.ttf-e50b363e7126f7ed4e9a322210103970.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/arcade_regular.ttf"
-dest_files=["res://.godot/imported/arcade_regular.ttf-5a32b375ddee882f3239de107722be7c.fontdata"]
+source_file="res://assets/themes/arcade_italic.ttf"
+dest_files=["res://.godot/imported/arcade_italic.ttf-e50b363e7126f7ed4e9a322210103970.fontdata"]
 
 [params]
 

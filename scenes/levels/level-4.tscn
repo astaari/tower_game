@@ -13,8 +13,8 @@
 [node name="Level" type="Node"]
 script = ExtResource("1_gcpgl")
 level = 4
-dark_color = Color(0.402444, 0, 0.0355113, 1)
-light_color = Color(1, 0.446926, 0.493306, 1)
+dark_color = Color(0.196078, 0, 0.0235294, 1)
+light_color = Color(0.854902, 0.494118, 0.670588, 1)
 
 [node name="GameCamera" parent="." instance=ExtResource("2_gtnkp")]
 

@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://qb6dgmsbm5um" path="res://assets/themes/menu_theme.tres" id="1_mo71a"]
 [ext_resource type="Script" path="res://scenes/ui/tooltip.gd" id="2_rjtpu"]
 [ext_resource type="Script" path="res://data/modifiers/modifier.gd" id="3_go6gq"]
-[ext_resource type="FontFile" uid="uid://ejkyijunr1ll" path="res://assets/fonts/arcade_regular.ttf" id="4_gxnq1"]
+[ext_resource type="FontFile" uid="uid://ejkyijunr1ll" path="res://assets/themes/arcade_regular.ttf" id="4_gxnq1"]
 [ext_resource type="Script" path="res://addons/label_font_auto_sizer/label_auto_sizer.gd" id="4_yuls1"]
 [ext_resource type="LabelSettings" uid="uid://bup1e1joct8xf" path="res://assets/themes/in_game_label.tres" id="6_ukpbu"]
 

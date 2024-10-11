@@ -56,7 +56,4 @@ func _on_level_changed():
 		await player.animation_player.animation_finished
 		player.animation_player.queue("RESET")
 		player.movement_disabled=false
-
 	Game.unblock_pause()
-	
-	

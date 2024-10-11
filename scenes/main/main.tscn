@@ -82,6 +82,11 @@ libraries = {
 [node name="MainMenu" parent="." instance=ExtResource("1_gdkpf")]
 description = "Find answers"
 
+[node name="Player" parent="." instance=ExtResource("3_qiwul")]
+visible = false
+z_index = 4096
+player_stats = SubResource("Resource_2jvbd")
+
 [node name="TransitionLayer" type="CanvasLayer" parent="."]
 layer = 10
 
@@ -94,11 +99,6 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 metadata/_edit_use_anchors_ = true
-
-[node name="Player" parent="." instance=ExtResource("3_qiwul")]
-visible = false
-z_index = 4096
-player_stats = SubResource("Resource_2jvbd")
 
 [node name="GameUi" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_4yvoq")]
 visible = false

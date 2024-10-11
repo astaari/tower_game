@@ -5,11 +5,13 @@
 [ext_resource type="LabelSettings" uid="uid://bup1e1joct8xf" path="res://assets/themes/in_game_label.tres" id="3_11k7q"]
 
 [node name="AudioSettings" type="GridContainer"]
-offset_top = 32.0
-offset_right = 501.0
-offset_bottom = 133.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/h_separation = 32
 theme_override_constants/v_separation = 11
 columns = 2

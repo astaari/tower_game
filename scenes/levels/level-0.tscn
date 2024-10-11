@@ -21,6 +21,8 @@ tile_map_data = PackedByteArray("AACr/wcAAwAAAAAAAACs/wcAAwAAAAAAAACt/wcAAwACAAc
 tile_set = ExtResource("3_osnvo")
 
 [node name="SecretPaths" type="TileMapLayer" parent="."]
+z_index = 20
+z_as_relative = false
 
 [node name="Items" type="Node" parent="."]
 
