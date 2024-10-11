@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://cvx2ja53pfdan"]
+[gd_scene load_steps=12 format=4 uid="uid://cvx2ja53pfdan"]
 
 [ext_resource type="PackedScene" uid="uid://cegmmbnx2nejg" path="res://scenes/game_camera/game_camera.tscn" id="1_sokj2"]
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_yyhii"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://7o3yw1nov7qk" path="res://scenes/player/player.tscn" id="5_8neiu"]
 [ext_resource type="PackedScene" uid="uid://b76psagt11xrt" path="res://scenes/ui/game_ui.tscn" id="6_i7c66"]
 [ext_resource type="PackedScene" uid="uid://do3pox5cyduq3" path="res://assets/shaders/color_swap_shader_scene.tscn" id="7_tgdxh"]
+[ext_resource type="PackedScene" uid="uid://2jrfc7ggiayw" path="res://scenes/enemies/pretty_ghost_wizard.tscn" id="8_6tcl8"]
 [ext_resource type="PackedScene" uid="uid://5g0snpn01gj1" path="res://scenes/environment/level_gate.tscn" id="8_k8q8h"]
 [ext_resource type="PackedScene" uid="uid://cjpugvxgnbepr" path="res://scenes/ui/pause_menu.tscn" id="12_l5jw0"]
 
@@ -38,6 +39,9 @@ position = Vector2(-1104, 66)
 position = Vector2(808, -134)
 
 [node name="Enemies" type="Node" parent="."]
+
+[node name="PrettyGhostWizard" parent="Enemies" instance=ExtResource("8_6tcl8")]
+position = Vector2(-649, 83)
 
 [node name="GameUi" parent="." instance=ExtResource("6_i7c66")]
 
